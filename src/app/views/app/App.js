@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
-import setUser from '../../state/ducks/session/operations';
+import setUser from '../../state/ducks/Session/operations';
 
 class App extends React.Component {
   constructor(props) {
