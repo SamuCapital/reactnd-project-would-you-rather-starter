@@ -1,14 +1,10 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import thunkMiddleware from 'redux-thunk';
+import { createStore, combineReducers } from 'redux';
+import { loadingBarReducer } from 'react-redux-loading';
 import * as reducers from './ducks';
-// import { apiService, createLogger } from './middlewares';
+import sessionReducer from './ducks/session/reducers'; // TODO: REMOVE ONCE NEXT REDUCER IS READY
+import middleware from './middleware';
 
-export default function configureStore(initialState) {
-  const rootReducer = combineReducers(reducers);
+const rootReducer = combineReducers(reducers, loadingBarReducer);
+const Store = createStore(sessionReducer, middleware);
 
-  return createStore(
-    rootReducer,
-    initialState,
-    // applyMiddleware(apiService, thunkMiddleware, createLogger(true)),
-  );
-}
+export default Store;
