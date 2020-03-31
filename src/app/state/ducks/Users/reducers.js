@@ -6,7 +6,7 @@ const initialState = {};
 const users = (state = initialState, action) => {
   switch (action.type) {
     case types.USER_SET_INITIAL: {
-      return { ...action.payload };
+      return action.payload;
     }
     case types.ADD_ANSWER: {
       const { user, answer } = action.payload;

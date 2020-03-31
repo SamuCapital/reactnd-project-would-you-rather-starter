@@ -5,6 +5,6 @@ import sessionReducer from './ducks/Session/reducers'; // TODO: REMOVE ONCE NEXT
 import middleware from './Middleware';
 
 const rootReducer = combineReducers(reducers, loadingBarReducer);
-const Store = createStore(sessionReducer, middleware);
+const Store = createStore(rootReducer, middleware);
 
 export default Store;

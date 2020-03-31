@@ -3,12 +3,18 @@ import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import setUser from '../../state/ducks/Session/operations';
+import { fetchInitialUsers } from '../../state/ducks/Users/operations';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {};
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+    fetchInitialUsers(dispatch);
   }
 
   render() {
