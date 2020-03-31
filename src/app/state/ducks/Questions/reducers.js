@@ -1,1 +1,26 @@
-const questions = () => {};
+import update from 'immutability-helper';
+import * as types from './types';
+
+const initialState = {};
+
+const questions = (state = initialState, action) => {
+  switch (action.type) {
+    case types.USER_SET_INITIAL: {
+      return { ...action.payload };
+    }
+    case types.ADD_ANSWER: {
+      const { user, answer } = action.payload;
+      const newState = update(state, {
+        [user]: {
+          answers: { $merge: answer },
+        },
+      });
+      return newState;
+    }
+
+    default:
+      return state;
+  }
+};
+
+export default questions;
