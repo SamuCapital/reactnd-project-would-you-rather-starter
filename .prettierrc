@@ -1,6 +1,5 @@
 {
   "printWidth": 100,
   "singleQuote": true,
-  "trailingComma": "all",
-  "object-literal-key-quotes": true
+  "trailingComma": "all"
 }
