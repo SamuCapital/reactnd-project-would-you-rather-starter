@@ -6,7 +6,10 @@ export const Background = styled.div`
   border: 2px solid #000;
   flex: 1;
   margin: auto;
-  width: 60%;
+// width: ${(props) => (props.width * 0.6 > 800 ? 800 : props.width * 0.6)}px;
+  width:60%;
+  max-width: 800px;
+
   margin: auto;
   display: flex;
   align-items: center;
