@@ -6,6 +6,7 @@ import setUser from '../../state/ducks/Session/operations';
 import { fetchInitialUsers } from '../../state/ducks/Users/operations';
 
 import Login from '../Login';
+import Question from '../Question';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Login />
+        <Question />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
