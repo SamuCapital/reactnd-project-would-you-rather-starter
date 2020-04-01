@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "immutability-helper": "^3.0.2",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-dropdown": "^1.7.0",
@@ -40,6 +41,7 @@
     "@typescript-eslint/eslint-plugin": "2.25.0",
     "@typescript-eslint/parser": "2.25.0",
     "babel-eslint": "10.x",
+    "babel-plugin-styled-components": "^1.10.7",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-prettier": "^6.10.1",

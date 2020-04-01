@@ -1,18 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
+import PropTypes from 'prop-types';
+import Button from './Button';
 import 'react-dropdown/style.css';
 
-const login = () => {
-  const options = ['one', 'two', 'three'];
-  const defaultOption = options[0];
+const Login = ({ users, setUser }) => {
+  const [username, setUsername] = useState();
+  const options = Array.isArray(users) ? users : [];
   return (
-    <Dropdown
-      options={options}
-      //   onChange={this._onSelect}
-      value={defaultOption}
-      placeholder="Select an option"
-    />
+    <div>
+      <Dropdown
+        options={options}
+        onChange={setUsername}
+        value={username}
+        placeholder="Select an option"
+      />
+      <Button onClick={() => setUser(username.value)}>Login</Button>
+    </div>
   );
 };
 
-export default login;
+Login.propTypes = {
+  users: PropTypes.arrayOf(PropTypes.string),
+  setUser: PropTypes.func.isRequired,
+};
+
+Login.defaultProps = {
+  users: null,
+};
+
+export default Login;

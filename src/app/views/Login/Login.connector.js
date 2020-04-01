@@ -1,4 +1,15 @@
 import { connect } from 'react-redux';
-import Login from './Login.react.';
+import setUser from '../../state/ducks/Session/operations';
+import Login from './Login.styled';
 
-export default connect()(Login);
+const mapStateToProps = (state) => {
+  return {
+    users: Object.keys(state.users),
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: (user) => dispatch(setUser(user)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
