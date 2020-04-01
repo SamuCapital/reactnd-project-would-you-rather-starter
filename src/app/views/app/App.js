@@ -5,6 +5,8 @@ import './App.css';
 import setUser from '../../state/ducks/Session/operations';
 import { fetchInitialUsers } from '../../state/ducks/Users/operations';
 
+import Login from '../Login';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,7 @@ class App extends React.Component {
     const { dispatch } = this.props;
     return (
       <div className="App">
+        <Login />
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
