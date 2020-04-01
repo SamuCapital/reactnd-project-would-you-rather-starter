@@ -1,7 +1,7 @@
 import update from 'immutability-helper';
 import * as types from './types';
 
-const initialState = {};
+const initialState = { loadInitialState: true };
 
 const users = (state = initialState, action) => {
   switch (action.type) {
