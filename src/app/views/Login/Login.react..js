@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown';
 import PropTypes from 'prop-types';
-import Button from './Button';
+import Button from './Login.styled';
 import 'react-dropdown/style.css';
 
 const Login = ({ users, setUser }) => {
@@ -15,7 +15,7 @@ const Login = ({ users, setUser }) => {
         value={username}
         placeholder="Select an option"
       />
-      <Button onClick={() => setUser(username.value)}>Login</Button>
+      <Button onClick={() => username && setUser(username.value)}>Login</Button>
     </div>
   );
 };
