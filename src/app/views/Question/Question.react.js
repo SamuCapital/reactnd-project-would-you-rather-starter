@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useRef, useLayoutEffect, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
+  ContainerContainer,
+  ContainerBG,
   Container,
   Background,
   UserData,
@@ -10,12 +12,34 @@ import {
   PictureBorder,
   Header,
 } from './Question.styled';
-import useWindowDimensions from './Question.helper';
+import { useWindowDimensions, useCompDimensions } from './Question.helper';
 
 const Question = ({ url }) => {
-  const { width } = useWindowDimensions();
+  const containerRef = useRef();
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const { windowWidth } = useWindowDimensions();
+  const [windowResized, setWindowResized] = useState(windowWidth);
+
+  //   useCompDimensions(containerRef, dimensions, setDimensions, windowWidth, windowResized);
+  //   useEffect(() => {
+  //     if (dimensions.width !== 0 || width !== windowResized) {
+  //       console.log(dimensions);
+  //     }
+  //   }, [dimensions, width, windowResized]);
+
+  useLayoutEffect(() => {
+    // if ((containerRef.current && dimensions.width === 0) || windowWidth !== windowResized) {
+    setDimensions({
+      width: containerRef.current.offsetWidth,
+      height: containerRef.current.offsetHeight,
+    });
+    console.log('Set Dimensions!');
+    // }
+  }, [containerRef, dimensions.width, setDimensions, windowResized, windowWidth]);
+
+  if (windowWidth !== windowResized) setWindowResized(windowWidth);
   return (
-    <Background width={width}>
+    <Background width={windowWidth}>
       <UserData>
         <PictureBorder>
           <ProfilePicture url={url} />
@@ -28,10 +52,13 @@ const Question = ({ url }) => {
           </Name>
         </QuestionBy>
       </UserData>
-      <Container>
-        <Header>Hello</Header>
-        <Header>Hello</Header>
-      </Container>
+      <ContainerContainer ref={containerRef}>
+        <ContainerBG dimensions={dimensions} />
+        <Container dimensions={dimensions}>
+          <Header>Hello</Header>
+          <Header>Hello</Header>
+        </Container>
+      </ContainerContainer>
     </Background>
   );
 };

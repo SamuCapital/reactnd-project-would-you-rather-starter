@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 
 const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
@@ -8,7 +8,7 @@ const getWindowDimensions = () => {
   };
 };
 
-const useWindowDimensions = () => {
+export const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
   useEffect(() => {
@@ -23,4 +23,21 @@ const useWindowDimensions = () => {
   return windowDimensions;
 };
 
-export default useWindowDimensions;
+// export const getComponentDimensions = (containerRef, dimensions, setDimensions) => (
+
+export const useCompDimensions = (
+  containerRef,
+  dimensions,
+  setDimensions,
+  windowWidth,
+  windowResized,
+) =>
+  useLayoutEffect(() => {
+    if ((containerRef.current && dimensions.width === 0) || windowWidth !== windowResized) {
+      setDimensions({
+        width: containerRef.current.offsetWidth,
+        height: containerRef.current.offsetHeight,
+      });
+      console.log('Set Dimensions!');
+    }
+  }, [containerRef, dimensions.width, setDimensions, windowResized, windowWidth]);
