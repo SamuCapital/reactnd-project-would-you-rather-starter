@@ -1,10 +1,26 @@
-import React from 'react';
 import styled from 'styled-components';
+/* Coolors Exported Palette - coolors.co/9e0031-8e0045-001427-708d81-f4d58d */
 
+// /* HSL */
+// $color1: hsla(341%, 100%, 31%, 1);
+// $color2: hsla(331%, 100%, 28%, 1);
+// $color3: hsla(209%, 100%, 8%, 1);
+// $color4: hsla(155%, 11%, 50%, 1);
+// $color5: hsla(42%, 82%, 75%, 1);
+
+// /* RGB */
+const colors = {
+  color1: 'rgba(158, 0, 49, 1)',
+  color2: 'rgba(142, 0, 69, 1)',
+  color3: 'rgba(0, 20, 39, 1)',
+  color4: 'rgba(112, 141, 129, 1)',
+  color5: 'rgba(244, 213, 141, 1)',
+};
 export const Background = styled.div`
-  background-color: teal;
+  background-color: ${colors.color3};
   border-radius: 5px;
-  border: 1px solid #455a64;
+  /* border: 1px solid #455a64; */
+  /* border: 1px solid rgb(244, 213, 141); */
   /* box-shadow: 2px 5px 10px #b0bec5, 60px -16px teal; */
   flex: 1;
   margin: auto;
@@ -31,10 +47,10 @@ export const QuestionBy = styled.p`
   margin: 0px;
   margin-block-start: 0px;
   margin-block-end: 0px;
-  color: #607d8b;
+  color: ${colors.color2};
 `;
 export const Name = styled.span`
-  color: #37474f;
+  color: ${colors.color4};
 `;
 
 export const PictureBorder = styled.div`
@@ -66,43 +82,35 @@ export const ContainerContainer = styled.div`
   margin-right: 25px;
   padding: 5px;
   align-content: center;
-  /* background-color: #efee; */
-  /* background: radial-gradient(#e66465, #9198e5); */
 `;
 
 export const Container = styled.div`
   position: absolute;
   display: flex;
   z-index: 1;
-  /* height: 100px; */
   margin-right: 25px;
   background-color: #efee;
   border-radius: 5px;
   align-self: center;
-  width: ${(props) => props.dimensions.width * 0.9}px;
-  height: ${(props) => props.dimensions.height * 0.9}px;
-  margin-top: ${(props) => props.dimensions.height * 0.05}px;
-  margin-left: ${(props) => props.dimensions.height * 0.1}px;
-  margin-right: ${(props) => props.dimensions.height * 0.05}px;
-  margin-top: ${(props) => props.dimensions.height * 0.05}px;
+  width: ${(props) => props.dimensions.width - 15}px;
+  height: ${(props) => props.dimensions.height - 15}px;
+  margin: ${(props) => props.dimensions.height * 0.05}px;
 `;
 
 export const ContainerBG = styled.div`
   position: absolute;
-  /* top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; */
   background: #000;
   z-index: 0;
   width: ${(props) => props.dimensions.width}px;
   height: ${(props) => props.dimensions.height}px;
   background-color: #efee;
-  background: radial-gradient(#ef0, #efee);
+  /* background: radial-gradient(#ef0, #efee); */
+  /* background: radial-gradient(${colors.color3}, ${colors.color3}); */
+  background: radial-gradient(${colors.color3}, #ef0);
 
   flex-direction: column;
-  filter: blur(20px);
-  border-radius: 50px;
+  filter: blur(15px);
+  border-radius: 5px;
 `;
 
 export const Header = styled.h3`

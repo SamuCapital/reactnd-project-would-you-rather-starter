@@ -66,6 +66,7 @@ Question.propTypes = { url: PropTypes.string };
 // TODO: REMOVE BEFORE PUBLISH
 Question.defaultProps = {
   url: 'https://i.pinimg.com/564x/c3/98/41/c398410b49f5a52a7b566c3f9a9c0bf6.jpg',
+  //   url: 'https://i.pinimg.com/564x/f1/f4/9c/f1f49ce816d324b40bf7b5c07e464854.jpg',
 };
 
 export default Question;
