@@ -23,21 +23,33 @@ export const useWindowDimensions = () => {
   return windowDimensions;
 };
 
-// export const getComponentDimensions = (containerRef, dimensions, setDimensions) => (
-
-export const useCompDimensions = (
+export const useContainerLayout = (
   containerRef,
   dimensions,
+  initialLoaded,
   setDimensions,
-  windowWidth,
   windowResized,
+  windowWidth,
+  setWindowResized,
+  setInitialLoaded,
 ) =>
   useLayoutEffect(() => {
-    if ((containerRef.current && dimensions.width === 0) || windowWidth !== windowResized) {
+    if (!initialLoaded || containerRef.current.offsetWidth !== windowResized) {
       setDimensions({
         width: containerRef.current.offsetWidth,
         height: containerRef.current.offsetHeight,
       });
-      console.log('Set Dimensions!');
+      setWindowResized(containerRef.current.offsetWidth);
+      setInitialLoaded(true);
     }
-  }, [containerRef, dimensions.width, setDimensions, windowResized, windowWidth]);
+  }, [
+    containerRef,
+    dimensions,
+    dimensions.width,
+    initialLoaded,
+    setDimensions,
+    setInitialLoaded,
+    setWindowResized,
+    windowResized,
+    windowWidth,
+  ]);
