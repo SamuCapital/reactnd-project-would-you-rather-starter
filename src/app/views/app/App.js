@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import setUser from '../../state/ducks/Session/operations';
-import { fetchInitialUsers } from '../../state/ducks/Users/operations';
+import fetchInitialData from '../../state/sharedActions';
 
 import Login from '../Login';
 import Question from '../Question';
@@ -17,7 +17,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    fetchInitialUsers(dispatch);
+    dispatch(fetchInitialData());
   }
 
   render() {
