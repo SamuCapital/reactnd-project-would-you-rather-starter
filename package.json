@@ -22,11 +22,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint --ext .js --ext .jsx ."
   },
-  "babel": {
-    "plugins": [
-      "babel-plugin-styled-components"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",

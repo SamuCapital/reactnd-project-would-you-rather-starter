@@ -1,5 +1,9 @@
 import { useState, useEffect, useLayoutEffect } from 'react';
 
+/* -------------------------------------------------------------------------- */
+/*                                    HOOKS                                   */
+/* -------------------------------------------------------------------------- */
+
 const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
   return {
