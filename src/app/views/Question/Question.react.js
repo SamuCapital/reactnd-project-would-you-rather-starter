@@ -1,58 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RadioButton, RadioGroup, ReversedRadioButton } from 'react-radio-buttons';
 import {
   ContainerContainer,
   ContainerBG,
   Container,
   Background,
   UserData,
-  QuestionBy,
-  Name,
   ProfilePicture,
   PictureBorder,
   Headline,
-  Option,
   SubmitButton,
 } from './Question.styled';
 
-const Question = ({ url, windowWidth, containerRef, dimensions }) => {
+import { Options, Username } from './QuestionComponents.react';
+
+const Question = ({ url, windowWidth, containerRef, dimensions, question, authorName }) => {
   return (
     <Background width={windowWidth}>
       <UserData>
         <PictureBorder>
           <ProfilePicture url={url} />
         </PictureBorder>
-        <QuestionBy>
-          <i>Question By:</i>
-          <br />
-          <Name>
-            <b>Samuel</b>
-          </Name>
-        </QuestionBy>
+        <Username name={authorName} />
       </UserData>
       <ContainerContainer ref={containerRef}>
         <ContainerBG dimensions={dimensions} />
         <Container dimensions={dimensions}>
           <Headline>Would you rather...</Headline>
-          <RadioGroup onChange={(value) => console.log(value)}>
-            <ReversedRadioButton
-              pointColor="#8e0045"
-              rootColor="#001427"
-              padding={10}
-              value="apple"
-            >
-              <Option>Option one</Option>
-            </ReversedRadioButton>
-            <ReversedRadioButton
-              pointColor="#8e0045"
-              rootColor="#001427"
-              padding={10}
-              value="orange"
-            >
-              <Option>Option two</Option>
-            </ReversedRadioButton>
-          </RadioGroup>
+          <Options optionOne={question.optionOne.text} optionTwo={question.optionTwo.text} />
           <SubmitButton>Submit!</SubmitButton>
         </Container>
       </ContainerContainer>
@@ -64,6 +39,8 @@ Question.propTypes = {
   windowWidth: PropTypes.number,
   containerRef: PropTypes.object,
   dimensions: PropTypes.objectOf(PropTypes.number),
+  question: PropTypes.object.isRequired,
+  authorName: PropTypes.string.isRequired,
 };
 
 Question.defaultProps = {

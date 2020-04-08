@@ -17,8 +17,8 @@ const handleInitialData = () => {
   return (dispatch) => {
     dispatch(showLoading);
     return getInitialData().then(({ users, questions }) => {
-      dispatch(questionOperations.setInitialQuestions(questions));
       dispatch(usersOperations.setInitialUsers(users));
+      dispatch(questionOperations.setInitialQuestions(questions));
       dispatch(hideLoading);
     });
   };
