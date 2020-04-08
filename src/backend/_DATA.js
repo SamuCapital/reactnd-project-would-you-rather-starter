@@ -114,7 +114,20 @@ let questions = {
     optionTwo: {
       votes: ['tylermcginnis'],
       text: 'write Swift'
-    }
+    },
+  },
+    "xj352vofupe1dqz9emx18r": {
+      id: 'xj352vofupe1dqz9emx18r',
+      author: 'johndoe',
+      timestamp: 14935797671955,
+      optionOne: {
+        votes: ['johndoe'],
+        text: 'write JavaScript WITH A SUPER LONG ANSWER STRING',
+      },
+      optionTwo: {
+        votes: ['tylermcginnis'],
+        text: 'write Swift'
+      }
   },
 }
 

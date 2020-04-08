@@ -4,15 +4,12 @@ import { connect } from 'react-redux';
 
 import Question from '../Question';
 
-const Home = ({ questions, users }) => {
-  questions && !questions.loadInitialState && console.log('got the questions');
+const Home = ({ questions }) => {
   return (
     <div>
       Hello world{' '}
       {questions &&
         !questions.loadInitialState &&
-        users &&
-        !users.loadInitialState &&
         Object.values(questions).map((question) => (
           <Question question={question} key={question.id} />
         ))}
@@ -25,7 +22,7 @@ Home.propTypes = {
 };
 
 const mapStateToProps = ({ questions, users }) => {
-  return { questions, users };
+  return { questions };
 };
 const mapDispatchToProps = (dispatch) => {
   return {};

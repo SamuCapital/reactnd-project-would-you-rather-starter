@@ -11,6 +11,7 @@ const ConnectedComponent = ({ question, url, authorName }) => {
   const { width: windowWidth } = useWindowDimensions();
   const [windowResized, setWindowResized] = useState(0);
   const [initialLoaded, setInitialLoaded] = useState(false);
+  const [renderQuestion, setRenderQuestion] = useState(true);
 
   useContainerLayout(
     containerRef,
@@ -31,6 +32,8 @@ const ConnectedComponent = ({ question, url, authorName }) => {
       dimensions={dimensions}
       question={question}
       authorName={authorName}
+      renderQuestion={renderQuestion}
+      setRenderQuestion={setRenderQuestion}
     />
   );
 };
@@ -47,7 +50,6 @@ ConnectedComponent.defaultProps = {
   //   url: 'https://i.pinimg.com/564x/f1/f4/9c/f1f49ce816d324b40bf7b5c07e464854.jpg',
 };
 
-// export default ConnectedComponent;
 const mapStateToProps = (state, ownProps) => {
   return {
     url: state.users[ownProps.question.author].avatarURL,

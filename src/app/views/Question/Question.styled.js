@@ -42,6 +42,11 @@ export const UserData = styled.div`
   flex-grow: 1;
   margin: auto;
 `;
+
+export const ContainerData = styled.div`
+  flex-grow: 4;
+  margin: auto;
+`;
 export const QuestionBy = styled.p`
   font-size: 130%;
   margin: 0px;
@@ -119,10 +124,10 @@ export const Container = styled.div`
   margin-right: 25px;
   background-color: #efee;
   border-radius: 5px;
-  /* align-self: center; */
   width: ${(props) => props.dimensions.width - 15}px;
   height: ${(props) => props.dimensions.height - 15}px;
   margin: ${(props) => props.dimensions.height * 0.05}px;
+
   display: flex;
   flex-direction: column;
   margin: 10px 10px 5px;
@@ -137,14 +142,15 @@ export const Headline = styled.div`
   font-size: 20px;
   padding: 10px 10px 5px;
 `;
+export const OptionContainer = styled.div`
+  margin: 10px 20px;
+`;
 
 export const Option = styled.div`
   flex-grow: 4;
   text-align: start;
-  /* color: #000; */
   z-index: 5;
   font-size: 15px;
-  /* padding: 10px 15px 10px; */
 `;
 
 export const SubmitButton = styled.button`
@@ -154,4 +160,3 @@ export const SubmitButton = styled.button`
   padding: 10px 15px 10px;
   margin-bottom: 10px;
 `;
-SubmitButton.defaultProps = { 'data-id': 'SubmitButton' };
