@@ -62,13 +62,13 @@ const Question = ({ url, windowWidth, containerRef, dimensions }) => {
 Question.propTypes = {
   url: PropTypes.string.isRequired,
   windowWidth: PropTypes.number,
-  containerRef: PropTypes.string,
+  containerRef: PropTypes.object,
   dimensions: PropTypes.objectOf(PropTypes.number),
 };
 
 Question.defaultProps = {
   windowWidth: 0,
-  containerRef: '',
+  containerRef: {},
   dimensions: { width: 0, height: 0 },
 };
 

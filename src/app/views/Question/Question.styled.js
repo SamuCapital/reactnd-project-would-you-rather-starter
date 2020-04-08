@@ -48,8 +48,13 @@ export const QuestionBy = styled.p`
   margin-block-start: 0px;
   margin-block-end: 0px;
   color: ${colors.color2};
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 20px 0px 20px;
 `;
 export const Name = styled.span`
+  margin-top: -20px;
   color: ${colors.color4};
 `;
 
@@ -61,6 +66,7 @@ export const PictureBorder = styled.div`
   background-color: #21d4fd;
   background-image: linear-gradient(130deg, #21d4fd 0%, #b721ff 100%);
   padding: 3px;
+  margin-top: 20px;
 `;
 
 export const ProfilePicture = styled.div`

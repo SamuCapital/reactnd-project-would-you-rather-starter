@@ -9,6 +9,7 @@ const getInitialData = () => {
     questions,
   }));
 };
+
 /**
  * @description Fetches all initial Data from the api and adds it to Store
  */
