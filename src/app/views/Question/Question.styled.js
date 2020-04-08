@@ -27,7 +27,7 @@ export const Background = styled.div`
   width: 60%;
   min-width: 500px;
   max-width: 800px;
-  height: 280px;
+  min-height: 280px;
   margin: auto;
   display: flex;
   align-items: center;
@@ -77,7 +77,7 @@ export const ContainerContainer = styled.div`
   display: flex;
   flex-grow: 4;
   width: 100px;
-  height: 170px;
+  min-height: 170px;
   border-radius: 5px;
   margin-right: 50px;
   padding: 5px;
@@ -135,10 +135,10 @@ export const Headline = styled.div`
 export const Option = styled.div`
   flex-grow: 4;
   text-align: start;
-  color: #000;
+  /* color: #000; */
   z-index: 5;
   font-size: 15px;
-  padding: 10px 15px 10px;
+  /* padding: 10px 15px 10px; */
 `;
 
 export const SubmitButton = styled.button`

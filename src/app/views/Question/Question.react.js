@@ -1,9 +1,6 @@
-import React, {
-  useRef,
-  //  useLayoutEffect,
-  useState,
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { RadioButton, RadioGroup, ReversedRadioButton } from 'react-radio-buttons';
 import {
   ContainerContainer,
   ContainerBG,
@@ -38,8 +35,24 @@ const Question = ({ url, windowWidth, containerRef, dimensions }) => {
         <ContainerBG dimensions={dimensions} />
         <Container dimensions={dimensions}>
           <Headline>Would you rather...</Headline>
-          <Option>Option one</Option>
-          <Option>Option two</Option>
+          <RadioGroup onChange={(value) => console.log(value)}>
+            <ReversedRadioButton
+              pointColor="#8e0045"
+              rootColor="#001427"
+              padding={10}
+              value="apple"
+            >
+              <Option>Option one</Option>
+            </ReversedRadioButton>
+            <ReversedRadioButton
+              pointColor="#8e0045"
+              rootColor="#001427"
+              padding={10}
+              value="orange"
+            >
+              <Option>Option two</Option>
+            </ReversedRadioButton>
+          </RadioGroup>
           <SubmitButton>Submit!</SubmitButton>
         </Container>
       </ContainerContainer>
