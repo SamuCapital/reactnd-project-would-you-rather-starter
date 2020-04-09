@@ -1,6 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Background, UserData, ProfilePicture, PictureBorder } from './Question.styled';
+
+import { Progress } from 'react-sweet-progress';
+import 'react-sweet-progress/lib/style.css';
+
+import {
+  Background,
+  UserData,
+  ProfilePicture,
+  PictureBorder,
+  CircleContainer,
+} from './Question.styled';
 
 import { Fade, Username, QuestionData } from './QuestionComponents.react';
 
@@ -8,12 +18,14 @@ const style = { 'flex-grow': 1 };
 const Question = ({
   url,
   windowWidth,
-  containerRef,
   dimensions,
   question,
   authorName,
   renderQuestion,
   setRenderQuestion,
+  setRender,
+  shouldRender,
+  percentage,
 }) => {
   return (
     <Background width={windowWidth}>
@@ -24,17 +36,18 @@ const Question = ({
         <Username name={authorName} />
       </UserData>
 
-      <Fade show={renderQuestion}>
+      <Fade show={renderQuestion} shouldRender={shouldRender} setRender={setRender}>
         <QuestionData
-          containerRef={containerRef}
           dimensions={dimensions}
           optionOne={question.optionOne.text}
           optionTwo={question.optionTwo.text}
           setRenderQuestion={setRenderQuestion}
         />
       </Fade>
-      <Fade show={!renderQuestion}>
-        <h1 onClick={() => setRenderQuestion(true)}>ANIMATE</h1>
+      <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
+        <CircleContainer>
+          <Progress percent={percentage} />
+        </CircleContainer>
       </Fade>
     </Background>
   );
@@ -42,7 +55,6 @@ const Question = ({
 Question.propTypes = {
   url: PropTypes.string.isRequired,
   windowWidth: PropTypes.number,
-  containerRef: PropTypes.object,
   dimensions: PropTypes.objectOf(PropTypes.number),
   question: PropTypes.object.isRequired,
   authorName: PropTypes.string.isRequired,
@@ -52,15 +64,7 @@ Question.propTypes = {
 
 Question.defaultProps = {
   windowWidth: 0,
-  containerRef: {},
   dimensions: { width: 0, height: 0 },
 };
 
 export default Question;
-
-/* width: ${(props) => props.dimensions.width}px; */
-/* height: ${(props) => props.dimensions.height}px; */
-
-/* width: ${(props) => props.dimensions.width - 15}px; */
-/* height: ${(props) => props.dimensions.height - 15}px; */
-/* margin: ${(props) => props.dimensions.height * 0.05}px; */

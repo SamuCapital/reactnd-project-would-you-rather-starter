@@ -1,7 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 /* Coolors Exported Palette - coolors.co/9e0031-8e0045-001427-708d81-f4d58d */
-import { AnimateOnChange } from 'react-animation';
-import { flipInX, flipOutX } from 'react-animations';
+import { zoomInDown, bounceOut } from 'react-animations';
 // /* HSL */
 // $color1: hsla(341%, 100%, 31%, 1);
 // $color2: hsla(331%, 100%, 28%, 1);
@@ -42,6 +41,7 @@ export const Background = styled.div`
 export const UserData = styled.div`
   /* flex-grow: 1; */
   margin: 20px;
+  margin-left: 30px;
 `;
 
 export const QuestionBy = styled.p`
@@ -96,7 +96,7 @@ export const ContainerContainer = styled.div`
   min-height: 170px; */
   border-radius: 5px;
   margin: auto;
-  margin-right: 50px;
+  /* margin-right: 50px; */
   padding: 5px;
   align-content: center;
 `;
@@ -122,8 +122,8 @@ export const Header = styled.h3`
   left: 0;
   position: absolute;
 `;
-const flinInXAnim = keyframes`${flipInX}`;
-const flinOutXAnim = keyframes`${flipOutX}`;
+const flinInXAnim = keyframes`${zoomInDown}`;
+const flinOutXAnim = keyframes`${bounceOut}`;
 
 export const Container = styled.div`
   /* position: absolute; */
@@ -143,6 +143,8 @@ export const Container = styled.div`
 `;
 
 export const AnimatedDiv = styled.div`
+  flex-grow: 1;
+  display: flex;
   animation: 0.75s ${(props) => (props.show ? flinInXAnim : flinOutXAnim)};
 `;
 
@@ -172,4 +174,13 @@ export const SubmitButton = styled.button`
   align-self: center;
   padding: 10px 15px 10px;
   margin-bottom: 10px;
+`;
+
+export const CircleContainer = styled.div`
+  align-self: center;
+  align-content: center;
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+  margin: auto;
 `;

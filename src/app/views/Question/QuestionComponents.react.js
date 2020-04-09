@@ -50,22 +50,17 @@ export const Username = ({ name }) => {
   );
 };
 
-export const QuestionData = ({
-  containerRef,
-  dimensions,
-  optionOne,
-  optionTwo,
-  setRenderQuestion,
-}) => (
+export const QuestionData = ({ dimensions, optionOne, optionTwo, setRenderQuestion }) => (
   <ContainerContainer>
-    {/* <ContainerBG /> */}
     <Container>
       <Headline>Would you rather...</Headline>
       <Options optionOne={optionOne} optionTwo={optionTwo} />
       <SubmitButton
         onClick={() => {
+          setTimeout(() => {
+            console.log('CLICK');
+          }, 1500);
           setRenderQuestion(false);
-          console.log('CLICK');
         }}
       >
         Submit!
@@ -76,17 +71,14 @@ export const QuestionData = ({
 QuestionData.propTypes = {
   optionOne: PropTypes.string.isRequired,
   optionTwo: PropTypes.string.isRequired,
-  containerRef: PropTypes.object.isRequired,
   dimensions: PropTypes.objectOf(PropTypes.number).isRequired,
   setRenderQuestion: PropTypes.func.isRequired,
 };
 
-export const Fade = ({ show, children }) => {
-  const [shouldRender, setRender] = useState(show);
-
+export const Fade = ({ show, children, shouldRender, setRender }) => {
   useEffect(() => {
     if (show) setRender(true);
-  }, [show]);
+  }, [setRender, show]);
 
   const onAnimationEnd = () => {
     console.log('TRIGGERED');
