@@ -8,11 +8,11 @@ import {
   QuestionBy,
   Name,
   OptionContainer,
-  ContainerContainer,
   Container,
   Headline,
   SubmitButton,
   AnimatedDiv,
+  HoverButton,
 } from './Question.styled';
 
 export const Options = ({ optionOne, optionTwo }) => {
@@ -34,8 +34,8 @@ export const Options = ({ optionOne, optionTwo }) => {
   );
 };
 
-export const Username = ({ name }) => {
-  Username.propTypes = { name: PropTypes.string.isRequired };
+export const AuthorName = ({ name }) => {
+  AuthorName.propTypes = { name: PropTypes.string.isRequired };
   return (
     <QuestionBy>
       <i>Question By:</i>
@@ -54,20 +54,19 @@ export const QuestionData = ({ optionOne, optionTwo, setRenderQuestion }) => {
     setRenderQuestion: PropTypes.func.isRequired,
   };
   return (
-    <ContainerContainer>
-      <Container>
-        <Headline>Would you rather...</Headline>
-        <Options optionOne={optionOne} optionTwo={optionTwo} />
-        <SubmitButton
-          onClick={() => {
-            setTimeout(() => {}, 1500);
-            setRenderQuestion(false);
-          }}
-        >
-          Submit!
-        </SubmitButton>
-      </Container>
-    </ContainerContainer>
+    <Container>
+      <Headline>Would you rather...</Headline>
+      <Options optionOne={optionOne} optionTwo={optionTwo} />
+      <SubmitButton
+        onClick={() => {
+          setTimeout(() => {}, 1500);
+          setRenderQuestion(false);
+        }}
+      >
+        Submit!
+      </SubmitButton>
+      {/* <HoverButton /> */}
+    </Container>
   );
 };
 

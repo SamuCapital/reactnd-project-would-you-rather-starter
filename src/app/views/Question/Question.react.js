@@ -9,10 +9,10 @@ import {
   UserData,
   ProfilePicture,
   PictureBorder,
-  CircleContainer,
+  ResultBarContainer,
 } from './Question.styled';
 
-import { Fade, Username, QuestionData } from './QuestionComponents.react';
+import { Fade, AuthorName, QuestionData } from './QuestionComponents.react';
 
 const Question = ({
   url,
@@ -31,7 +31,7 @@ const Question = ({
         <PictureBorder>
           <ProfilePicture url={url} />
         </PictureBorder>
-        <Username name={authorName} />
+        <AuthorName name={authorName} />
       </UserData>
 
       <Fade show={renderQuestion} shouldRender={shouldRender} setRender={setRender}>
@@ -42,9 +42,9 @@ const Question = ({
         />
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
-        <CircleContainer>
+        <ResultBarContainer>
           <Progress percent={percentage} />
-        </CircleContainer>
+        </ResultBarContainer>
       </Fade>
     </Background>
   );
