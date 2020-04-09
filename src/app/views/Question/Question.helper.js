@@ -12,6 +12,14 @@ const getWindowDimensions = () => {
   };
 };
 
+export const useStateWithCallback = (initialState, callback) => {
+  const [state, setState] = useState(initialState);
+
+  useEffect(() => callback(state), [state, callback]);
+
+  return [state, setState];
+};
+
 export const useWindowDimensions = () => {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
 
@@ -37,23 +45,24 @@ export const useContainerLayout = (
   setWindowResized,
   setInitialLoaded,
 ) =>
-  useLayoutEffect(() => {
-    if (!initialLoaded || containerRef.current.offsetWidth !== windowResized) {
-      setDimensions({
-        width: containerRef.current.offsetWidth,
-        height: containerRef.current.offsetHeight,
-      });
-      setWindowResized(containerRef.current.offsetWidth);
-      setInitialLoaded(true);
-    }
-  }, [
-    containerRef,
-    dimensions,
-    dimensions.width,
-    initialLoaded,
-    setDimensions,
-    setInitialLoaded,
-    setWindowResized,
-    windowResized,
-    windowWidth,
-  ]);
+  useLayoutEffect(
+    () => {
+      if (!initialLoaded || containerRef.current.offsetWidth !== windowResized) {
+        setDimensions({
+          width: containerRef.current.offsetWidth,
+          height: containerRef.current.offsetHeight,
+        });
+        setWindowResized(containerRef.current.offsetWidth);
+        setInitialLoaded(true);
+      }
+    },
+    [containerRef, initialLoaded, setDimensions, setInitialLoaded, setWindowResized, windowResized],
+    [dimensions],
+    [dimensions].width,
+    [initialLoaded],
+    [setDimensions],
+    [setInitialLoaded],
+    [setWindowResized],
+    [windowResized],
+    [windowWidth],
+  );

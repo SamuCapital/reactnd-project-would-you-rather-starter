@@ -126,7 +126,7 @@ let questions = {
       },
       optionTwo: {
         votes: ['tylermcginnis'],
-        text: 'write Swift'
+        text: 'write JavaScript WITHOUT A SUPER LONG ANSWER STRING'
       }
   },
 }

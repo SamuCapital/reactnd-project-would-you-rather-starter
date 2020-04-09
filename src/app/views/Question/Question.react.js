@@ -1,21 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AnimateOnChange } from 'react-animation';
-import {
-  ContainerContainer,
-  ContainerBG,
-  Container,
-  Background,
-  UserData,
-  ProfilePicture,
-  PictureBorder,
-  Headline,
-  SubmitButton,
-  ContainerData,
-} from './Question.styled';
+import { Background, UserData, ProfilePicture, PictureBorder } from './Question.styled';
 
-import { Options, Username } from './QuestionComponents.react';
+import { Fade, Username, QuestionData } from './QuestionComponents.react';
 
+const style = { 'flex-grow': 1 };
 const Question = ({
   url,
   windowWidth,
@@ -35,22 +24,18 @@ const Question = ({
         <Username name={authorName} />
       </UserData>
 
-      {/* <ContainerData> */}
-      {/* <AnimateOnChange> */}
-      {renderQuestion ? (
-        <ContainerContainer ref={containerRef}>
-          <ContainerBG dimensions={dimensions} />
-          <Container dimensions={dimensions}>
-            <Headline>Would you rather...</Headline>
-            <Options optionOne={question.optionOne.text} optionTwo={question.optionTwo.text} />
-            <SubmitButton>Submit!</SubmitButton>
-          </Container>
-        </ContainerContainer>
-      ) : (
-        <h1>ANIMATE</h1>
-      )}
-      {/* </AnimateOnChange> */}
-      {/* </ContainerData> */}
+      <Fade show={renderQuestion}>
+        <QuestionData
+          containerRef={containerRef}
+          dimensions={dimensions}
+          optionOne={question.optionOne.text}
+          optionTwo={question.optionTwo.text}
+          setRenderQuestion={setRenderQuestion}
+        />
+      </Fade>
+      <Fade show={!renderQuestion}>
+        <h1 onClick={() => setRenderQuestion(true)}>ANIMATE</h1>
+      </Fade>
     </Background>
   );
 };
@@ -72,3 +57,10 @@ Question.defaultProps = {
 };
 
 export default Question;
+
+/* width: ${(props) => props.dimensions.width}px; */
+/* height: ${(props) => props.dimensions.height}px; */
+
+/* width: ${(props) => props.dimensions.width - 15}px; */
+/* height: ${(props) => props.dimensions.height - 15}px; */
+/* margin: ${(props) => props.dimensions.height * 0.05}px; */

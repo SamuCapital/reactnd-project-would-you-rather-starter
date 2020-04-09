@@ -1,6 +1,7 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 /* Coolors Exported Palette - coolors.co/9e0031-8e0045-001427-708d81-f4d58d */
-
+import { AnimateOnChange } from 'react-animation';
+import { flipInX, flipOutX } from 'react-animations';
 // /* HSL */
 // $color1: hsla(341%, 100%, 31%, 1);
 // $color2: hsla(331%, 100%, 28%, 1);
@@ -25,9 +26,9 @@ export const Background = styled.div`
   flex: 1;
   margin: auto;
   width: 60%;
-  min-width: 500px;
   max-width: 800px;
-  min-height: 280px;
+  /* min-width: 500px;
+  min-height: 280px; */
   margin: auto;
   display: flex;
   align-items: center;
@@ -39,14 +40,10 @@ export const Background = styled.div`
 /* --------------------------------- Picture -------------------------------- */
 
 export const UserData = styled.div`
-  flex-grow: 1;
-  margin: auto;
+  /* flex-grow: 1; */
+  margin: 20px;
 `;
 
-export const ContainerData = styled.div`
-  flex-grow: 4;
-  margin: auto;
-`;
 export const QuestionBy = styled.p`
   font-size: 130%;
   margin: 0px;
@@ -84,28 +81,37 @@ export const ProfilePicture = styled.div`
 
 /* -------------------------------- Question -------------------------------- */
 
-export const ContainerContainer = styled.div`
-  display: flex;
+export const ContainerData = styled.div`
   flex-grow: 4;
-  width: 100px;
-  min-height: 170px;
+  margin: auto;
+  display: inline-flex;
+  flex-direction: column;
+`;
+
+export const ContainerContainer = styled.div`
+  display: inline-flex;
+  flex-grow: 4;
+  position: relative;
+  /* width: 100px;
+  min-height: 170px; */
   border-radius: 5px;
+  margin: auto;
   margin-right: 50px;
   padding: 5px;
   align-content: center;
 `;
 
 export const ContainerBG = styled.div`
-  position: absolute;
+  position: relative;
   background: #000;
   z-index: 0;
-  width: ${(props) => props.dimensions.width}px;
-  height: ${(props) => props.dimensions.height}px;
+  /* height: 100px; */
+  flex-grow: 1;
+
   background-color: #efee;
-  /* background: radial-gradient(#ef0, #efee); */
-  /* background: radial-gradient(${colors.color3}, ${colors.color3}); */
   background: radial-gradient(${colors.color3}, #ef0);
 
+  margin: 0;
   flex-direction: column;
   filter: blur(15px);
   border-radius: 5px;
@@ -116,21 +122,28 @@ export const Header = styled.h3`
   left: 0;
   position: absolute;
 `;
+const flinInXAnim = keyframes`${flipInX}`;
+const flinOutXAnim = keyframes`${flipOutX}`;
 
 export const Container = styled.div`
-  position: absolute;
+  /* position: absolute; */
+  flex-grow: 1;
   display: flex;
   z-index: 1;
   margin-right: 25px;
   background-color: #efee;
   border-radius: 5px;
-  width: ${(props) => props.dimensions.width - 15}px;
-  height: ${(props) => props.dimensions.height - 15}px;
-  margin: ${(props) => props.dimensions.height * 0.05}px;
 
   display: flex;
   flex-direction: column;
-  margin: 10px 10px 5px;
+  margin: 40px;
+  box-shadow: 0px 0px 40px 10px #0ff;
+
+  animation: 0.5s ${flinInXAnim};
+`;
+
+export const AnimatedDiv = styled.div`
+  animation: 0.75s ${(props) => (props.show ? flinInXAnim : flinOutXAnim)};
 `;
 
 export const Headline = styled.div`

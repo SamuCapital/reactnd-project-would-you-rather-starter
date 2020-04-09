@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Question from './Question.react';
-import { useWindowDimensions, useContainerLayout } from './Question.helper';
+import { useWindowDimensions, useContainerLayout, useStateWithCallback } from './Question.helper';
 
 const ConnectedComponent = ({ question, url, authorName }) => {
   const containerRef = useRef();
@@ -13,16 +13,18 @@ const ConnectedComponent = ({ question, url, authorName }) => {
   const [initialLoaded, setInitialLoaded] = useState(false);
   const [renderQuestion, setRenderQuestion] = useState(true);
 
-  useContainerLayout(
-    containerRef,
-    dimensions,
-    initialLoaded,
-    setDimensions,
-    windowResized,
-    windowWidth,
-    setWindowResized,
-    setInitialLoaded,
-  );
+  // const [] useStateWithCallback
+
+  // useContainerLayout(
+  //   containerRef,
+  //   dimensions,
+  //   initialLoaded,
+  //   setDimensions,
+  //   windowResized,
+  //   windowWidth,
+  //   setWindowResized,
+  //   setInitialLoaded,
+  // );
 
   return (
     <Question

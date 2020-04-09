@@ -7,7 +7,6 @@ import Question from '../Question';
 const Home = ({ questions }) => {
   return (
     <div>
-      Hello world{' '}
       {questions &&
         !questions.loadInitialState &&
         Object.values(questions).map((question) => (
