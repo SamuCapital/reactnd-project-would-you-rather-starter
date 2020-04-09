@@ -12,7 +12,6 @@ import {
   Headline,
   SubmitButton,
   AnimatedDiv,
-  HoverButton,
 } from './Question.styled';
 
 export const Options = ({ optionOne, optionTwo }) => {

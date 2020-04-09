@@ -1,15 +1,22 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Question from './Question.react';
-import { useWindowDimensions } from './Question.helper';
+import { useWindowDimensions, createBackGroundStyle } from './Question.helper';
 
 const ConnectedComponent = ({ question, url, authorName }) => {
   const { width: windowWidth } = useWindowDimensions();
   const [renderQuestion, setRenderQuestion] = useState(true);
   const [shouldRender, setRender] = useState(true);
   const [percentage, setPercentage] = useState(0);
+  const [backgroundFlexDirection, setBackgroundFlexDirection] = useState(true); // ? TRUE => ROW
+
+  useEffect(() => {
+    backgroundFlexDirection && windowWidth < 900 && setBackgroundFlexDirection(false);
+    !backgroundFlexDirection && windowWidth > 900 && setBackgroundFlexDirection(true);
+  }, [backgroundFlexDirection, windowWidth]);
+  const style = createBackGroundStyle(backgroundFlexDirection);
 
   const target = 30;
 
@@ -35,6 +42,7 @@ const ConnectedComponent = ({ question, url, authorName }) => {
       shouldRender={shouldRender}
       setRender={setRender}
       percentage={percentage}
+      style={style}
     />
   );
 };

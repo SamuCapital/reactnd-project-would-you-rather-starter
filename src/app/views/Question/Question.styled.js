@@ -15,7 +15,6 @@ export const Background = styled.div`
   border-radius: 5px;
   flex: 1;
   margin: auto;
-  width: 60%;
   max-width: 800px;
   margin: auto;
   display: flex;
@@ -29,8 +28,8 @@ export const Background = styled.div`
 /* --------------------------------- Picture -------------------------------- */
 
 export const UserData = styled.div`
-  margin: 20px;
-  margin-left: 30px;
+  margin: 0px 20px 0px 30px;
+  /* margin-left: 30px; */
 `;
 
 export const PictureBorder = styled.div`
@@ -71,6 +70,8 @@ export const Name = styled.span`
 export const AnimatedDiv = styled.div`
   flex-grow: 1;
   display: flex;
+  width: 100%;
+  /* align-self: flex-start; */
   animation: 0.75s ${(props) => (props.show ? keyframes`${zoomInDown}` : keyframes`${bounceOut}`)};
 `;
 
@@ -107,9 +108,6 @@ export const Option = styled.div`
 export const SubmitButton = styled.button`
   flex-grow: 1;
   align-self: center;
-  /* padding: 10px 15px 10px;
-  
-  margin-bottom: 10px; */
   width: 160px;
   font-size: 16px;
   font-weight: 600;

@@ -12,11 +12,12 @@ import {
   ResultBarContainer,
 } from './Question.styled';
 
+import {} from './Question.helper';
+
 import { Fade, AuthorName, QuestionData } from './QuestionComponents.react';
 
 const Question = ({
   url,
-  windowWidth,
   question,
   authorName,
   renderQuestion,
@@ -24,9 +25,10 @@ const Question = ({
   shouldRender,
   setRender,
   percentage,
+  style,
 }) => {
   return (
-    <Background width={windowWidth}>
+    <Background style={style}>
       <UserData>
         <PictureBorder>
           <ProfilePicture url={url} />
@@ -52,7 +54,6 @@ const Question = ({
 
 Question.propTypes = {
   url: PropTypes.string.isRequired,
-  windowWidth: PropTypes.number,
   question: PropTypes.object.isRequired,
   authorName: PropTypes.string.isRequired,
   renderQuestion: PropTypes.bool.isRequired,
@@ -60,9 +61,9 @@ Question.propTypes = {
   shouldRender: PropTypes.bool.isRequired,
   setRender: PropTypes.func.isRequired,
   percentage: PropTypes.number,
+  style: PropTypes.object.isRequired,
 };
 Question.defaultProps = {
-  windowWidth: 0,
   percentage: 0,
 };
 

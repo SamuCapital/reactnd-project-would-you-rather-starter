@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 /* -------------------------------------------------------------------------- */
 /*                                    HOOKS                                   */
@@ -35,34 +35,12 @@ export const useWindowDimensions = () => {
   return windowDimensions;
 };
 
-export const useContainerLayout = (
-  containerRef,
-  dimensions,
-  initialLoaded,
-  setDimensions,
-  windowResized,
-  windowWidth,
-  setWindowResized,
-  setInitialLoaded,
-) =>
-  useLayoutEffect(
-    () => {
-      if (!initialLoaded || containerRef.current.offsetWidth !== windowResized) {
-        setDimensions({
-          width: containerRef.current.offsetWidth,
-          height: containerRef.current.offsetHeight,
-        });
-        setWindowResized(containerRef.current.offsetWidth);
-        setInitialLoaded(true);
-      }
-    },
-    [containerRef, initialLoaded, setDimensions, setInitialLoaded, setWindowResized, windowResized],
-    [dimensions],
-    [dimensions].width,
-    [initialLoaded],
-    [setDimensions],
-    [setInitialLoaded],
-    [setWindowResized],
-    [windowResized],
-    [windowWidth],
-  );
+/* -------------------------------------------------------------------------- */
+/*                                    STYLE                                   */
+/* -------------------------------------------------------------------------- */
+
+export const createBackGroundStyle = (flexDirection) => ({
+  'flex-direction': flexDirection ? 'row' : 'column',
+  padding: flexDirection ? 10 : 20,
+  width: flexDirection ? '60%' : '80%',
+});
