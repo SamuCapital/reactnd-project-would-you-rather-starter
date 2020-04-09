@@ -1,12 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 /* Coolors Exported Palette - coolors.co/9e0031-8e0045-001427-708d81-f4d58d */
 import { zoomInDown, bounceOut } from 'react-animations';
-// /* HSL */
-// $color1: hsla(341%, 100%, 31%, 1);
-// $color2: hsla(331%, 100%, 28%, 1);
-// $color3: hsla(209%, 100%, 8%, 1);
-// $color4: hsla(155%, 11%, 50%, 1);
-// $color5: hsla(42%, 82%, 75%, 1);
 
 // /* RGB */
 const colors = {
@@ -19,14 +13,10 @@ const colors = {
 export const Background = styled.div`
   background-color: ${colors.color3};
   border-radius: 5px;
-  /* border: 1px solid #455a64; */
-  /* border: 1px solid rgb(244, 213, 141); */
-  /* box-shadow: 2px 5px 10px #b0bec5, 60px -16px teal; */
   flex: 1;
   margin: auto;
   width: 60%;
   max-width: 800px;
-  /* min-width: 500px;
   min-height: 280px; */
   margin: auto;
   display: flex;
@@ -39,7 +29,6 @@ export const Background = styled.div`
 /* --------------------------------- Picture -------------------------------- */
 
 export const UserData = styled.div`
-  /* flex-grow: 1; */
   margin: 20px;
   margin-left: 30px;
 `;

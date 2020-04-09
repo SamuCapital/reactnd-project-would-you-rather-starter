@@ -6,14 +6,10 @@ import Question from './Question.react';
 import { useWindowDimensions } from './Question.helper';
 
 const ConnectedComponent = ({ question, url, authorName }) => {
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
   const { width: windowWidth } = useWindowDimensions();
-  const [windowResized, setWindowResized] = useState(0);
-  const [initialLoaded, setInitialLoaded] = useState(false);
   const [renderQuestion, setRenderQuestion] = useState(true);
   const [shouldRender, setRender] = useState(true);
   const [percentage, setPercentage] = useState(0);
-  // const [] useStateWithCallback
 
   const target = 30;
 
@@ -32,7 +28,6 @@ const ConnectedComponent = ({ question, url, authorName }) => {
     <Question
       url={url}
       windowWidth={windowWidth}
-      dimensions={dimensions}
       question={question}
       authorName={authorName}
       renderQuestion={renderQuestion}
@@ -49,7 +44,6 @@ ConnectedComponent.propTypes = {
   question: PropTypes.object.isRequired,
   authorName: PropTypes.string,
 };
-// TODO: REMOVE BEFORE PUBLISH
 ConnectedComponent.defaultProps = {
   url: '',
   authorName: 'Unknown User',

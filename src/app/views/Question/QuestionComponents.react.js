@@ -1,9 +1,7 @@
 /* eslint-disable import/prefer-default-export */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { RadioGroup, ReversedRadioButton } from 'react-radio-buttons';
 import PropTypes from 'prop-types';
-import { keyframes } from 'styled-components';
-import { flipInX } from 'react-animations';
 
 import {
   Option,
@@ -11,7 +9,6 @@ import {
   Name,
   OptionContainer,
   ContainerContainer,
-  ContainerBG,
   Container,
   Headline,
   SubmitButton,
@@ -25,7 +22,7 @@ export const Options = ({ optionOne, optionTwo }) => {
   };
   return (
     <OptionContainer>
-      <RadioGroup onChange={(value) => console.log(value)}>
+      <RadioGroup onChange={(value) => console.log('SHOULD IMPLEMENT DISPATCH RIGHT HERE ', value)}>
         <ReversedRadioButton pointColor="#8e0045" rootColor="#001427" padding={10} value="apple">
           <Option>{optionOne}</Option>
         </ReversedRadioButton>
@@ -50,38 +47,42 @@ export const Username = ({ name }) => {
   );
 };
 
-export const QuestionData = ({ dimensions, optionOne, optionTwo, setRenderQuestion }) => (
-  <ContainerContainer>
-    <Container>
-      <Headline>Would you rather...</Headline>
-      <Options optionOne={optionOne} optionTwo={optionTwo} />
-      <SubmitButton
-        onClick={() => {
-          setTimeout(() => {
-            console.log('CLICK');
-          }, 1500);
-          setRenderQuestion(false);
-        }}
-      >
-        Submit!
-      </SubmitButton>
-    </Container>
-  </ContainerContainer>
-);
-QuestionData.propTypes = {
-  optionOne: PropTypes.string.isRequired,
-  optionTwo: PropTypes.string.isRequired,
-  dimensions: PropTypes.objectOf(PropTypes.number).isRequired,
-  setRenderQuestion: PropTypes.func.isRequired,
+export const QuestionData = ({ optionOne, optionTwo, setRenderQuestion }) => {
+  QuestionData.propTypes = {
+    optionOne: PropTypes.string.isRequired,
+    optionTwo: PropTypes.string.isRequired,
+    setRenderQuestion: PropTypes.func.isRequired,
+  };
+  return (
+    <ContainerContainer>
+      <Container>
+        <Headline>Would you rather...</Headline>
+        <Options optionOne={optionOne} optionTwo={optionTwo} />
+        <SubmitButton
+          onClick={() => {
+            setTimeout(() => {}, 1500);
+            setRenderQuestion(false);
+          }}
+        >
+          Submit!
+        </SubmitButton>
+      </Container>
+    </ContainerContainer>
+  );
 };
 
 export const Fade = ({ show, children, shouldRender, setRender }) => {
+  Fade.propTypes = {
+    show: PropTypes.bool.isRequired,
+    children: PropTypes.element.isRequired,
+    shouldRender: PropTypes.bool.isRequired,
+    setRender: PropTypes.func.isRequired,
+  };
   useEffect(() => {
     if (show) setRender(true);
   }, [setRender, show]);
 
   const onAnimationEnd = () => {
-    console.log('TRIGGERED');
     if (!show) setRender(false);
   };
 

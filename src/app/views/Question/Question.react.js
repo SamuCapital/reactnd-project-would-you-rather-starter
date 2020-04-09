@@ -14,17 +14,15 @@ import {
 
 import { Fade, Username, QuestionData } from './QuestionComponents.react';
 
-const style = { 'flex-grow': 1 };
 const Question = ({
   url,
   windowWidth,
-  dimensions,
   question,
   authorName,
   renderQuestion,
   setRenderQuestion,
-  setRender,
   shouldRender,
+  setRender,
   percentage,
 }) => {
   return (
@@ -38,7 +36,6 @@ const Question = ({
 
       <Fade show={renderQuestion} shouldRender={shouldRender} setRender={setRender}>
         <QuestionData
-          dimensions={dimensions}
           optionOne={question.optionOne.text}
           optionTwo={question.optionTwo.text}
           setRenderQuestion={setRenderQuestion}
@@ -52,19 +49,21 @@ const Question = ({
     </Background>
   );
 };
+
 Question.propTypes = {
   url: PropTypes.string.isRequired,
   windowWidth: PropTypes.number,
-  dimensions: PropTypes.objectOf(PropTypes.number),
   question: PropTypes.object.isRequired,
   authorName: PropTypes.string.isRequired,
   renderQuestion: PropTypes.bool.isRequired,
   setRenderQuestion: PropTypes.func.isRequired,
+  shouldRender: PropTypes.bool.isRequired,
+  setRender: PropTypes.func.isRequired,
+  percentage: PropTypes.number,
 };
-
 Question.defaultProps = {
   windowWidth: 0,
-  dimensions: { width: 0, height: 0 },
+  percentage: 0,
 };
 
 export default Question;
