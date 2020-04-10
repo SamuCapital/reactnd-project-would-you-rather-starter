@@ -1,20 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Progress } from 'react-sweet-progress';
-import 'react-sweet-progress/lib/style.css';
-
-import {
-  Background,
-  UserData,
-  ProfilePicture,
-  PictureBorder,
-  ResultBarContainer,
-} from './Question.styled';
+import { Background, UserData, ProfilePicture, PictureBorder } from './Question.styled';
 
 import {} from './Question.helper';
 
-import { Fade, AuthorName, QuestionData } from './Components';
+import { Fade, AuthorName, QuestionData, ProgressBar } from './Components';
 
 const Question = ({
   url,
@@ -44,10 +35,7 @@ const Question = ({
         />
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
-        <ResultBarContainer>
-          <Progress width={150} type="cirlce" percent={percentage} strokeWidth={10} />
-          <p>Share your Opinion!</p>
-        </ResultBarContainer>
+        <ProgressBar result={percentage} />
       </Fade>
     </Background>
   );

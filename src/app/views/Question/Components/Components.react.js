@@ -3,6 +3,9 @@ import React, { useEffect } from 'react';
 import { RadioGroup, ReversedRadioButton } from 'react-radio-buttons';
 import PropTypes from 'prop-types';
 
+import { Progress } from 'react-sweet-progress';
+import 'react-sweet-progress/lib/style.css';
+
 import {
   Option,
   QuestionBy,
@@ -12,6 +15,7 @@ import {
   Headline,
   SubmitButton,
   AnimatedDiv,
+  ResultBarContainer,
 } from '../Question.styled';
 
 export const Options = ({ optionOne, optionTwo }) => {
@@ -89,5 +93,44 @@ export const Fade = ({ show, children, shouldRender, setRender }) => {
         {children}
       </AnimatedDiv>
     )
+  );
+};
+
+export const ProgressBar = ({ result }) => {
+  ProgressBar.propTypes = { result: PropTypes.number };
+  ProgressBar.defaultProps = { result: 0 };
+  return (
+    <ResultBarContainer>
+      <Progress
+        width={150}
+        type="cirlce"
+        percent={result}
+        strokeWidth={10}
+        status="success"
+        theme={{
+          error: {
+            // symbol: `${percentage}%`,
+            trailColor: 'pink',
+            color: 'red',
+          },
+          default: {
+            // symbol: `${percentage}%`,
+            trailColor: 'lightblue',
+            color: 'blue',
+          },
+          active: {
+            // symbol: `${percentage}%`,
+            trailColor: 'yellow',
+            color: 'orange',
+          },
+          success: {
+            // symbol: `${percentage}%`,
+            trailColor: 'lime',
+            color: 'green',
+          },
+        }}
+      />
+      <Headline> {result}% of Users Share your Opinion!</Headline>
+    </ResultBarContainer>
   );
 };

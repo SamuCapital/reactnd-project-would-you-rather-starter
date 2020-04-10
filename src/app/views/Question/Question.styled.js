@@ -29,7 +29,6 @@ export const Background = styled.div`
 
 export const UserData = styled.div`
   margin: 0px 20px 0px 30px;
-  /* margin-left: 30px; */
 `;
 
 export const PictureBorder = styled.div`
