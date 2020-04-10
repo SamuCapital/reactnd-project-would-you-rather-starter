@@ -45,7 +45,8 @@ const Question = ({
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
         <ResultBarContainer>
-          <Progress percent={percentage} />
+          <Progress width={150} type="cirlce" percent={percentage} strokeWidth={10} />
+          <p>Share your Opinion!</p>
         </ResultBarContainer>
       </Fade>
     </Background>

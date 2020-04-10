@@ -64,7 +64,6 @@ export const QuestionData = ({ optionOne, optionTwo, setRenderQuestion }) => {
       >
         Submit!
       </SubmitButton>
-      {/* <HoverButton /> */}
     </Container>
   );
 };

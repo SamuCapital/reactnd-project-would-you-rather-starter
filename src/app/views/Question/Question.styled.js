@@ -129,36 +129,15 @@ export const SubmitButton = styled.button`
 `;
 
 export const ResultBarContainer = styled.div`
-  align-self: center;
-  align-content: center;
-  width: 250px;
-  height: 250px;
-  display: inline-block;
-  margin: auto;
-`;
-
-export const HoverButton = styled.button`
-  width: 200px;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  cursor: pointer;
-  margin: 20px;
-  height: 55px;
-  text-align: center;
-  border: none;
-  background-size: 300% 100%;
-
-  border-radius: 50px;
-  -o-transition: all 0.4s ease-in-out;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-  :hover & {
-    background-position: 100% 0;
-    -o-transition: all 0.4s ease-in-out;
-    -webkit-transition: all 0.4s ease-in-out;
-    transition: all 0.4s ease-in-out;
-    background-image: linear-gradient(to right, #ed6ea0, #ec8c69, #f7186a, #fbb03b);
-    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
-  }
+  flex-grow: 1;
+  display: flex;
+  margin-right: 25px;
+  background-color: #bf005c;
+  background-color: #e2e2e2;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  margin: 40px;
+  box-shadow: 0px 0px 40px 25px rgba(191, 0, 92, 1);
 `;
