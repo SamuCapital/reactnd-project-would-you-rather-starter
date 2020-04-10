@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 import Home from '../Home';
 import Login from '../Login';
-import fetchInitialData from '../../state/sharedActions';
+import { fetchInitialData } from '../../state/Shared';
 
 class App extends React.Component {
   constructor(props) {

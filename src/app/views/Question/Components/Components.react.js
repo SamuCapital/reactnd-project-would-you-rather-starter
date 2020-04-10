@@ -130,6 +130,7 @@ export const ProgressBar = ({ result }) => {
           },
         }}
       />
+      <br />
       <Headline> {result}% of Users Share your Opinion!</Headline>
     </ResultBarContainer>
   );
