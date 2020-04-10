@@ -12,7 +12,7 @@ import {
   Headline,
   SubmitButton,
   AnimatedDiv,
-} from './Question.styled';
+} from '../Question.styled';
 
 export const Options = ({ optionOne, optionTwo }) => {
   Options.propTypes = {

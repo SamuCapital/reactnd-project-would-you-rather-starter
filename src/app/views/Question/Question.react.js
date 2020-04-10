@@ -14,7 +14,7 @@ import {
 
 import {} from './Question.helper';
 
-import { Fade, AuthorName, QuestionData } from './QuestionComponents.react';
+import { Fade, AuthorName, QuestionData } from './Components';
 
 const Question = ({
   url,
