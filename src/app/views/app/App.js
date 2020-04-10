@@ -32,7 +32,7 @@ class App extends React.Component {
               </div>
             )}
           </Sticky>
-          <Login />
+          {/* <Login /> */}
           <Home />
         </StickyContainer>
       </div>

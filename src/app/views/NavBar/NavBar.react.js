@@ -1,15 +1,23 @@
 import React from 'react';
 
-import { NavBarContainer, ItemHolder, Item } from './NavBar.styled';
+import { NavBarContainer, ItemHolder, Item, ItemContainer } from './NavBar.styled';
 
 const NavBar = () => {
   return (
     <NavBarContainer>
       <ItemHolder>
-        <Item>Home</Item>
-        <Item>New Question</Item>
-        <Item>Leader Bord</Item>
-        <Item>Login</Item>
+        <ItemContainer>
+          <Item>Home</Item>
+        </ItemContainer>
+        <ItemContainer>
+          <Item>New Question</Item>
+        </ItemContainer>
+        <ItemContainer>
+          <Item>Leader Bord</Item>
+        </ItemContainer>
+        <ItemContainer>
+          <Item>Login</Item>
+        </ItemContainer>
       </ItemHolder>
     </NavBarContainer>
   );

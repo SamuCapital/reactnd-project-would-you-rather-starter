@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import CustomScroll from 'react-custom-scroll';
 
 import { Selectors } from '../../state/Shared';
 

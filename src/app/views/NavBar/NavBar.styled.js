@@ -4,6 +4,7 @@ export const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
   background-color: rgb(239, 211, 238);
+  box-shadow: 0px 10px 5px 0px rgb(239, 211, 238);
 `;
 
 export const ItemHolder = styled.div`
@@ -15,5 +16,12 @@ export const ItemHolder = styled.div`
 `;
 
 export const Item = styled.h3`
-  margin: 20px;
+  color: #000;
+`;
+
+export const ItemContainer = styled.a`
+  margin: 0px 20px;
+  & :hover ${Item} {
+    color: #fff;
+  }
 `;
