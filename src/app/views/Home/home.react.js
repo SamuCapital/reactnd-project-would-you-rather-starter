@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CustomScroll from 'react-custom-scroll';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 import { Selectors } from '../../state/Shared';
 
@@ -12,6 +12,9 @@ const Home = ({ state, questions }) => {
   state.session && console.log('Not Answered: ', Selectors.filterQuestionsAnswered(state, false));
   return (
     <div>
+      {/* <StickyContainer> */}
+      <Sticky>{({ style }) => <div style={style} />}</Sticky>
+      {/* </StickyContainer> */}
       {questions &&
         !questions.loadInitialState &&
         Object.values(questions).map((question) => (
