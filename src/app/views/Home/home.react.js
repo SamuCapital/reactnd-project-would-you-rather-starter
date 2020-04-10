@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { Selectors } from '../../state/Shared';
+
 import Question from '../Question';
 
-const Home = ({ questions }) => {
+const Home = ({ state, questions }) => {
+  state.session && console.log('Answered: ', Selectors.filterQuestionsAnswered(state, true));
+  state.session && console.log('Not Answered: ', Selectors.filterQuestionsAnswered(state, false));
   return (
     <div>
       {questions &&
@@ -20,8 +24,8 @@ Home.propTypes = {
   questions: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = ({ questions, users }) => {
-  return { questions };
+const mapStateToProps = (state) => {
+  return { state, questions: state.questions };
 };
 const mapDispatchToProps = (dispatch) => {
   return {};

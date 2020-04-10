@@ -13,6 +13,7 @@
     "react-redux": "^7.2.0",
     "react-redux-loading": "^1.0.1",
     "react-scripts": "3.4.1",
+    "react-sticky": "^6.0.3",
     "react-sweet-progress": "^1.1.2",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",

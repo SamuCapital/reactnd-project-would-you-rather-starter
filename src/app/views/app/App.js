@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import './App.css';
 import PropTypes from 'prop-types';
 
+import { StickyContainer, Sticky } from 'react-sticky';
 import Home from '../Home';
 import Login from '../Login';
+import NavBar from '../NavBar';
 import { fetchInitialData } from '../../state/Shared';
 
 class App extends React.Component {
@@ -22,8 +24,17 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Login />
-        <Home />
+        <StickyContainer>
+          <Sticky>
+            {({ style }) => (
+              <div style={style}>
+                <NavBar />
+              </div>
+            )}
+          </Sticky>
+          <Login />
+          <Home />
+        </StickyContainer>
       </div>
     );
   }
