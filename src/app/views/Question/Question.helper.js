@@ -40,7 +40,7 @@ export const useWindowDimensions = () => {
 /* -------------------------------------------------------------------------- */
 
 export const createBackGroundStyle = (flexDirection) => ({
-  'flex-direction': flexDirection ? 'row' : 'column',
+  flexDirection: flexDirection ? 'row' : 'column',
   padding: flexDirection ? 10 : 20,
   width: flexDirection ? '60%' : '80%',
 });

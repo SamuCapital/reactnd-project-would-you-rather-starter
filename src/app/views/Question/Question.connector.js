@@ -5,18 +5,20 @@ import { connect } from 'react-redux';
 import Question from './Question.react';
 import { useWindowDimensions, createBackGroundStyle } from './Question.helper';
 
-const ConnectedComponent = ({ question, url, authorName }) => {
+import { uiOperations } from '../../state/ducks/UI';
+
+const ConnectedComponent = ({ question, url, authorName, isWide, setScreenIsWide }) => {
   const { width: windowWidth } = useWindowDimensions();
   const [renderQuestion, setRenderQuestion] = useState(true);
   const [shouldRender, setRender] = useState(true);
   const [percentage, setPercentage] = useState(0);
-  const [backgroundFlexDirection, setBackgroundFlexDirection] = useState(true); // ? TRUE => ROW
+
+  const style = createBackGroundStyle(isWide);
 
   useEffect(() => {
-    backgroundFlexDirection && windowWidth < 900 && setBackgroundFlexDirection(false);
-    !backgroundFlexDirection && windowWidth > 900 && setBackgroundFlexDirection(true);
-  }, [backgroundFlexDirection, windowWidth]);
-  const style = createBackGroundStyle(backgroundFlexDirection);
+    isWide && windowWidth < 900 && setScreenIsWide(false);
+    !isWide && windowWidth > 900 && setScreenIsWide(true);
+  }, [isWide, setScreenIsWide, windowWidth]);
 
   const target = 30;
 
@@ -51,6 +53,8 @@ ConnectedComponent.propTypes = {
   url: PropTypes.string,
   question: PropTypes.object.isRequired,
   authorName: PropTypes.string,
+  isWide: PropTypes.bool.isRequired,
+  setScreenIsWide: PropTypes.func.isRequired,
 };
 ConnectedComponent.defaultProps = {
   url: '',
@@ -61,7 +65,11 @@ const mapStateToProps = (state, ownProps) => {
   return {
     url: state.users[ownProps.question.author].avatarURL,
     authorName: state.users[ownProps.question.author].name,
+    isWide: state.ui.isWide,
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return { setScreenIsWide: (boolean) => dispatch(uiOperations.setScreenIsWide(boolean)) };
+};
 
-export default connect(mapStateToProps)(ConnectedComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ConnectedComponent);

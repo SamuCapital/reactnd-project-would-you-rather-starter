@@ -1,0 +1,1 @@
+export { setScreenIsWide } from './actions';

@@ -9,7 +9,8 @@ import {
 } from './NavBar.styled';
 import { Background, Container, Filter } from '../Home/Home.styled';
 
-const NavBar = () => {
+const NavBar = ({ isHome, style }) => {
+  console.log('Is Home? ', isHome);
   return (
     <NavBarContainer>
       <NavBarBackground main>
@@ -31,12 +32,15 @@ const NavBar = () => {
       <NavBarBackground />
 
       {/*  ---------------------------------- HOME ---------------------------------- */}
-      <Background>
-        <Container>
-          <Filter>Answered</Filter>
-          <Filter>Not Answered</Filter>
-        </Container>
-      </Background>
+
+      {isHome && (
+        <Background>
+          <Container>
+            <Filter>Answered</Filter>
+            <Filter>Not Answered</Filter>
+          </Container>
+        </Background>
+      )}
     </NavBarContainer>
   );
 };

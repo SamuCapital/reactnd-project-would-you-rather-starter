@@ -1,6 +1,6 @@
 import { SET_AUTHENTICATED_USER } from './types';
 
-const authenticatedUser = (state = null, action) => {
+const session = (state = null, action) => {
   switch (action.type) {
     case SET_AUTHENTICATED_USER:
       return action.payload;
@@ -9,4 +9,4 @@ const authenticatedUser = (state = null, action) => {
   }
 };
 
-export default authenticatedUser;
+export default session;
