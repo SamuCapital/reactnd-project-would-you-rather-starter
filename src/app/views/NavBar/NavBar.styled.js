@@ -4,6 +4,7 @@ export const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  z-index: 2147483647;
 `;
 
 export const NavBarBackground = styled.div`
@@ -13,7 +14,6 @@ export const NavBarBackground = styled.div`
   background-color: ${(props) => (props.main ? '#efd3ee' : '#EFEEEE')};
   flex-direction: column;
   min-height: 30px;
-  /* z-index: ${(props) => (props.main ? '1' : '0')}; */
 `;
 
 export const ItemHolder = styled.div`

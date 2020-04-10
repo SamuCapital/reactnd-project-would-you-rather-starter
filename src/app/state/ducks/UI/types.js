@@ -1,2 +1,5 @@
-/* eslint-disable import/prefer-default-export */
 export const UI_SET_SCREEN_IS_WIDE = 'UI_SET_SCREEN_IS_WIDE';
+
+export const UI_SET_IS_HOME = 'UI_SET_IS_HOME';
+
+export const UI_SET_ANSWER_FILTER = 'UI_SET_ANSWER_FILTER';

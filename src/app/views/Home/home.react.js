@@ -1,35 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { StickyContainer, Sticky } from 'react-sticky';
 
 import { Selectors } from '../../state/Shared';
 
 import Question from '../Question';
 
-const Home = ({ state, questions }) => {
-  state.session && console.log('Answered: ', Selectors.filterQuestionsAnswered(state, true));
-  state.session && console.log('Not Answered: ', Selectors.filterQuestionsAnswered(state, false));
+import Login from '../Login';
+
+const Home = ({ state, filter }) => {
+  const questions = state.session ? Selectors.filterQuestionsAnswered(state, filter) : [];
   return (
     <div>
-      {/* <StickyContainer> */}
-      <Sticky>{({ style }) => <div style={style} />}</Sticky>
-      {/* </StickyContainer> */}
-      {questions &&
-        !questions.loadInitialState &&
-        Object.values(questions).map((question) => (
-          <Question question={question} key={question.id} />
-        ))}
+      {questions.map((question) => (
+        <Question question={question} key={question.id} />
+      ))}
+      <Login />
     </div>
   );
 };
 
 Home.propTypes = {
-  questions: PropTypes.object.isRequired,
+  state: PropTypes.object.isRequired,
+  filter: PropTypes.bool,
+};
+Home.defaultProps = {
+  filter: false,
 };
 
 const mapStateToProps = (state) => {
-  return { state, questions: state.questions };
+  return { state, filter: state.ui.filter };
 };
 const mapDispatchToProps = (dispatch) => {
   return {};

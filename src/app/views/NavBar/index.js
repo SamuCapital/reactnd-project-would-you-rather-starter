@@ -1,3 +1,3 @@
-import NavBar from './NavBar.react';
+import NavBar from './navBar.connector';
 
 export default NavBar;

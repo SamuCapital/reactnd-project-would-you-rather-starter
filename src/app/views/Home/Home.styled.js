@@ -16,10 +16,18 @@ export const Container = styled.div`
   align-self: flex-start;
   width: 100%;
   justify-content: space-around;
-  /* width: 1000px; */
 `;
 
-export const Filter = styled.h4`
+export const Text = styled.h4`
   flex-grow: 1;
-  color: #eee;
+  color: ${(props) => (props.selected ? '#eee' : '#C8C8C8')};
+  font-weight: ${(props) => (props.selected ? 'bold' : 'normal')};
+`;
+
+export const Filter = styled.button`
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
 `;

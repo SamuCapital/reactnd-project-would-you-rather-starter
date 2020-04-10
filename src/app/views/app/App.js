@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 import { StickyContainer, Sticky } from 'react-sticky';
 import Home from '../Home';
-import Login from '../Login';
 import NavBar from '../NavBar';
 import { fetchInitialData } from '../../state/Shared';
 

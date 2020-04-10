@@ -103,7 +103,6 @@ export const ProgressBar = ({ result }) => {
     <ResultBarContainer>
       <Progress
         width={150}
-        type="cirlce"
         percent={result}
         strokeWidth={10}
         status="success"

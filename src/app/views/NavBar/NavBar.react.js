@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import {
   NavBarContainer,
@@ -7,10 +8,9 @@ import {
   ItemContainer,
   NavBarBackground,
 } from './NavBar.styled';
-import { Background, Container, Filter } from '../Home/Home.styled';
+import { Background, Container, Filter, Text } from '../Home/Home.styled';
 
-const NavBar = ({ isHome, style }) => {
-  console.log('Is Home? ', isHome);
+const NavBar = ({ isHome, style, filter, setFilter }) => {
   return (
     <NavBarContainer>
       <NavBarBackground main>
@@ -34,10 +34,14 @@ const NavBar = ({ isHome, style }) => {
       {/*  ---------------------------------- HOME ---------------------------------- */}
 
       {isHome && (
-        <Background>
+        <Background style={style}>
           <Container>
-            <Filter>Answered</Filter>
-            <Filter>Not Answered</Filter>
+            <Filter onClick={() => setFilter(false)}>
+              <Text selected={!filter}>Not Answered</Text>
+            </Filter>
+            <Filter onClick={() => setFilter(true)}>
+              <Text selected={filter}>Answered</Text>
+            </Filter>
           </Container>
         </Background>
       )}
@@ -45,4 +49,10 @@ const NavBar = ({ isHome, style }) => {
   );
 };
 
+NavBar.propTypes = {
+  style: PropTypes.object.isRequired,
+  isHome: PropTypes.bool.isRequired,
+  filter: PropTypes.bool.isRequired,
+  setFilter: PropTypes.func.isRequired,
+};
 export default NavBar;
