@@ -16,9 +16,9 @@ const ConnectedComponent = ({ handleCreateQuestion, setInputText, optionOne, opt
   );
 };
 
-const mapStateToProps = (state) => ({
-  optionOne: state.ui.createQuestion.optionOneText,
-  optionTwo: state.ui.createQuestion.optionTwoText,
+const mapStateToProps = ({ ui }) => ({
+  optionOne: ui.createQuestion ? ui.createQuestion.optionOneText : '',
+  optionTwo: ui.createQuestion ? ui.createQuestion.optionTwoText : '',
 });
 const mapDispatchToProps = (dispatch) => ({
   handleCreateQuestion: (optionOneText, optionTwoText, author) =>

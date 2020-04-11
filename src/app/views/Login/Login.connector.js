@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import setUser from '../../state/ducks/Session/operations';
+import { setUser } from '../../state/ducks/Session/operations';
 import Login from './Login.react';
 
 const mapStateToProps = (state) => {

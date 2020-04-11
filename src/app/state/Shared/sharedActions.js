@@ -21,7 +21,7 @@ export const fetchInitialData = () => {
     return getInitialData().then(({ users, questions }) => {
       dispatch(usersOperations.setInitialUsers(users));
       dispatch(questionOperations.setInitialQuestions(questions));
-      dispatch(sessionOperations.default('tylermcginnis'));
+      dispatch(sessionOperations.setUser('tylermcginnis'));
       dispatch(hideLoading);
     });
   };
