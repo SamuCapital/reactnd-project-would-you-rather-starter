@@ -1,9 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 import { showLoading, hideLoading } from 'react-redux-loading';
+import { _getUsers, _getQuestions, _saveQuestion } from 'backend/_DATA';
 import { questionOperations } from '../ducks/Questions';
 import { usersOperations } from '../ducks/Users';
 import { sessionOperations } from '../ducks/Session';
-import { _getUsers, _getQuestions, _saveQuestion } from '../../../backend/_DATA';
+// import { _getUsers, _getQuestions, _saveQuestion } from '../../../backend/_DATA';
 
 const getInitialData = () => {
   return Promise.all([_getUsers(), _getQuestions()]).then(([users, questions]) => ({

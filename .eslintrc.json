@@ -10,5 +10,12 @@
     "object-literal-key-quotes": 0,
     "import/prefer-default-export": 1,
     "react/react-in-jsx-scope": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }
