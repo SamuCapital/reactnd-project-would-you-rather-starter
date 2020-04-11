@@ -2,7 +2,7 @@ import { UI_SET_SCREEN_IS_WIDE, UI_SET_IS_HOME, UI_SET_ANSWER_FILTER } from './t
 
 const initialState = {
   isWide: true,
-  isHome: false,
+  isHome: true,
   filter: false, // True => get answered; False => get not answered Questions
 };
 
