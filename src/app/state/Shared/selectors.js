@@ -15,5 +15,5 @@ export const filterQuestionsAnswered = (state, filter) => {
         : (question) => !useranswers.includes(question),
     )
     .forEach((questionId) => questions.push(state.questions[questionId]));
-  return questions;
+  return questions.sort((a, b) => b.timestamp - a.timestamp);
 };

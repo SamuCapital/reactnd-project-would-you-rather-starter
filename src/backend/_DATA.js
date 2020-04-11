@@ -119,7 +119,7 @@ let questions = {
     "xj352vofupe1dqz9emx18r": {
       id: 'xj352vofupe1dqz9emx18r',
       author: 'johndoe',
-      timestamp: 14935797671955,
+      timestamp: 1586630229589,
       optionOne: {
         votes: ['johndoe'],
         text: 'write JavaScript WITH A SUPER LONG ANSWER STRING',
