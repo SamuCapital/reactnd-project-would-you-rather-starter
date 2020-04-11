@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Question from './Question.react';
 import { useWindowDimensions, createBackGroundStyle } from './Question.helper';
+import { questionContent } from './Components';
 
 import { uiOperations } from '../../state/ducks/UI';
 
@@ -41,29 +42,27 @@ const ConnectedComponent = ({
     }
   }, [shouldRender]);
 
-  const handleSubmitButton = createQuestion ? handleSubmit : setRenderQuestion;
+  const handleSubmitButton = createQuestion ? handleSubmit : () => setRenderQuestion(false);
 
   return (
     <Question
       url={url}
-      windowWidth={windowWidth}
-      question={question}
+      creatingQuestion={!!createQuestion}
       authorName={authorName}
       renderQuestion={renderQuestion}
-      setRenderQuestion={setRenderQuestion}
+      handleSubmit={handleSubmitButton}
       shouldRender={shouldRender}
       setRender={setRender}
       percentage={percentage}
       style={style}
-      createQuestion={createQuestion}
-      handleSubmit={handleSubmitButton}
+      content={questionContent(createQuestion, question)}
     />
   );
 };
 
 ConnectedComponent.propTypes = {
   url: PropTypes.string,
-  createQuestion: PropTypes.bool,
+  createQuestion: PropTypes.object,
   question: PropTypes.object,
   authorName: PropTypes.string,
   isWide: PropTypes.bool.isRequired,
@@ -73,14 +72,16 @@ ConnectedComponent.propTypes = {
 ConnectedComponent.defaultProps = {
   url: '',
   authorName: 'You',
-  createQuestion: false,
+  createQuestion: null,
   question: {},
   handleSubmit: () => null,
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    url: ownProps.createQuestion ? '' : state.users[ownProps.question.author].avatarURL,
+    url: ownProps.createQuestion
+      ? state.session && state.users[state.session].avatarURL
+      : state.users[ownProps.question.author].avatarURL,
     authorName: ownProps.createQuestion ? 'You' : state.users[ownProps.question.author].name,
     isWide: state.ui.isWide,
   };

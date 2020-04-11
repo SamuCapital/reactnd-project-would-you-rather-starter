@@ -11,9 +11,7 @@ import {
   QuestionBy,
   Name,
   OptionContainer,
-  Container,
   Headline,
-  SubmitButton,
   AnimatedDiv,
   ResultBarContainer,
 } from '../Question.styled';
@@ -49,29 +47,13 @@ export const AuthorName = ({ name }) => {
     </QuestionBy>
   );
 };
-
-export const QuestionData = ({ optionOne, optionTwo, setRenderQuestion }) => {
-  QuestionData.propTypes = {
-    optionOne: PropTypes.string.isRequired,
-    optionTwo: PropTypes.string.isRequired,
-    setRenderQuestion: PropTypes.func.isRequired,
-  };
-  return (
-    <Container>
-      <Headline>Would you rather...</Headline>
-      <Options optionOne={optionOne} optionTwo={optionTwo} />
-      <SubmitButton
-        onClick={() => {
-          setTimeout(() => {}, 1500);
-          setRenderQuestion(false);
-        }}
-      >
-        Submit!
-      </SubmitButton>
-    </Container>
-  );
-};
-
+/**
+ * @description Renders / Removes an Animated Component
+ * @param  {Boolean} {show should Animation be shown initiated?
+ * @param  {JSX} children Content to be rendered
+ * @param  {Boolean} shouldRender actually render component
+ * @param  {Function} setRender} function to toggle {shouldRender}
+ */
 export const Fade = ({ show, children, shouldRender, setRender }) => {
   Fade.propTypes = {
     show: PropTypes.bool.isRequired,
@@ -134,3 +116,14 @@ export const ProgressBar = ({ result }) => {
     </ResultBarContainer>
   );
 };
+
+/**
+ * @description Takes in dynamic arguments on whether to create or display a Question
+ * @param  {JSX} createQuestionContent Document Node representing Input fields for Question to create (from CreateQuestion.react)
+ * @param  {Object} question Data of Question which is to be displayed
+ * @returns {JSX} Content for Question Card
+ */
+export const questionContent = (createQuestionContent, question) =>
+  createQuestionContent || (
+    <Options optionOne={question.optionOne.text} optionTwo={question.optionTwo.text} />
+  );

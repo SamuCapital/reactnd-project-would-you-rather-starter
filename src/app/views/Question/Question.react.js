@@ -11,14 +11,11 @@ import {
   SubmitButton,
 } from './Question.styled';
 
-import {} from './Question.helper';
-
-import { Fade, AuthorName, QuestionData, ProgressBar, Options } from './Components';
+import { Fade, AuthorName, ProgressBar } from './Components';
 
 const Question = ({
   url,
-  createQuestion,
-  question,
+  creatingQuestion,
   authorName,
   renderQuestion,
   handleSubmit,
@@ -26,6 +23,7 @@ const Question = ({
   setRender,
   percentage,
   style,
+  content,
 }) => {
   return (
     <Background style={style}>
@@ -37,17 +35,10 @@ const Question = ({
       </UserData>
 
       <Fade show={renderQuestion} shouldRender={shouldRender} setRender={setRender}>
-        {/* <QuestionData
-          optionOne={question.optionOne.text}
-          optionTwo={question.optionTwo.text}
-          setRenderQuestion={setRenderQuestion}
-        /> */}
-        <Container createQuestion={createQuestion}>
+        <Container creatingQuestion={creatingQuestion}>
           <Headline>Would you rather...</Headline>
-          {createQuestion || (
-            <Options optionOne={question.optionOne.text} optionTwo={question.optionTwo.text} />
-          )}
-          <SubmitButton onClick={() => handleSubmit(false)}>Submit!</SubmitButton>
+          {content}
+          <SubmitButton onClick={() => handleSubmit()}>Submit!</SubmitButton>
         </Container>
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
@@ -59,8 +50,7 @@ const Question = ({
 
 Question.propTypes = {
   url: PropTypes.string.isRequired,
-  createQuestion: PropTypes.bool.isRequired,
-  question: PropTypes.object.isRequired,
+  creatingQuestion: PropTypes.bool.isRequired,
   authorName: PropTypes.string.isRequired,
   renderQuestion: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -68,6 +58,7 @@ Question.propTypes = {
   setRender: PropTypes.func.isRequired,
   percentage: PropTypes.number,
   style: PropTypes.object.isRequired,
+  content: PropTypes.element.isRequired,
 };
 Question.defaultProps = {
   percentage: 0,

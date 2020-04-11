@@ -83,7 +83,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 40px;
-  box-shadow: 0px 0px 40px 10px ${(props) => (props.createQuestion ? '#8CF259' : '#0ff')};
+  box-shadow: 0px 0px 40px 10px ${(props) => (props.creatingQuestion ? '#8CF259' : '#0ff')};
 `;
 
 export const Headline = styled.div`

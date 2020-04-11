@@ -9,14 +9,12 @@ import { Input, InputContainer } from './CreateQuestion.styled';
 const OPTION_ONE = 'optionOne';
 const OPTION_TWO = 'optionTwo';
 
-const inp = () => {
-  return (
-    <InputContainer>
-      <Input type="text" onChange={(event) => handleInputChange(event, OPTION_ONE)} />
-      <Input type="text" onChange={(event) => handleInputChange(event, OPTION_TWO)} />
-    </InputContainer>
-  );
-};
+const inp = () => (
+  <InputContainer>
+    <Input type="text" onChange={(event) => handleInputChange(event, OPTION_ONE)} />
+    <Input type="text" onChange={(event) => handleInputChange(event, OPTION_TWO)} />
+  </InputContainer>
+);
 
 const CreateQuesion = () => {
   return <Question createQuestion={inp()} handleSubmit={handleSubmit} />;
