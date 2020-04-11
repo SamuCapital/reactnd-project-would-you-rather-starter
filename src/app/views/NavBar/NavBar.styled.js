@@ -13,7 +13,7 @@ export const NavBarBackground = styled.div`
   justify-content: center;
   background-color: ${(props) => (props.main ? '#efd3ee' : '#EFEEEE')};
   flex-direction: column;
-  min-height: 30px;
+  min-height: 20px;
 `;
 
 export const ItemHolder = styled.div`
