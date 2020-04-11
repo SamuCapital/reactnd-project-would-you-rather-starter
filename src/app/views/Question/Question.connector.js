@@ -7,7 +7,15 @@ import { useWindowDimensions, createBackGroundStyle } from './Question.helper';
 
 import { uiOperations } from '../../state/ducks/UI';
 
-const ConnectedComponent = ({ question, url, authorName, isWide, setScreenIsWide }) => {
+const ConnectedComponent = ({
+  question,
+  url,
+  authorName,
+  isWide,
+  setScreenIsWide,
+  createQuestion,
+  handleSubmit,
+}) => {
   const { width: windowWidth } = useWindowDimensions();
   const [renderQuestion, setRenderQuestion] = useState(true);
   const [shouldRender, setRender] = useState(true);
@@ -33,6 +41,8 @@ const ConnectedComponent = ({ question, url, authorName, isWide, setScreenIsWide
     }
   }, [shouldRender]);
 
+  const handleSubmitButton = createQuestion ? handleSubmit : setRenderQuestion;
+
   return (
     <Question
       url={url}
@@ -45,26 +55,33 @@ const ConnectedComponent = ({ question, url, authorName, isWide, setScreenIsWide
       setRender={setRender}
       percentage={percentage}
       style={style}
+      createQuestion={createQuestion}
+      handleSubmit={handleSubmitButton}
     />
   );
 };
 
 ConnectedComponent.propTypes = {
   url: PropTypes.string,
-  question: PropTypes.object.isRequired,
+  createQuestion: PropTypes.bool,
+  question: PropTypes.object,
   authorName: PropTypes.string,
   isWide: PropTypes.bool.isRequired,
   setScreenIsWide: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func,
 };
 ConnectedComponent.defaultProps = {
   url: '',
-  authorName: 'Unknown User',
+  authorName: 'You',
+  createQuestion: false,
+  question: {},
+  handleSubmit: () => null,
 };
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    url: state.users[ownProps.question.author].avatarURL,
-    authorName: state.users[ownProps.question.author].name,
+    url: ownProps.createQuestion ? '' : state.users[ownProps.question.author].avatarURL,
+    authorName: ownProps.createQuestion ? 'You' : state.users[ownProps.question.author].name,
     isWide: state.ui.isWide,
   };
 };

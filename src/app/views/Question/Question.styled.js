@@ -47,7 +47,7 @@ export const ProfilePicture = styled.div`
   height: 180px;
   border-radius: 100px;
   background-image: url('${(props) => props.url}');
-  background-size: contain;
+  background-size: 100% 100%;
 `;
 
 export const QuestionBy = styled.p`
@@ -83,7 +83,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 40px;
-  box-shadow: 0px 0px 40px 10px #0ff;
+  box-shadow: 0px 0px 40px 10px ${(props) => (props.createQuestion ? '#8CF259' : '#0ff')};
 `;
 
 export const Headline = styled.div`
@@ -134,7 +134,6 @@ export const ResultBarContainer = styled.div`
   background-color: #bf005c;
   background-color: #e2e2e2;
   border-radius: 5px;
-  display: flex;
   flex-direction: column;
   padding: 40px;
   margin: 40px;

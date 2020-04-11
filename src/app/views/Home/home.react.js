@@ -6,12 +6,15 @@ import { Selectors } from '../../state/Shared';
 
 import Question from '../Question';
 
+import CreateQuestion from '../CreateQuestion';
+
 import Login from '../Login';
 
 const Home = ({ state, filter }) => {
   const questions = state.session ? Selectors.filterQuestionsAnswered(state, filter) : [];
   return (
     <div>
+      <CreateQuestion />
       {questions.map((question) => (
         <Question question={question} key={question.id} />
       ))}

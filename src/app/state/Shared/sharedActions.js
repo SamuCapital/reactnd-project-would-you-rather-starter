@@ -2,6 +2,7 @@
 import { showLoading, hideLoading } from 'react-redux-loading';
 import { questionOperations } from '../ducks/Questions';
 import { usersOperations } from '../ducks/Users';
+import { sessionOperations } from '../ducks/Session';
 import { _getUsers, _getQuestions } from '../../../backend/_DATA';
 
 const getInitialData = () => {
@@ -20,6 +21,7 @@ export const fetchInitialData = () => {
     return getInitialData().then(({ users, questions }) => {
       dispatch(usersOperations.setInitialUsers(users));
       dispatch(questionOperations.setInitialQuestions(questions));
+      dispatch(sessionOperations.default('tylermcginnis'));
       dispatch(hideLoading);
     });
   };
