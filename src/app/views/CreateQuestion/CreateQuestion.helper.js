@@ -1,15 +1,17 @@
-import { handleCreateQuestion } from 'app/state/Shared/sharedActions';
+import React from 'react';
 
-export const handleInputChange = (event, option) => {
-  // ! ADD TO REDUX!
-  console.log(option, ': ', event.target.value);
+import { Input, InputContainer } from './CreateQuestion.styled';
+
+const OPTION_ONE = 'optionOneText';
+const OPTION_TWO = 'optionTwoText';
+
+export const handleInputChange = (event, option, setInputText) => {
+  setInputText(option, event.target.value.trim());
 };
-/**
- * @description Dispatches CreateQuestion Operation to Server and Redux
- * @param  {String} optionOneText
- * @param  {String} optionTwoText
- * @param  {String} author (Currently Authenticated User)
- * @param  {Function} dispatch redux dispatch action
- */
-export const handleSubmit = (optionOneText, optionTwoText, author, dispatch) =>
-  dispatch(handleCreateQuestion({ optionOneText, optionTwoText, author }));
+
+export const createInputFormula = (setInputText) => (
+  <InputContainer>
+    <Input type="text" onChange={(event) => handleInputChange(event, OPTION_ONE, setInputText)} />
+    <Input type="text" onChange={(event) => handleInputChange(event, OPTION_TWO, setInputText)} />
+  </InputContainer>
+);

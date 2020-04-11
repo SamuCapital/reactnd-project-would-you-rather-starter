@@ -1,1 +1,1 @@
-export { setScreenIsWide, setIsHome, setFilter } from './actions';
+export { setScreenIsWide, setIsHome, setFilter, setInputText } from './actions';

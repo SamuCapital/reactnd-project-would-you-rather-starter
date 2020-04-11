@@ -14,3 +14,8 @@ export const setFilter = (boolean) => ({
   type: types.UI_SET_ANSWER_FILTER,
   payload: boolean,
 });
+
+export const setInputText = (option, text) => ({
+  type: types.UI_SET_QUESTION_INPUT,
+  payload: { option, text },
+});
