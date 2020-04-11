@@ -1,38 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  NavBarContainer,
-  ItemHolder,
-  Item,
-  ItemContainer,
-  NavBarBackground,
-} from './NavBar.styled';
-import { Background, Container, Filter, Text } from '../Home/Home.styled';
+import { Background, Container, Filter, Text } from 'app/views/Home/Home.styled';
+import { NavBarContainer, ItemHolder, NavBarBackground, Link } from './NavBar.styled';
 
-const NavBar = ({ isHome, style, filter, setFilter }) => {
+const NavBar = ({ isHome, style, filter, setFilter, toggleIsHome }) => {
   return (
     <NavBarContainer>
       <NavBarBackground main>
         <ItemHolder>
-          <ItemContainer>
-            <Item>Home</Item>
-          </ItemContainer>
-          <ItemContainer>
-            <Item>New Question</Item>
-          </ItemContainer>
-          <ItemContainer>
-            <Item>Leader Bord</Item>
-          </ItemContainer>
-          <ItemContainer>
-            <Item>Login</Item>
-          </ItemContainer>
+          <Link to="/" toggleIsHome={toggleIsHome}>
+            Home
+          </Link>
+          <Link to="/add" toggleIsHome={toggleIsHome}>
+            New Question
+          </Link>
+          <Link to="/leaderboard" toggleIsHome={toggleIsHome}>
+            Leader Bord
+          </Link>
+          <Link to="/login" toggleIsHome={toggleIsHome}>
+            Login
+          </Link>
         </ItemHolder>
       </NavBarBackground>
-      <NavBarBackground />
 
       {/*  ---------------------------------- HOME ---------------------------------- */}
-
+      {isHome && <NavBarBackground />}
       {isHome && (
         <Background style={style}>
           <Container>
@@ -54,5 +47,6 @@ NavBar.propTypes = {
   isHome: PropTypes.bool.isRequired,
   filter: PropTypes.bool.isRequired,
   setFilter: PropTypes.func.isRequired,
+  toggleIsHome: PropTypes.func.isRequired,
 };
 export default NavBar;

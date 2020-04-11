@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
 import PropTypes from 'prop-types';
 
 import { StickyContainer, Sticky } from 'react-sticky';
+import { LoadingBar } from 'react-redux-loading';
+import { fetchInitialData } from 'app/state/Shared';
 import Home from '../Home';
 import NavBar from '../NavBar';
-import { fetchInitialData } from '../../state/Shared';
+import Question from '../Question';
+import CreateQuestion from '../CreateQuestion';
+import Login from '../Login';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,19 +26,32 @@ class App extends React.Component {
   }
 
   render() {
+    const { loading } = this.props;
     return (
       <div className="App">
-        <StickyContainer>
-          <Sticky>
-            {({ style }) => (
-              <div style={style}>
-                <NavBar />
+        <Router>
+          <StickyContainer>
+            <LoadingBar />
+            <Sticky>
+              {({ style }) => (
+                <div style={style}>
+                  <NavBar />
+                </div>
+              )}
+            </Sticky>
+            {loading === true ? null : (
+              <div>
+                <Route path="/" exact component={Home}>
+                  {/* {({ match }) => console.log('IS MATCH HOME', match)} */}
+                </Route>
+                <Route path="/add" component={CreateQuestion} />
+                <Route path="/leaderboard" component={null} />
+                <Route path="/questions/:question_id" component={Question} />
+                <Route path="/login" component={Login} />
               </div>
             )}
-          </Sticky>
-          {/* <Login /> */}
-          <Home />
-        </StickyContainer>
+          </StickyContainer>
+        </Router>
       </div>
     );
   }
@@ -41,6 +59,10 @@ class App extends React.Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
-export default connect()(App);
+const mapStateToProps = ({ session, ui }) => ({
+  loading: session === null,
+});
+export default connect(mapStateToProps)(App);

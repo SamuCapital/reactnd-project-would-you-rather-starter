@@ -6,9 +6,17 @@ import NavBar from './NavBar.react';
 import { createFilterStyle } from './mavBar.helper';
 import { uiOperations } from '../../state/ducks/UI';
 
-const ConnectedComponent = ({ isWide, isHome, filter, setFilter }) => {
+const ConnectedComponent = ({ isWide, isHome, filter, setFilter, toggleIsHome }) => {
   const style = createFilterStyle(isWide);
-  return <NavBar isHome={isHome} style={style} filter={filter} setFilter={setFilter} />;
+  return (
+    <NavBar
+      isHome={isHome}
+      style={style}
+      filter={filter}
+      setFilter={setFilter}
+      toggleIsHome={toggleIsHome}
+    />
+  );
 };
 
 ConnectedComponent.propTypes = {
@@ -16,6 +24,7 @@ ConnectedComponent.propTypes = {
   isHome: PropTypes.bool,
   filter: PropTypes.bool,
   setFilter: PropTypes.func.isRequired,
+  toggleIsHome: PropTypes.func.isRequired,
 };
 ConnectedComponent.defaultProps = {
   isHome: false,
@@ -29,6 +38,7 @@ const mapStateToProps = ({ ui }) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   setFilter: (bool) => dispatch(uiOperations.setFilter(bool)),
+  toggleIsHome: (bool) => dispatch(uiOperations.setIsHome(bool)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectedComponent);

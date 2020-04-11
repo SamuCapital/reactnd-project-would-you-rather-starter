@@ -1,4 +1,8 @@
+import React from 'react';
+import { NavLink, Route } from 'react-router-dom';
 import styled from 'styled-components';
+
+import PropTypes from 'prop-types';
 
 export const NavBarContainer = styled.div`
   display: flex;
@@ -11,7 +15,7 @@ export const NavBarBackground = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: ${(props) => (props.main ? '#efd3ee' : '#EFEEEE')};
+  background-color: ${(props) => (props.main ? '#efd3ee' : '#fff')};
   flex-direction: column;
   min-height: 20px;
 `;
@@ -20,18 +24,48 @@ export const ItemHolder = styled.div`
   flex-grow: 1;
   max-width: 60%;
   display: flex;
-  align-self: center;
   flex-direction: row;
-  justify-content: center;
+  margin: auto;
 `;
 
-export const Item = styled.h3`
-  color: #000;
+const Item = styled.h2`
+  color: ${(props) => (props.match ? '#000' : '#595C70')};
+  font-weight: ${(props) => (props.match ? 'bold' : 'normal')};
+  padding: 0px 10px;
 `;
 
-export const ItemContainer = styled.a`
-  margin: 0px 20px;
-  & :hover ${Item} {
-    color: #fff;
-  }
+const ItemContainer = styled.a`
+  margin: auto;
+  align-items: baseline;
 `;
+
+export const Link = ({ children, to, toggleIsHome, exact = true }) => {
+  Link.propTypes = {
+    children: PropTypes.element.isRequired,
+    to: PropTypes.string.isRequired,
+    toggleIsHome: PropTypes.func.isRequired,
+    exact: PropTypes.bool.isRequired,
+  };
+  Link.defaultProps = {};
+  return (
+    <Route path={to} exact={exact}>
+      {({ match }) => (
+        <NavLink
+          to={to}
+          exact
+          style={{
+            textDecoration: 'none',
+          }}
+          isActive={(isMatch, location) => {
+            isMatch && toggleIsHome(to === '/') && window.dispatchEvent(new Event('scroll'));
+            return isMatch;
+          }}
+        >
+          <ItemContainer>
+            <Item match={match}>{children}</Item>
+          </ItemContainer>
+        </NavLink>
+      )}
+    </Route>
+  );
+};

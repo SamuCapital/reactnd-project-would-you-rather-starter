@@ -1,24 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
-import { Selectors } from '../../state/Shared';
-
+import { Selectors } from 'app/state/Shared';
 import Question from '../Question';
-
-import CreateQuestion from '../CreateQuestion';
-
-import Login from '../Login';
 
 const Home = ({ state, filter }) => {
   const questions = state.session ? Selectors.filterQuestionsAnswered(state, filter) : [];
   return (
-    <div>
-      <CreateQuestion />
+    <div style={{ overflow: 'hidden' }}>
       {questions.map((question) => (
         <Question question={question} key={question.id} />
       ))}
-      <Login />
     </div>
   );
 };
