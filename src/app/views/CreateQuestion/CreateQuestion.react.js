@@ -16,8 +16,13 @@ const inp = () => (
   </InputContainer>
 );
 
-const CreateQuesion = () => {
-  return <Question createQuestion={inp()} handleSubmit={handleSubmit} />;
+const CreateQuesion = ({ dispatch }) => {
+  return (
+    <Question
+      createQuestion={inp()}
+      handleSubmit={() => handleSubmit('Hello ', 'World :)', 'tylermcginnis', dispatch)}
+    />
+  );
 };
 
 export default CreateQuesion;

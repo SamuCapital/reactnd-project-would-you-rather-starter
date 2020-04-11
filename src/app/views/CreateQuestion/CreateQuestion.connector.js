@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CreateQuestion from './CreateQuestion.react';
 
-const ConnectedComponent = () => {
-  return <CreateQuestion />;
+const ConnectedComponent = ({ dispatch }) => {
+  return <CreateQuestion dispatch={dispatch} />;
 };
 
-export default ConnectedComponent;
+export default connect()(ConnectedComponent);

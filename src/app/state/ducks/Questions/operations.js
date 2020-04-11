@@ -1,3 +1,3 @@
-import { setInitialQuestions, questionAddAnswer } from './actions';
+import { setInitialQuestions, questionAddAnswer, addQuestion } from './actions';
 
-export { setInitialQuestions, questionAddAnswer };
+export { setInitialQuestions, questionAddAnswer, addQuestion };

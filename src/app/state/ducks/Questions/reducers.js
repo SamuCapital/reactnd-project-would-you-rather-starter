@@ -12,9 +12,13 @@ const Questions = (state = initialState, action) => {
       const { quesionId, userId, answer } = action.payload;
       const newState = update(state, {
         [quesionId]: {
-          [answer]: { votes: { $merge: userId } },
+          [answer]: { votes: { $push: userId } },
         },
       });
+      return newState;
+    }
+    case types.QUESTION_ADD_QUESTION: {
+      const newState = { ...state, [action.payload.id]: { ...action.payload } };
       return newState;
     }
 
