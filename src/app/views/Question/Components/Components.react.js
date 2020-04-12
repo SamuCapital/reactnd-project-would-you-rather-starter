@@ -14,21 +14,42 @@ import {
   Headline,
   AnimatedDiv,
   ResultBarContainer,
+  Container,
+  SubmitButton,
 } from '../Question.styled';
 
-export const Options = ({ optionOne, optionTwo }) => {
+export const Options = ({ question, user, renderResults }) => {
   Options.propTypes = {
-    optionOne: PropTypes.string.isRequired,
-    optionTwo: PropTypes.string.isRequired,
+    question: PropTypes.object.isRequired,
+    renderResults: PropTypes.bool.isRequired,
   };
+  // Options.defaultProps = { renderResults: true };
   return (
     <OptionContainer>
-      <RadioGroup onChange={(value) => console.log('SHOULD IMPLEMENT DISPATCH RIGHT HERE ', value)}>
-        <ReversedRadioButton pointColor="#8e0045" rootColor="#001427" padding={10} value="apple">
-          <Option>{optionOne}</Option>
+      <RadioGroup
+        value={renderResults ? null : undefined}
+        onChange={(value) => console.log('SHOULD IMPLEMENT DISPATCH RIGHT HERE ', value)}
+      >
+        <ReversedRadioButton
+          pointColor="#8e0045"
+          rootColor="#001427"
+          padding={10}
+          value="apple"
+          disabledColor
+          disabled={renderResults && question.optionOne.votes.includes('tylermcginnis')}
+        >
+          <Option>{question.optionOne.text}</Option>
         </ReversedRadioButton>
-        <ReversedRadioButton pointColor="#8e0045" rootColor="#001427" padding={10} value="orange">
-          <Option>{optionTwo}</Option>
+        {/* {renderResults && <div>PERSONONE</div>} */}
+        <ReversedRadioButton
+          pointColor="#8e0045"
+          rootColor="#001427"
+          padding={10}
+          value="orange"
+          disabledColor
+          disabled={renderResults && question.optionTwo.votes.includes('tylermcginnis')}
+        >
+          <Option>{question.optionTwo.text}</Option>
         </ReversedRadioButton>
       </RadioGroup>
     </OptionContainer>
@@ -80,7 +101,7 @@ export const Fade = ({ show, children, shouldRender, setRender }) => {
 
 export const ProgressBar = ({ result }) => {
   ProgressBar.propTypes = { result: PropTypes.number };
-  ProgressBar.defaultProps = { result: 0 };
+  ProgressBar.defaultProps = { result: 80 };
   return (
     <ResultBarContainer>
       <Progress
@@ -112,7 +133,7 @@ export const ProgressBar = ({ result }) => {
         }}
       />
       <br />
-      <Headline> {result}% of Users Share your Opinion!</Headline>
+      <div> {result}% of Users Share your Opinion!</div>
     </ResultBarContainer>
   );
 };
@@ -120,10 +141,21 @@ export const ProgressBar = ({ result }) => {
 /**
  * @description Takes in dynamic arguments on whether to create or display a Question
  * @param  {JSX} createQuestionContent Document Node representing Input fields for Question to create (from CreateQuestion.react)
+ * @param {Boolean} renderResults If True disable Radio Buttons
  * @param  {Object} question Data of Question which is to be displayed
  * @returns {JSX} Content for Question Card
  */
-export const questionContent = (createQuestionContent, question) =>
+export const questionContent = (createQuestionContent, renderResults, question, handleSubmit) =>
   createQuestionContent || (
-    <Options optionOne={question.optionOne.text} optionTwo={question.optionTwo.text} />
+    <Container creatingQuestion={!!createQuestionContent} renderResults={renderResults}>
+      <Headline>Would you rather...</Headline>
+      <Options
+        question={question}
+        optionOne={question.optionOne.text}
+        optionTwo={question.optionTwo.text}
+        renderResults={renderResults}
+      />
+      {!renderResults && <SubmitButton onClick={() => handleSubmit()}>Submit!</SubmitButton>}
+      {renderResults && <ProgressBar />}
+    </Container>
   );

@@ -10,7 +10,7 @@ import {
 const initialState = {
   isWide: true,
   isHome: true,
-  filter: false, // True => get answered; False => get not answered Questions
+  filter: true, // True => get answered; False => get not answered Questions
   createQuestion: {
     optionOneText: '',
     optionTwoText: '',

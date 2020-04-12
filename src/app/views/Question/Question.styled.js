@@ -83,7 +83,8 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 40px;
-  box-shadow: 0px 0px 40px 10px ${(props) => (props.creatingQuestion ? '#8CF259' : '#0ff')};
+  box-shadow: 0px 0px 40px 10px
+    ${(props) => (props.creatingQuestion ? '#8CF259' : props.renderResults ? '#bf005c' : '#0ff')};
 `;
 
 export const Headline = styled.div`
@@ -130,12 +131,12 @@ export const SubmitButton = styled.button`
 export const ResultBarContainer = styled.div`
   flex-grow: 1;
   display: flex;
-  margin-right: 25px;
+  margin-right: 20px;
   background-color: #bf005c;
-  background-color: #e2e2e2;
+  /* background-color: #e2e2e2; */
   border-radius: 5px;
   flex-direction: column;
-  padding: 40px;
-  margin: 40px;
-  box-shadow: 0px 0px 40px 25px rgba(191, 0, 92, 1);
+  padding: 20px 40px;
+  margin: 20px 40px 30px;
+  /* box-shadow: 0px 0px 40px 25px rgba(191, 0, 92, 1); */
 `;

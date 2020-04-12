@@ -16,10 +16,11 @@ const ConnectedComponent = ({
   setScreenIsWide,
   createQuestion,
   handleSubmit,
+  renderResults,
 }) => {
   const { width: windowWidth } = useWindowDimensions();
   const [renderQuestion, setRenderQuestion] = useState(true);
-  const [shouldRender, setRender] = useState(true);
+  const [shouldRender, setRender] = useState(true); // TODO: USE REDUX STATE
   const [percentage, setPercentage] = useState(0);
 
   const style = createBackGroundStyle(isWide);
@@ -55,7 +56,7 @@ const ConnectedComponent = ({
       setRender={setRender}
       percentage={percentage}
       style={style}
-      content={questionContent(createQuestion, question)}
+      content={questionContent(createQuestion, true, question, handleSubmitButton)}
     />
   );
 };
@@ -68,6 +69,7 @@ ConnectedComponent.propTypes = {
   isWide: PropTypes.bool.isRequired,
   setScreenIsWide: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func,
+  renderResults: PropTypes.func,
 };
 ConnectedComponent.defaultProps = {
   url: '',
@@ -75,6 +77,7 @@ ConnectedComponent.defaultProps = {
   createQuestion: null,
   question: {},
   handleSubmit: () => null,
+  renderResults: false,
 };
 
 const mapStateToProps = (state, ownProps) => {
