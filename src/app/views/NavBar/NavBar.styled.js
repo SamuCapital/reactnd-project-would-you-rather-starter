@@ -39,19 +39,20 @@ const Item = styled.h2`
   padding: 0px 10px;
 `;
 
-const ItemContainer = styled.a`
+const ItemContainer = styled.div`
   margin: auto;
   align-items: baseline;
 `;
 
-export const Link = ({ children, to, toggleIsHome, exact = true }) => {
+export const Link = ({ children, to, toggleIsHome, toggleIsFourOhFour, exact }) => {
   Link.propTypes = {
-    children: PropTypes.element.isRequired,
+    children: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
     toggleIsHome: PropTypes.func.isRequired,
-    exact: PropTypes.bool.isRequired,
+    toggleIsFourOhFour: PropTypes.func.isRequired,
+    exact: PropTypes.bool,
   };
-  Link.defaultProps = {};
+  Link.defaultProps = { exact: true };
   return (
     <Route path={to} exact={exact}>
       {({ match }) => (
@@ -61,8 +62,9 @@ export const Link = ({ children, to, toggleIsHome, exact = true }) => {
           style={{
             textDecoration: 'none',
           }}
-          isActive={(isMatch, location) => {
+          isActive={(isMatch) => {
             isMatch && toggleIsHome(to === '/') && window.dispatchEvent(new Event('scroll'));
+            isMatch && toggleIsFourOhFour(false);
             return isMatch;
           }}
         >

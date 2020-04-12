@@ -4,13 +4,15 @@ import {
   UI_SET_SCREEN_IS_WIDE,
   UI_SET_IS_HOME,
   UI_SET_ANSWER_FILTER,
+  UI_TOGGLE_IS_FOUR_OH_FOUR,
   UI_SET_QUESTION_INPUT,
 } from './types';
 
 const initialState = {
   isWide: true,
-  isHome: true,
+  isHome: false,
   filter: true, // True => get answered; False => get not answered Questions
+  isFourOhFour: true,
   createQuestion: {
     optionOneText: '',
     optionTwoText: '',
@@ -27,6 +29,9 @@ const userInterface = (state = initialState, action) => {
     }
     case UI_SET_ANSWER_FILTER: {
       return { ...state, filter: action.payload };
+    }
+    case UI_TOGGLE_IS_FOUR_OH_FOUR: {
+      return { ...state, isFourOhFour: action.payload };
     }
     case UI_SET_QUESTION_INPUT: {
       return update(state, {

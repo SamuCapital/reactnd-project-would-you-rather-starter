@@ -15,6 +15,11 @@ export const setFilter = (boolean) => ({
   payload: boolean,
 });
 
+export const setIsFourOhFour = (boolean) => ({
+  type: types.UI_TOGGLE_IS_FOUR_OH_FOUR,
+  payload: boolean,
+});
+
 export const setInputText = (option, text) => ({
   type: types.UI_SET_QUESTION_INPUT,
   payload: { option, text },

@@ -4,21 +4,25 @@ import PropTypes from 'prop-types';
 import { Background, Container, Filter, Text } from 'app/views/Home/Home.styled';
 import { NavBarContainer, ItemHolder, NavBarBackground, Link } from './NavBar.styled';
 
-const NavBar = ({ isHome, style, filter, setFilter, toggleIsHome }) => {
+const NavBar = ({ isHome, style, filter, setFilter, toggleIsHome, toggleIsFourOhFour }) => {
   return (
     <NavBarContainer>
       <NavBarBackground main>
         <ItemHolder>
-          <Link to="/" toggleIsHome={toggleIsHome}>
+          <Link to="/" toggleIsHome={toggleIsHome} toggleIsFourOhFour={toggleIsFourOhFour}>
             Home
           </Link>
-          <Link to="/add" toggleIsHome={toggleIsHome}>
+          <Link to="/add" toggleIsHome={toggleIsHome} toggleIsFourOhFour={toggleIsFourOhFour}>
             New Question
           </Link>
-          <Link to="/leaderboard" toggleIsHome={toggleIsHome}>
+          <Link
+            to="/leaderboard"
+            toggleIsHome={toggleIsHome}
+            toggleIsFourOhFour={toggleIsFourOhFour}
+          >
             Leader Bord
           </Link>
-          <Link to="/login" toggleIsHome={toggleIsHome}>
+          <Link to="/login" toggleIsHome={toggleIsHome} toggleIsFourOhFour={toggleIsFourOhFour}>
             Login
           </Link>
         </ItemHolder>
@@ -48,5 +52,6 @@ NavBar.propTypes = {
   filter: PropTypes.bool.isRequired,
   setFilter: PropTypes.func.isRequired,
   toggleIsHome: PropTypes.func.isRequired,
+  toggleIsFourOhFour: PropTypes.func.isRequired,
 };
 export default NavBar;

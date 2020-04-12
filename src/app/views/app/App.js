@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { loading } = this.props;
+    const { loading, isFourOhFour } = this.props;
     return (
       <div className="App">
         <Router>
@@ -44,11 +44,11 @@ class App extends React.Component {
               <div>
                 {/* TODO: Add Component with UseLayout to measure Navbar Offset and wrap each Route Component in it */}
                 <Route path="/" exact component={Home} />
-                <Route path="/add" component={CreateQuestion} />
-                <Route path="/leaderboard" component={null} />
-                <Route path="/questions/:question_id" component={Question} />
-                <Route path="/login" component={Login} />
-                <Route component={FourOhFour} />
+                <Route path="/add" exact component={CreateQuestion} />
+                <Route path="/leaderboard" exact component={null} />
+                <Route path="/questions/:question_id" exact component={Question} />
+                <Route path="/login" exact component={Login} />
+                {isFourOhFour && <Route component={FourOhFour} />}
               </div>
             )}
           </StickyContainer>
@@ -65,5 +65,6 @@ App.propTypes = {
 
 const mapStateToProps = ({ session, ui }) => ({
   loading: session === null,
+  isFourOhFour: ui.isFourOhFour,
 });
 export default connect(mapStateToProps)(App);
