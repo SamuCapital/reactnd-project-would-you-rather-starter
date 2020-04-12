@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { StickyContainer, Sticky } from 'react-sticky';
 import { LoadingBar } from 'react-redux-loading';
 import { fetchInitialData } from 'app/state/Shared';
+import FourOhFour from 'app/views/FourOhFour';
 import Home from '../Home';
 import NavBar from '../NavBar';
 import Question from '../Question';
@@ -48,6 +49,7 @@ class App extends React.Component {
                 <Route path="/leaderboard" component={null} />
                 <Route path="/questions/:question_id" component={Question} />
                 <Route path="/login" component={Login} />
+                <Route component={FourOhFour} />
               </div>
             )}
           </StickyContainer>
