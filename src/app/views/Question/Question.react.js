@@ -35,11 +35,7 @@ const Question = ({
       </UserData>
 
       <Fade show={renderQuestion} shouldRender={shouldRender} setRender={setRender}>
-        {/* <Container creatingQuestion={creatingQuestion}> */}
-        {/* <Headline>Would you rather...</Headline> */}
         {content}
-        {/* <SubmitButton onClick={() => handleSubmit()}>Submit!</SubmitButton> */}
-        {/* </Container> */}
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
         <ProgressBar result={percentage} />

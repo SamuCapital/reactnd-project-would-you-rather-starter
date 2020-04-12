@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import styled, { keyframes } from 'styled-components';
 /* Coolors Exported Palette - coolors.co/9e0031-8e0045-001427-708d81-f4d58d */
 import { zoomInDown, bounceOut } from 'react-animations';
@@ -70,7 +71,6 @@ export const AnimatedDiv = styled.div`
   flex-grow: 1;
   display: flex;
   width: 100%;
-  /* align-self: flex-start; */
   animation: 0.75s ${(props) => (props.show ? keyframes`${zoomInDown}` : keyframes`${bounceOut}`)};
 `;
 
@@ -139,4 +139,5 @@ export const ResultBarContainer = styled.div`
   padding: 20px 40px;
   margin: 20px 40px 30px;
   /* box-shadow: 0px 0px 40px 25px rgba(191, 0, 92, 1); */
+  z-index: 0;
 `;

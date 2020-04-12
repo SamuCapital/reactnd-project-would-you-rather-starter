@@ -101,7 +101,7 @@ export const Fade = ({ show, children, shouldRender, setRender }) => {
 
 export const ProgressBar = ({ result }) => {
   ProgressBar.propTypes = { result: PropTypes.number };
-  ProgressBar.defaultProps = { result: 80 };
+  ProgressBar.defaultProps = { result: 73 };
   return (
     <ResultBarContainer>
       <Progress
@@ -133,7 +133,9 @@ export const ProgressBar = ({ result }) => {
         }}
       />
       <br />
-      <div> {result}% of Users Share your Opinion!</div>
+      <div style={{ fontWeight: 'bold', color: '#001427', fontSize: 25 }}>
+        {result}% of Users Share your Opinion!
+      </div>
     </ResultBarContainer>
   );
 };
@@ -141,21 +143,31 @@ export const ProgressBar = ({ result }) => {
 /**
  * @description Takes in dynamic arguments on whether to create or display a Question
  * @param  {JSX} createQuestionContent Document Node representing Input fields for Question to create (from CreateQuestion.react)
- * @param {Boolean} renderResults If True disable Radio Buttons
  * @param  {Object} question Data of Question which is to be displayed
+ * @param {Function} handleSubmit Submit Function for Create / Vote Card
+ * @param {Boolean} renderResults If True disable Radio Buttons and select color theme
  * @returns {JSX} Content for Question Card
  */
-export const questionContent = (createQuestionContent, renderResults, question, handleSubmit) =>
-  createQuestionContent || (
-    <Container creatingQuestion={!!createQuestionContent} renderResults={renderResults}>
-      <Headline>Would you rather...</Headline>
+export const questionContent = (
+  createQuestionContent,
+  question,
+  handleSubmit,
+  renderResults = null,
+) => (
+  // createQuestionContent || (
+  <Container creatingQuestion={!!createQuestionContent} renderResults={renderResults}>
+    <Headline>Would you rather...</Headline>
+    {!createQuestionContent ? (
       <Options
         question={question}
         optionOne={question.optionOne.text}
         optionTwo={question.optionTwo.text}
         renderResults={renderResults}
       />
-      {!renderResults && <SubmitButton onClick={() => handleSubmit()}>Submit!</SubmitButton>}
-      {renderResults && <ProgressBar />}
-    </Container>
-  );
+    ) : (
+      createQuestionContent
+    )}
+    {renderResults && <ProgressBar />}
+    {!renderResults && <SubmitButton onClick={() => handleSubmit()}>Submit!</SubmitButton>}
+  </Container>
+);

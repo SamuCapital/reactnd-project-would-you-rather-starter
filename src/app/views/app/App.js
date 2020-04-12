@@ -33,18 +33,17 @@ class App extends React.Component {
         <Router>
           <StickyContainer>
             <LoadingBar />
-            <Sticky>
+            {/* <Sticky>
               {({ style }) => (
-                <div style={style}>
-                  <NavBar />
-                </div>
+                <div style={style}> */}
+            <NavBar />
+            {/* </div>
               )}
-            </Sticky>
+            </Sticky> */}
             {loading === true ? null : (
               <div>
-                <Route path="/" exact component={Home}>
-                  {/* {({ match }) => console.log('IS MATCH HOME', match)} */}
-                </Route>
+                {/* TODO: Add Component with UseLayout to measure Navbar Offset and wrap each Route Component in it */}
+                <Route path="/" exact component={Home} />
                 <Route path="/add" component={CreateQuestion} />
                 <Route path="/leaderboard" component={null} />
                 <Route path="/questions/:question_id" component={Question} />

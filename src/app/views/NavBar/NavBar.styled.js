@@ -8,7 +8,12 @@ export const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  z-index: 2147483647;
+  z-index: 999999999999999;
+  left: 0;
+  top: 0;
+  position: fixed;
+  transform: translateZ(0);
+  width: 100%;
 `;
 
 export const NavBarBackground = styled.div`
