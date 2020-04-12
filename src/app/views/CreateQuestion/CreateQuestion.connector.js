@@ -1,5 +1,7 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { handleCreateQuestion } from 'app/state/Shared/';
 import { uiOperations } from 'app/state/ducks/UI';
 import CreateQuestion from './CreateQuestion.react';
@@ -14,6 +16,13 @@ const ConnectedComponent = ({ handleCreateQuestion, setInputText, optionOne, opt
       handleCreateQuestion={() => handleCreateQuestion(optionOne, optionTwo, 'tylermcginnis')}
     />
   );
+};
+
+ConnectedComponent.propTypes = {
+  handleCreateQuestion: PropTypes.func.isRequired,
+  setInputText: PropTypes.func.isRequired,
+  optionOne: PropTypes.string.isRequired,
+  optionTwo: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = ({ ui }) => ({
