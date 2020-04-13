@@ -1,1 +1,8 @@
-export { setScreenIsWide, setIsHome, setFilter, setInputText, setIsFourOhFour } from './actions';
+export {
+  setScreenIsWide,
+  setIsHome,
+  setFilter,
+  setInputText,
+  setIsFourOhFour,
+  setNavBarHeight,
+} from './actions';

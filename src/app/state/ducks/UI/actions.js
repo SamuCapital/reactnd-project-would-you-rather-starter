@@ -20,6 +20,11 @@ export const setIsFourOhFour = (boolean) => ({
   payload: boolean,
 });
 
+export const setNavBarHeight = (height) => ({
+  type: types.UI_SET_NAV_BAR_HEIGHT,
+  payload: height,
+});
+
 export const setInputText = (option, text) => ({
   type: types.UI_SET_QUESTION_INPUT,
   payload: { option, text },

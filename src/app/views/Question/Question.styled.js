@@ -22,7 +22,7 @@ export const Background = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 20px;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   box-shadow: 6px 10px 28px 1px rgba(131, 144, 184, 1);
 `;
 

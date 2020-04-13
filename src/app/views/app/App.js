@@ -1,70 +1,55 @@
-import React, { Fragment } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
 import PropTypes from 'prop-types';
 
-import { StickyContainer, Sticky } from 'react-sticky';
 import { LoadingBar } from 'react-redux-loading';
 import { fetchInitialData } from 'app/state/Shared';
-import FourOhFour from 'app/views/FourOhFour';
+import { AppContainer } from 'app/views/app/App.styled';
 import Home from '../Home';
 import NavBar from '../NavBar';
 import Question from '../Question';
 import CreateQuestion from '../CreateQuestion';
 import Login from '../Login';
+import Helper, { FourOhFour } from '../Helper';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-
-  componentDidMount() {
-    const { dispatch } = this.props;
+const App = (props) => {
+  const { loading, isFourOhFour, dispatch, navBarHeight } = props;
+  useEffect(() => {
     dispatch(fetchInitialData());
-  }
-
-  render() {
-    const { loading, isFourOhFour } = this.props;
-    return (
-      <div className="App">
-        <Router>
-          <StickyContainer>
-            <LoadingBar />
-            {/* <Sticky>
-              {({ style }) => (
-                <div style={style}> */}
-            <NavBar />
-            {/* </div>
-              )}
-            </Sticky> */}
-            {loading === true ? null : (
-              <div>
-                {/* TODO: Add Component with UseLayout to measure Navbar Offset and wrap each Route Component in it */}
-                <Route path="/" exact component={Home} />
-                <Route path="/add" exact component={CreateQuestion} />
-                <Route path="/leaderboard" exact component={null} />
-                <Route path="/questions/:question_id" exact component={Question} />
-                <Route path="/login" exact component={Login} />
-                {isFourOhFour && <Route component={FourOhFour} />}
-              </div>
-            )}
-          </StickyContainer>
-        </Router>
-      </div>
-    );
-  }
-}
+  }, [dispatch]);
+  return (
+    <div className="App">
+      <Router>
+        <LoadingBar />
+        <NavBar />
+        {!loading && (
+          <AppContainer height={navBarHeight}>
+            <Route path="/" exact component={Home} />
+            <Route path="/add" exact component={CreateQuestion} />
+            <Route path="/leaderboard" exact component={null} />
+            <Route path="/questions/:question_id" exact component={Question} />
+            <Route path="/login" exact component={Login} />
+            {isFourOhFour && <Route component={FourOhFour} />}
+            <Helper />
+          </AppContainer>
+        )}
+      </Router>
+    </div>
+  );
+};
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
+  isFourOhFour: PropTypes.bool.isRequired,
+  navBarHeight: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = ({ session, ui }) => ({
   loading: session === null,
   isFourOhFour: ui.isFourOhFour,
+  navBarHeight: ui.navBarHeight,
 });
 export default connect(mapStateToProps)(App);

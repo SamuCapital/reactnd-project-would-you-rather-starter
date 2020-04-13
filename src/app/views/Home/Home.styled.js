@@ -8,7 +8,7 @@ export const Background = styled.div`
   align-self: center;
   border-radius: 5px;
   box-shadow: 3px 10px 35px 0px rgba(142, 0, 69, 1);
-  margin-bottom: -20px;
+  /* margin-bottom: -20px; */
 `;
 
 export const Container = styled.div`

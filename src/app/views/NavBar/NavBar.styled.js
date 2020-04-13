@@ -8,7 +8,7 @@ export const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  z-index: 999999999999999;
+  z-index: 1;
   left: 0;
   top: 0;
   position: fixed;
@@ -44,12 +44,10 @@ const ItemContainer = styled.div`
   align-items: baseline;
 `;
 
-export const Link = ({ children, to, toggleIsHome, toggleIsFourOhFour, exact }) => {
+export const Link = ({ children, to, exact }) => {
   Link.propTypes = {
     children: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired,
-    toggleIsHome: PropTypes.func.isRequired,
-    toggleIsFourOhFour: PropTypes.func.isRequired,
     exact: PropTypes.bool,
   };
   Link.defaultProps = { exact: true };
@@ -61,11 +59,6 @@ export const Link = ({ children, to, toggleIsHome, toggleIsFourOhFour, exact }) 
           exact
           style={{
             textDecoration: 'none',
-          }}
-          isActive={(isMatch) => {
-            isMatch && toggleIsHome(to === '/') && window.dispatchEvent(new Event('scroll'));
-            isMatch && toggleIsFourOhFour(false);
-            return isMatch;
           }}
         >
           <ItemContainer>

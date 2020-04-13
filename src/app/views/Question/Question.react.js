@@ -1,24 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  Background,
-  UserData,
-  ProfilePicture,
-  PictureBorder,
-  Container,
-  Headline,
-  SubmitButton,
-} from './Question.styled';
+import { Background, UserData, ProfilePicture, PictureBorder } from './Question.styled';
 
 import { Fade, AuthorName, ProgressBar } from './Components';
 
 const Question = ({
   url,
-  creatingQuestion,
   authorName,
   renderQuestion,
-  handleSubmit,
   shouldRender,
   setRender,
   percentage,
@@ -46,10 +36,8 @@ const Question = ({
 
 Question.propTypes = {
   url: PropTypes.string.isRequired,
-  creatingQuestion: PropTypes.bool.isRequired,
   authorName: PropTypes.string.isRequired,
   renderQuestion: PropTypes.bool.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
   shouldRender: PropTypes.bool.isRequired,
   setRender: PropTypes.func.isRequired,
   percentage: PropTypes.number,

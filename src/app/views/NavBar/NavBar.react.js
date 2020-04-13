@@ -4,9 +4,17 @@ import PropTypes from 'prop-types';
 import { Background, Container, Filter, Text } from 'app/views/Home/Home.styled';
 import { NavBarContainer, ItemHolder, NavBarBackground, Link } from './NavBar.styled';
 
-const NavBar = ({ isHome, style, filter, setFilter, toggleIsHome, toggleIsFourOhFour }) => {
+const NavBar = ({
+  isHome,
+  style,
+  filter,
+  setFilter,
+  toggleIsHome,
+  toggleIsFourOhFour,
+  containerRef,
+}) => {
   return (
-    <NavBarContainer>
+    <NavBarContainer ref={containerRef}>
       <NavBarBackground main>
         <ItemHolder>
           <Link to="/" toggleIsHome={toggleIsHome} toggleIsFourOhFour={toggleIsFourOhFour}>
@@ -53,5 +61,6 @@ NavBar.propTypes = {
   setFilter: PropTypes.func.isRequired,
   toggleIsHome: PropTypes.func.isRequired,
   toggleIsFourOhFour: PropTypes.func.isRequired,
+  containerRef: PropTypes.func.isRequired,
 };
 export default NavBar;
