@@ -4,5 +4,6 @@ export {
   setFilter,
   setInputText,
   setIsFourOhFour,
+  toggleRedirect,
   setNavBarHeight,
 } from './actions';

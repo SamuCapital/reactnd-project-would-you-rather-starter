@@ -3,6 +3,7 @@ import { showLoading, hideLoading } from 'react-redux-loading';
 import { questionOperations } from 'app/state/ducks/Questions';
 import { usersOperations } from 'app/state/ducks/Users';
 import { sessionOperations } from 'app/state/ducks/Session';
+import { uiOperations } from 'app/state/ducks/UI';
 import { _getUsers, _getQuestions, _saveQuestion } from 'backend/_DATA';
 
 const getInitialData = () => {
@@ -31,7 +32,9 @@ export const handleCreateQuestion = (questionInput) => (dispatch) => {
   dispatch(showLoading);
   return _saveQuestion(questionInput)
     .then((question) => dispatch(questionOperations.addQuestion(question)))
-    .then(() => dispatch(hideLoading()));
+    .then(() => dispatch(hideLoading()))
+    .then(() => dispatch(uiOperations.toggleRedirect(true)))
+    .then(() => dispatch(uiOperations.toggleRedirect(false)));
 };
 
 // !FIXME: ADD ADQUESTION ACTION TO QUESTION REDUCER

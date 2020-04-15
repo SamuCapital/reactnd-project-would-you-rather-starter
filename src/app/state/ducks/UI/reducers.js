@@ -7,14 +7,16 @@ import {
   UI_TOGGLE_IS_FOUR_OH_FOUR,
   UI_SET_QUESTION_INPUT,
   UI_SET_NAV_BAR_HEIGHT,
+  UI_SET_REDIRECT_TO_INDEX,
 } from './types';
 
 const initialState = {
   isWide: true,
   isHome: false,
-  filter: true, // True => get answered; False => get not answered Questions
+  filter: false, // True => get answered; False => get not answered Questions
   isFourOhFour: true,
   navBarHeight: 0,
+  redirectToIndex: false,
   createQuestion: {
     optionOneText: '',
     optionTwoText: '',
@@ -37,6 +39,9 @@ const userInterface = (state = initialState, action) => {
     }
     case UI_SET_NAV_BAR_HEIGHT: {
       return { ...state, navBarHeight: action.payload };
+    }
+    case UI_SET_REDIRECT_TO_INDEX: {
+      return { ...state, redirectToIndex: action.payload };
     }
     case UI_SET_QUESTION_INPUT: {
       return update(state, {

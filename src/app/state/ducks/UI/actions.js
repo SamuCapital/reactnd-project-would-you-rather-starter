@@ -25,6 +25,11 @@ export const setNavBarHeight = (height) => ({
   payload: height,
 });
 
+export const toggleRedirect = (bool) => ({
+  type: types.UI_SET_REDIRECT_TO_INDEX,
+  payload: bool,
+});
+
 export const setInputText = (option, text) => ({
   type: types.UI_SET_QUESTION_INPUT,
   payload: { option, text },

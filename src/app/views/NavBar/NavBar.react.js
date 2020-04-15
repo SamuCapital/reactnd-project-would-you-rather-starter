@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Background, Container, Filter, Text } from 'app/views/Home/Home.styled';
+import { LoadingBar } from 'react-redux-loading';
 import { NavBarContainer, ItemHolder, NavBarBackground, Link } from './NavBar.styled';
 
 const NavBar = ({
@@ -50,6 +51,7 @@ const NavBar = ({
           </Container>
         </Background>
       )}
+      <LoadingBar />
     </NavBarContainer>
   );
 };
