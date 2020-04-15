@@ -7,6 +7,7 @@ import { Background, UserData, ProfilePicture, PictureBorder } from './Question.
 import { Fade, AuthorName } from './Components';
 
 const Question = ({
+  id,
   url,
   authorName,
   renderQuestion,
@@ -29,13 +30,14 @@ const Question = ({
         {content}
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
-        <Redirect to="/add" />
+        <Redirect to={`/questions/${id}`} />
       </Fade>
     </Background>
   );
 };
 
 Question.propTypes = {
+  id: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   authorName: PropTypes.string.isRequired,
   renderQuestion: PropTypes.bool.isRequired,

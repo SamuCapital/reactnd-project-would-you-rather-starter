@@ -19,7 +19,7 @@ import {
   SubmitButton,
 } from '../Question.styled';
 
-export const Options = ({ question, user, renderResults, session, path }) => {
+export const Options = ({ question, user, renderResults, session, path, filter }) => {
   Options.propTypes = {
     question: PropTypes.object.isRequired,
     renderResults: PropTypes.bool.isRequired,
@@ -40,12 +40,11 @@ export const Options = ({ question, user, renderResults, session, path }) => {
           disabled={
             (renderResults && question.optionOne.votes.includes('tylermcginnis')) ||
             !session ||
-            path === '/'
+            (path === '/' && !filter)
           }
         >
           <Option>{question.optionOne.text}</Option>
         </ReversedRadioButton>
-        {/* {renderResults && <div>PERSONONE</div>} */}
         <ReversedRadioButton
           pointColor="#8e0045"
           rootColor="#001427"
@@ -55,7 +54,7 @@ export const Options = ({ question, user, renderResults, session, path }) => {
           disabled={
             (renderResults && question.optionTwo.votes.includes('tylermcginnis')) ||
             !session ||
-            path === '/'
+            (path === '/' && !filter)
           }
         >
           <Option>{question.optionTwo.text}</Option>
@@ -164,10 +163,12 @@ export const questionContent = (
   renderResults = null,
   session,
   path,
+  filter,
 ) => {
+  console.log('QUESTION: ', question);
   let title = session ? 'Submit Answer' : 'Please Login first!';
   let text = session ? 'Submit!' : 'LOGIN';
-  if (path === '/') {
+  if (path === '/' && session) {
     title = 'View Question';
     text = 'View Question';
   }
@@ -182,6 +183,7 @@ export const questionContent = (
           renderResults={renderResults}
           session={session}
           path={path}
+          filter={filter}
         />
       ) : (
         createQuestionContent
@@ -203,4 +205,36 @@ export const questionContent = (
       )}
     </Container>
   );
+};
+
+export const generateContent = (type, input, handleSubmit, path, session) => {
+  let title = session ? 'Submit Answer' : 'Please Login first!';
+  let text = session ? 'Submit!' : 'LOGIN';
+  if (path === '/' && session) {
+    title = 'View Question';
+    text = 'View Question';
+  }
+  switch (type) {
+    case 'create':
+      return (
+        <Container creatingQuestion>
+          <Headline>Would you rather...</Headline>
+          {input}
+          <SubmitButton
+            title={title}
+            onClick={
+              session
+                ? () => {
+                    handleSubmit();
+                  }
+                : null
+            }
+          >
+            Create
+          </SubmitButton>
+        </Container>
+      );
+    default:
+      return null;
+  }
 };

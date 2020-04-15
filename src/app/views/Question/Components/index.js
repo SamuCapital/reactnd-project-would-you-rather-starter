@@ -1,1 +1,8 @@
-export { Options, AuthorName, Fade, ProgressBar, questionContent } from './Components.react';
+export {
+  Options,
+  AuthorName,
+  Fade,
+  ProgressBar,
+  questionContent,
+  generateContent,
+} from './Components.react';
