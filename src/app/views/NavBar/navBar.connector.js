@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import useDimensions from 'react-use-dimensions';
 
+import { usersSelectors } from 'app/state/ducks/Users';
 import NavBar from './NavBar.react';
 import { createFilterStyle } from './mavBar.helper';
 import { uiOperations } from '../../state/ducks/UI';
@@ -15,6 +16,7 @@ const ConnectedComponent = ({
   toggleIsHome,
   toggleIsFourOhFour,
   setNavBarHeight,
+  greeting,
 }) => {
   const style = createFilterStyle(isWide);
   const [ref, dimensions] = useDimensions();
@@ -30,6 +32,7 @@ const ConnectedComponent = ({
       toggleIsHome={toggleIsHome}
       toggleIsFourOhFour={toggleIsFourOhFour}
       containerRef={ref}
+      greeting={greeting}
     />
   );
 };
@@ -42,16 +45,18 @@ ConnectedComponent.propTypes = {
   toggleIsHome: PropTypes.func.isRequired,
   toggleIsFourOhFour: PropTypes.func.isRequired,
   setNavBarHeight: PropTypes.func.isRequired,
+  greeting: PropTypes.string.isRequired,
 };
 ConnectedComponent.defaultProps = {
   isHome: false,
   filter: false,
 };
 
-const mapStateToProps = ({ ui }) => ({
-  isWide: ui.isWide,
-  isHome: ui.isHome,
-  filter: ui.filter,
+const mapStateToProps = (state) => ({
+  isWide: state.ui.isWide,
+  isHome: state.ui.isHome,
+  filter: state.ui.filter,
+  greeting: usersSelectors.getGreeting(state),
 });
 const mapDispatchToProps = (dispatch) => ({
   setFilter: (bool) => dispatch(uiOperations.setFilter(bool)),

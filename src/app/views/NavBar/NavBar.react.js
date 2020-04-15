@@ -13,6 +13,7 @@ const NavBar = ({
   toggleIsHome,
   toggleIsFourOhFour,
   containerRef,
+  greeting,
 }) => {
   return (
     <NavBarContainer ref={containerRef}>
@@ -32,7 +33,7 @@ const NavBar = ({
             Leader Bord
           </Link>
           <Link to="/login" toggleIsHome={toggleIsHome} toggleIsFourOhFour={toggleIsFourOhFour}>
-            Login
+            {greeting}
           </Link>
         </ItemHolder>
       </NavBarBackground>
@@ -64,5 +65,6 @@ NavBar.propTypes = {
   toggleIsHome: PropTypes.func.isRequired,
   toggleIsFourOhFour: PropTypes.func.isRequired,
   containerRef: PropTypes.func.isRequired,
+  greeting: PropTypes.string.isRequired,
 };
 export default NavBar;

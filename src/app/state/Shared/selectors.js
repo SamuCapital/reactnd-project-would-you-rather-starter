@@ -17,3 +17,6 @@ export const filterQuestionsAnswered = (state, filter) => {
     .forEach((questionId) => questions.push(state.questions[questionId]));
   return questions.sort((a, b) => b.timestamp - a.timestamp);
 };
+
+export const getAllQuestions = (state) =>
+  state.questions && state.questions.loadInitialState ? [] : Object.values(state.questions);

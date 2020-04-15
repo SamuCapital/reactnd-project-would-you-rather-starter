@@ -5,12 +5,14 @@ import { Selectors } from 'app/state/Shared';
 import Question from '../Question';
 
 const Home = ({ state, filter }) => {
-  const questions = state.session ? Selectors.filterQuestionsAnswered(state, filter) : [];
+  const questions = state.session
+    ? Selectors.filterQuestionsAnswered(state, filter)
+    : Selectors.getAllQuestions(state);
+  console.log('Questions: ', questions);
   return (
     <div style={{ overflow: 'hidden' }}>
-      {questions.map((question) => (
-        <Question question={question} key={question.id} />
-      ))}
+      {questions.length > 0 &&
+        questions.map((question) => <Question question={question} key={question.id} />)}
     </div>
   );
 };
