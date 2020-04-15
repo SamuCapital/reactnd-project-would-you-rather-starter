@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import Question from '../Question';
 import { getQuestions } from './home.helper';
 
@@ -22,11 +21,4 @@ Home.defaultProps = {
   filter: false,
 };
 
-const mapStateToProps = (state) => {
-  return { state, filter: state.ui.filter };
-};
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;

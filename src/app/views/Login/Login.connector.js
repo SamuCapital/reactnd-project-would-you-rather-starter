@@ -1,20 +1,32 @@
-import React, { useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { sessionOperations } from '../../state/ducks/Session';
 import Login from './Login.react';
 
-const ConnectedComponent = ({ users, session, setUser }) => {
+const ConnectedComponent = ({ users, session, setUser, redirect }) => {
+  const [didLogout, setDidLogout] = useState(false);
   useEffect(() => {
-    session && setUser(null);
-  }, [session, setUser]);
-  return <Login users={users} setUser={setUser} />;
+    !didLogout && session && setUser(null);
+    setDidLogout(true);
+  }, [didLogout, session, setUser]);
+
+  return redirect ? <Redirect to="/" /> : <Login users={users} setUser={setUser} />;
+};
+
+ConnectedComponent.propTypes = {
+  users: PropTypes.object.isRequired,
+  session: PropTypes.oneOf([PropTypes.string, PropTypes.object]).isRequired,
+  setUser: PropTypes.func.isRequired,
+  redirect: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => {
   return {
     users: Object.keys(state.users),
     session: state.session,
+    redirect: state.ui.redirectToIndex,
   };
 };
 const mapDispatchToProps = (dispatch) => {

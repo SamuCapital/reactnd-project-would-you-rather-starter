@@ -6,4 +6,5 @@ export const setUser = (input) => (dispatch) => {
   dispatch(uiOperations.setInputText('optionOneText', ''));
   dispatch(uiOperations.setInputText('optionTwoText', ''));
   dispatch(setAuthenticatedUser(input));
+  input !== null && dispatch(uiOperations.toggleRedirect(true));
 };
