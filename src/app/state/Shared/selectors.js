@@ -18,5 +18,7 @@ export const filterQuestionsAnswered = (state, filter) => {
   return questions.sort((a, b) => b.timestamp - a.timestamp);
 };
 
-export const getAllQuestions = (state) =>
-  state.questions && state.questions.loadInitialState ? [] : Object.values(state.questions);
+export const getAllQuestions = (state, filter) =>
+  state.questions && (state.questions.loadInitialState || filter)
+    ? []
+    : Object.values(state.questions).sort((a, b) => b.timestamp - a.timestamp);

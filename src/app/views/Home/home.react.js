@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Selectors } from 'app/state/Shared';
 import Question from '../Question';
+import { getQuestions } from './home.helper';
 
 const Home = ({ state, filter }) => {
-  const questions = state.session
-    ? Selectors.filterQuestionsAnswered(state, filter)
-    : Selectors.getAllQuestions(state);
-  console.log('Questions: ', questions);
+  const questions = getQuestions(state, filter);
   return (
     <div style={{ overflow: 'hidden' }}>
       {questions.length > 0 &&
