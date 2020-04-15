@@ -7,6 +7,7 @@ import {
   UI_TOGGLE_IS_FOUR_OH_FOUR,
   UI_SET_QUESTION_INPUT,
   UI_SET_NAV_BAR_HEIGHT,
+  UI_SET_CURRENT_NAVIGATION_PATH,
   UI_SET_REDIRECT_TO_INDEX,
 } from './types';
 
@@ -17,6 +18,7 @@ const initialState = {
   isFourOhFour: true,
   navBarHeight: 0,
   redirectToIndex: false,
+  navigationPath: '',
   createQuestion: {
     optionOneText: '',
     optionTwoText: '',
@@ -42,6 +44,9 @@ const userInterface = (state = initialState, action) => {
     }
     case UI_SET_REDIRECT_TO_INDEX: {
       return { ...state, redirectToIndex: action.payload };
+    }
+    case UI_SET_CURRENT_NAVIGATION_PATH: {
+      return { ...state, navigationPath: action.payload };
     }
     case UI_SET_QUESTION_INPUT: {
       return update(state, {

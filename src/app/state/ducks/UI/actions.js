@@ -30,6 +30,11 @@ export const toggleRedirect = (bool) => ({
   payload: bool,
 });
 
+export const setNavPath = (path) => ({
+  type: types.UI_SET_CURRENT_NAVIGATION_PATH,
+  payload: path,
+});
+
 export const setInputText = (option, text) => ({
   type: types.UI_SET_QUESTION_INPUT,
   payload: { option, text },

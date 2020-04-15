@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Redirect } from 'react-router-dom';
 import { Background, UserData, ProfilePicture, PictureBorder } from './Question.styled';
 
-import { Fade, AuthorName, ProgressBar } from './Components';
+import { Fade, AuthorName } from './Components';
 
 const Question = ({
   url,
@@ -28,7 +29,7 @@ const Question = ({
         {content}
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
-        <ProgressBar result={percentage} />
+        <Redirect to="/add" />
       </Fade>
     </Background>
   );

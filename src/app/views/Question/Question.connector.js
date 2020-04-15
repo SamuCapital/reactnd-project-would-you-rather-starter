@@ -18,6 +18,8 @@ const ConnectedComponent = ({
   handleSubmit,
   renderResults,
   filter,
+  session,
+  path,
 }) => {
   const { width: windowWidth } = useWindowDimensions();
   const [renderQuestion, setRenderQuestion] = useState(true);
@@ -58,7 +60,7 @@ const ConnectedComponent = ({
       percentage={percentage}
       style={style}
       // TODO: Replace filter bool (rn representing renderResults) with actual Data to be displayed(e.g. user, votes on question, etc)
-      content={questionContent(createQuestion, question, handleSubmitButton, filter)}
+      content={questionContent(createQuestion, question, handleSubmitButton, filter, session, path)}
     />
   );
 };
@@ -73,6 +75,7 @@ ConnectedComponent.propTypes = {
   handleSubmit: PropTypes.func,
   renderResults: PropTypes.func,
   filter: PropTypes.bool.isRequired,
+  path: PropTypes.string.isRequired,
 };
 ConnectedComponent.defaultProps = {
   url: '',
@@ -91,6 +94,8 @@ const mapStateToProps = (state, ownProps) => {
     authorName: ownProps.createQuestion ? 'You' : state.users[ownProps.question.author].name,
     isWide: state.ui.isWide,
     filter: state.ui.filter,
+    session: state.session,
+    path: state.ui.navigationPath,
   };
 };
 const mapDispatchToProps = (dispatch) => {

@@ -15,8 +15,12 @@ const ConnectedComponent = ({
   optionOne,
   optionTwo,
   redirect,
+  session,
 }) => {
   const createQuestionInput = createInputFormula(setInputText);
+
+  if (!session) return <Redirect to="login" />;
+
   return redirect ? (
     <Redirect to="/" />
   ) : (
@@ -33,12 +37,14 @@ ConnectedComponent.propTypes = {
   optionOne: PropTypes.string.isRequired,
   optionTwo: PropTypes.string.isRequired,
   redirect: PropTypes.bool.isRequired,
+  session: PropTypes.oneOf([PropTypes.string, PropTypes.object]).isRequired,
 };
 
-const mapStateToProps = ({ ui }) => ({
+const mapStateToProps = ({ ui, session }) => ({
   redirect: ui.redirectToIndex,
   optionOne: ui.createQuestion ? ui.createQuestion.optionOneText : '',
   optionTwo: ui.createQuestion ? ui.createQuestion.optionTwoText : '',
+  session,
 });
 const mapDispatchToProps = (dispatch) => ({
   handleCreateQuestion: (optionOneText, optionTwoText, author) =>

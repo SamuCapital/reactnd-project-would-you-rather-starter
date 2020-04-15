@@ -15,3 +15,11 @@ export const createInputFormula = (setInputText) => (
     <Input type="text" onChange={(event) => handleInputChange(event, OPTION_TWO, setInputText)} />
   </InputContainer>
 );
+
+export const handleCreateQuestion = (
+  createQuestion,
+  session,
+  optionOneText,
+  optionTwoText,
+  author,
+) => {};

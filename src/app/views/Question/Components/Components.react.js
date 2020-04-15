@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { Progress } from 'react-sweet-progress';
 import 'react-sweet-progress/lib/style.css';
 
+import { useLocation } from 'react-router-dom';
 import {
   Option,
   QuestionBy,
@@ -18,7 +19,7 @@ import {
   SubmitButton,
 } from '../Question.styled';
 
-export const Options = ({ question, user, renderResults }) => {
+export const Options = ({ question, user, renderResults, session, path }) => {
   Options.propTypes = {
     question: PropTypes.object.isRequired,
     renderResults: PropTypes.bool.isRequired,
@@ -36,7 +37,11 @@ export const Options = ({ question, user, renderResults }) => {
           padding={10}
           value="apple"
           disabledColor
-          disabled={renderResults && question.optionOne.votes.includes('tylermcginnis')}
+          disabled={
+            (renderResults && question.optionOne.votes.includes('tylermcginnis')) ||
+            !session ||
+            path === '/'
+          }
         >
           <Option>{question.optionOne.text}</Option>
         </ReversedRadioButton>
@@ -47,7 +52,11 @@ export const Options = ({ question, user, renderResults }) => {
           padding={10}
           value="orange"
           disabledColor
-          disabled={renderResults && question.optionTwo.votes.includes('tylermcginnis')}
+          disabled={
+            (renderResults && question.optionTwo.votes.includes('tylermcginnis')) ||
+            !session ||
+            path === '/'
+          }
         >
           <Option>{question.optionTwo.text}</Option>
         </ReversedRadioButton>
@@ -153,21 +162,45 @@ export const questionContent = (
   question,
   handleSubmit,
   renderResults = null,
-) => (
-  // createQuestionContent || (
-  <Container creatingQuestion={!!createQuestionContent} renderResults={renderResults}>
-    <Headline>Would you rather...</Headline>
-    {!createQuestionContent ? (
-      <Options
-        question={question}
-        optionOne={question.optionOne.text}
-        optionTwo={question.optionTwo.text}
-        renderResults={renderResults}
-      />
-    ) : (
-      createQuestionContent
-    )}
-    {renderResults && <ProgressBar />}
-    {!renderResults && <SubmitButton onClick={() => handleSubmit()}>Submit!</SubmitButton>}
-  </Container>
-);
+  session,
+  path,
+) => {
+  let title = session ? 'Submit Answer' : 'Please Login first!';
+  let text = session ? 'Submit!' : 'LOGIN';
+  if (path === '/') {
+    title = 'View Question';
+    text = 'View Question';
+  }
+  return (
+    <Container creatingQuestion={!!createQuestionContent} renderResults={renderResults}>
+      <Headline>Would you rather...</Headline>
+      {!createQuestionContent ? (
+        <Options
+          question={question}
+          optionOne={question.optionOne.text}
+          optionTwo={question.optionTwo.text}
+          renderResults={renderResults}
+          session={session}
+          path={path}
+        />
+      ) : (
+        createQuestionContent
+      )}
+      {renderResults && <ProgressBar />}
+      {!renderResults && (
+        <SubmitButton
+          title={title}
+          onClick={
+            session
+              ? () => {
+                  handleSubmit();
+                }
+              : null
+          }
+        >
+          {text}
+        </SubmitButton>
+      )}
+    </Container>
+  );
+};

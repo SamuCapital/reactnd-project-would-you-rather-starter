@@ -33,8 +33,7 @@ export const handleCreateQuestion = (questionInput) => (dispatch) => {
   return _saveQuestion(questionInput)
     .then((question) => dispatch(questionOperations.addQuestion(question)))
     .then(() => dispatch(hideLoading()))
-    .then(() => dispatch(uiOperations.toggleRedirect(true)))
-    .then(() => dispatch(uiOperations.toggleRedirect(false)));
+    .then(() => dispatch(uiOperations.toggleRedirect(true)));
 };
 
 // !FIXME: ADD ADQUESTION ACTION TO QUESTION REDUCER
