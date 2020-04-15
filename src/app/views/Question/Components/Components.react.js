@@ -38,7 +38,7 @@ export const Options = ({ question, user, renderResults, session, path, filter }
           value="apple"
           disabledColor
           disabled={
-            (renderResults && question.optionOne.votes.includes('tylermcginnis')) ||
+            (renderResults && question.optionOne.votes.includes(session)) ||
             !session ||
             (path === '/' && !filter)
           }
@@ -52,7 +52,7 @@ export const Options = ({ question, user, renderResults, session, path, filter }
           value="orange"
           disabledColor
           disabled={
-            (renderResults && question.optionTwo.votes.includes('tylermcginnis')) ||
+            (renderResults && question.optionTwo.votes.includes(session)) ||
             !session ||
             (path === '/' && !filter)
           }
@@ -207,7 +207,7 @@ export const questionContent = (
   );
 };
 
-export const generateContent = (type, input, handleSubmit, path, session) => {
+export const generateContent = (type, input, handleSubmit, path, session, question, filter) => {
   let title = session ? 'Submit Answer' : 'Please Login first!';
   let text = session ? 'Submit!' : 'LOGIN';
   if (path === '/' && session) {
@@ -215,26 +215,65 @@ export const generateContent = (type, input, handleSubmit, path, session) => {
     text = 'View Question';
   }
   switch (type) {
+    /* --------------------------------- CREATE --------------------------------- */
     case 'create':
       return (
         <Container creatingQuestion>
           <Headline>Would you rather...</Headline>
           {input}
-          <SubmitButton
-            title={title}
-            onClick={
-              session
-                ? () => {
-                    handleSubmit();
-                  }
-                : null
-            }
-          >
+          <SubmitButton title={title} onClick={() => handleSubmit()}>
             Create
           </SubmitButton>
+        </Container>
+      );
+
+    /* --------------------------------- DISPLAY -------------------------------- */
+    case 'display':
+      return (
+        <Container creatingQuestion={false} renderResults={false}>
+          <Headline>Would you rather...</Headline>
+          <Options
+            question={question}
+            optionOne={question.optionOne.text}
+            optionTwo={question.optionTwo.text}
+            renderResults={false}
+            session={session}
+            path={path}
+            filter={filter}
+          />
+          <SubmitButton title={title} onClick={session ? handleSubmit : null}>
+            {text}
+          </SubmitButton>
+        </Container>
+      );
+
+    /* --------------------------------- RESULT --------------------------------- */
+
+    case 'result':
+      return (
+        <Container creatingQuestion={false} renderResults>
+          <Headline>Would you rather...</Headline>
+          <Options
+            renderResults
+            question={question}
+            optionOne={question.optionOne.text}
+            optionTwo={question.optionTwo.text}
+            session={session}
+            path={path}
+            filter={filter}
+          />
+          <ProgressBar result={getResult(question)} />
         </Container>
       );
     default:
       return null;
   }
 };
+const getResult = (q) =>
+  (Math.round(
+    (q.optionOne.votes.length / (q.optionOne.votes.length + q.optionTwo.votes.length) +
+      Number.EPSILON) *
+      100,
+  ) /
+    100) *
+  100;

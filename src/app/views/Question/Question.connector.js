@@ -30,7 +30,6 @@ const ConnectedComponent = ({
   const { width: windowWidth } = useWindowDimensions();
   const [renderQuestion, setRenderQuestion] = useState(true);
   const [shouldRender, setRender] = useState(true); // TODO: USE REDUX STATE
-  const [percentage, setPercentage] = useState(0);
 
   const style = createBackGroundStyle(isWide);
 
@@ -39,27 +38,37 @@ const ConnectedComponent = ({
     !isWide && windowWidth > 900 && setScreenIsWide(true);
   }, [isWide, setScreenIsWide, windowWidth]);
 
-  const target = 30;
-
-  useEffect(() => {
-    // Generates animation time
-    if (!shouldRender) {
-      let number = 0;
-      const interval = setInterval(() => {
-        setPercentage(number);
-        if (number >= target) clearInterval(interval);
-        number += 1;
-      }, 20);
-    }
-  }, [shouldRender]);
-  const handleSubmitButton = createQuestion ? handleSubmit : () => setRenderQuestion(false);
-
-  if (questionState.loadInitialState) return null;
+  if (questionState.loadInitialState || !question) return null;
 
   let content = null;
   if (createQuestion)
-    content = generateContent('create', createQuestion, handleSubmit, path, session);
-
+    content = generateContent(
+      'create',
+      createQuestion,
+      session ? handleSubmit : null,
+      path,
+      session,
+    );
+  else if (!filter)
+    content = generateContent(
+      'display',
+      null,
+      () => setRenderQuestion(false),
+      path,
+      session,
+      question,
+      filter,
+    );
+  else if (filter)
+    content = generateContent(
+      'result',
+      null,
+      () => setRenderQuestion(false),
+      path,
+      session,
+      question,
+      filter,
+    );
   return (
     <Question
       id={question.id}
@@ -67,16 +76,11 @@ const ConnectedComponent = ({
       creatingQuestion={!!createQuestion}
       authorName={authorName}
       renderQuestion={renderQuestion}
-      handleSubmit={handleSubmitButton}
       shouldRender={shouldRender}
       setRender={setRender}
-      percentage={percentage}
       style={style}
       // TODO: Replace filter bool (rn representing renderResults) with actual Data to be displayed(e.g. user, votes on question, etc)
-      content={
-        content ||
-        questionContent(createQuestion, question, handleSubmitButton, filter, session, path, filter)
-      }
+      content={content}
     />
   );
 };

@@ -99,7 +99,7 @@ let questions = {
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['johndoe'],
+      votes: ['johndoe', 'maxGebhart'],
       text: 'have your best friend find $500'
     }
   },

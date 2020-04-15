@@ -13,7 +13,6 @@ const Question = ({
   renderQuestion,
   shouldRender,
   setRender,
-  percentage,
   style,
   content,
 }) => {
@@ -43,12 +42,9 @@ Question.propTypes = {
   renderQuestion: PropTypes.bool.isRequired,
   shouldRender: PropTypes.bool.isRequired,
   setRender: PropTypes.func.isRequired,
-  percentage: PropTypes.number,
   style: PropTypes.object.isRequired,
   content: PropTypes.element.isRequired,
 };
-Question.defaultProps = {
-  percentage: 0,
-};
+Question.defaultProps = {};
 
 export default Question;
