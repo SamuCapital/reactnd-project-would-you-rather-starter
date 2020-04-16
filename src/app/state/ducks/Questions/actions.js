@@ -18,3 +18,8 @@ export const addQuestion = (question) => ({
   type: types.QUESTION_ADD_QUESTION,
   payload: question,
 });
+
+export const setAnswer = (id, option) => ({
+  type: types.ANSWERS_SET_ANSWER,
+  payload: { id, option },
+});

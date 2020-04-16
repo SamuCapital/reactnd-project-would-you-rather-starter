@@ -3,7 +3,7 @@ import * as types from './types';
 
 const initialState = { loadInitialState: true };
 
-const Questions = (state = initialState, action) => {
+export const Questions = (state = initialState, action) => {
   switch (action.type) {
     case types.QUESTIONS_SET_INITIAL: {
       return action.payload;
@@ -27,4 +27,12 @@ const Questions = (state = initialState, action) => {
   }
 };
 
-export default Questions;
+export const QuestionAnswers = (state = {}, action) => {
+  switch (action.type) {
+    case types.ANSWERS_SET_ANSWER: {
+      return { ...state, [action.payload.id]: action.payload.option };
+    }
+    default:
+      return state;
+  }
+};
