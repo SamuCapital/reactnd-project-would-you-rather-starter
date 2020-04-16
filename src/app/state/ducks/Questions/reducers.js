@@ -29,6 +29,9 @@ export const Questions = (state = initialState, action) => {
 
 export const QuestionAnswers = (state = {}, action) => {
   switch (action.type) {
+    case types.ANSWERS_SET_INITIAL: {
+      return action.payload;
+    }
     case types.ANSWERS_SET_ANSWER: {
       return { ...state, [action.payload.id]: action.payload.option };
     }

@@ -5,7 +5,7 @@ import Button from './Login.styled';
 import 'react-dropdown/style.css';
 
 const Login = ({ users, setUser, username, setUsername }) => {
-  const options = Array.isArray(users) ? users : [];
+  const options = Array.isArray(Object.keys(users)) ? Object.keys(users) : [];
   return (
     <div>
       <Dropdown
@@ -14,7 +14,7 @@ const Login = ({ users, setUser, username, setUsername }) => {
         value={username}
         placeholder="Select an option"
       />
-      <Button onClick={() => username && setUser(username.value)}>Login</Button>
+      <Button onClick={() => username && setUser(username.value, users)}>Login</Button>
     </div>
   );
 };

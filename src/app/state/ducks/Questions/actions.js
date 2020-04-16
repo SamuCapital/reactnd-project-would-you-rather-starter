@@ -19,6 +19,11 @@ export const addQuestion = (question) => ({
   payload: question,
 });
 
+export const setInitialAnswers = (answers) => ({
+  type: types.ANSWERS_SET_INITIAL,
+  payload: answers,
+});
+
 export const setAnswer = (id, option) => ({
   type: types.ANSWERS_SET_ANSWER,
   payload: { id, option },

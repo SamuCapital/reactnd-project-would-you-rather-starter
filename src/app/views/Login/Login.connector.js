@@ -9,7 +9,7 @@ const ConnectedComponent = ({ users, session, setUser, redirect }) => {
   const [didLogout, setDidLogout] = useState(false);
   const [username, setUsername] = useState();
   useEffect(() => {
-    !didLogout && session && setUser(null);
+    !didLogout && session && setUser(null, {});
     setDidLogout(true);
   }, [didLogout, session, setUser]);
 
@@ -29,14 +29,14 @@ ConnectedComponent.propTypes = {
 
 const mapStateToProps = (state) => {
   return {
-    users: Object.keys(state.users),
+    users: state.users,
     session: state.session,
     redirect: state.ui.redirectToIndex,
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    setUser: (user) => dispatch(sessionOperations.setUser(user)),
+    setUser: (user, userState) => dispatch(sessionOperations.setUser(user, userState)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectedComponent);

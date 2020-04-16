@@ -1,1 +1,7 @@
-export { setInitialQuestions, questionAddAnswer, addQuestion, setAnswer } from './actions';
+export {
+  setInitialQuestions,
+  questionAddAnswer,
+  addQuestion,
+  setInitialAnswers,
+  setAnswer,
+} from './actions';
