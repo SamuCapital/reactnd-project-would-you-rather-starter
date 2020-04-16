@@ -167,12 +167,12 @@ export const generateContent = (
       return null;
   }
 };
+
 const getResult = (q, selected) =>
-  (Math.round(
-    (selected === 'optionOne'
-      ? q.optionOne.votes.length
-      : q.optionTwo.votes.length / (q.optionOne.votes.length + q.optionTwo.votes.length) +
-        Number.EPSILON) * 100,
-  ) /
-    100) *
-  100;
+  Math.round(
+    100 *
+      ((selected === 'optionOne' ? q.optionOne.votes.length : q.optionTwo.votes.length) /
+        (q.optionOne.votes.length + q.optionTwo.votes.length) +
+        Number.EPSILON) *
+      100,
+  ) / 100;
