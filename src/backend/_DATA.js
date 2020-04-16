@@ -20,6 +20,7 @@ let users = {
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
+      "3re2z9oyingr2fug4i7e2" : 'optionTwo',
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
@@ -38,7 +39,7 @@ let users = {
 
 // prettier-ignore
 let questions = {
-  "8xf0y6ziyjabvozdd253nd": {
+  '8xf0y6ziyjabvozdd253nd': {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
     timestamp: 1467166872634,
@@ -48,10 +49,10 @@ let questions = {
     },
     optionTwo: {
       votes: [],
-      text: 'have horrible long term memory'
-    }
+      text: 'have horrible long term memory',
+    },
   },
-  "6ni6ok3ym7mf1p33lnez": {
+  '6ni6ok3ym7mf1p33lnez': {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
     timestamp: 1468479767190,
@@ -61,10 +62,10 @@ let questions = {
     },
     optionTwo: {
       votes: ['johndoe', 'sarahedo'],
-      text: 'become a supervillain'
-    }
+      text: 'become a supervillain',
+    },
   },
-  "am8ehyc8byjqgar0jgpub9": {
+  am8ehyc8byjqgar0jgpub9: {
     id: 'am8ehyc8byjqgar0jgpub9',
     author: 'sarahedo',
     timestamp: 1488579767190,
@@ -74,10 +75,10 @@ let questions = {
     },
     optionTwo: {
       votes: ['sarahedo'],
-      text: 'be telepathic'
-    }
+      text: 'be telepathic',
+    },
   },
-  "loxhs1bqm25b708cmbf3g": {
+  loxhs1bqm25b708cmbf3g: {
     id: 'loxhs1bqm25b708cmbf3g',
     author: 'tylermcginnis',
     timestamp: 1482579767190,
@@ -87,10 +88,10 @@ let questions = {
     },
     optionTwo: {
       votes: ['sarahedo'],
-      text: 'be a back-end developer'
-    }
+      text: 'be a back-end developer',
+    },
   },
-  "vthrdm985a262al8qx3do": {
+  vthrdm985a262al8qx3do: {
     id: 'vthrdm985a262al8qx3do',
     author: 'tylermcginnis',
     timestamp: 1489579767190,
@@ -100,10 +101,10 @@ let questions = {
     },
     optionTwo: {
       votes: ['johndoe', 'maxGebhart'],
-      text: 'have your best friend find $500'
-    }
+      text: 'have your best friend find $500',
+    },
   },
-  "xj352vofupe1dqz9emx13r": {
+  xj352vofupe1dqz9emx13r: {
     id: 'xj352vofupe1dqz9emx13r',
     author: 'johndoe',
     timestamp: 1493579767190,
@@ -113,23 +114,23 @@ let questions = {
     },
     optionTwo: {
       votes: ['tylermcginnis'],
-      text: 'write Swift'
+      text: 'write Swift',
     },
   },
-    "xj352vofupe1dqz9emx18r": {
-      id: 'xj352vofupe1dqz9emx18r',
-      author: 'johndoe',
-      timestamp: 1586630229589,
-      optionOne: {
-        votes: ['johndoe'],
-        text: 'write JavaScript WITH A SUPER LONG ANSWER STRING',
-      },
-      optionTwo: {
-        votes: ['tylermcginnis'],
-        text: 'write JavaScript WITHOUT A SUPER LONG ANSWER STRING'
-      }
+  '3re2z9oyingr2fug4i7e2': {
+    id: '3re2z9oyingr2fug4i7e2',
+    author: 'johndoe',
+    timestamp: 1586630229589,
+    optionOne: {
+      votes: ['johndoe'],
+      text: 'write JavaScript WITH A SUPER LONG ANSWER STRING',
+    },
+    optionTwo: {
+      votes: ['tylermcginnis'],
+      text: 'write JavaScript WITHOUT A SUPER LONG ANSWER STRING',
+    },
   },
-}
+};
 
 function generateUID() {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
