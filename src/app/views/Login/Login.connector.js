@@ -7,12 +7,17 @@ import Login from './Login.react';
 
 const ConnectedComponent = ({ users, session, setUser, redirect }) => {
   const [didLogout, setDidLogout] = useState(false);
+  const [username, setUsername] = useState();
   useEffect(() => {
     !didLogout && session && setUser(null);
     setDidLogout(true);
   }, [didLogout, session, setUser]);
 
-  return redirect ? <Redirect to="/" /> : <Login users={users} setUser={setUser} />;
+  return redirect ? (
+    <Redirect to="/" />
+  ) : (
+    <Login users={users} setUser={setUser} username={username} setUsername={setUsername} />
+  );
 };
 
 ConnectedComponent.propTypes = {
