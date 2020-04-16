@@ -71,6 +71,7 @@ const ConnectedComponent = ({
       question,
       filter,
       setQuestionAnswer,
+      questionSelectors.getSelected(answers, question.id),
     );
   else if (filter)
     content = generateContent(
@@ -95,6 +96,7 @@ const ConnectedComponent = ({
       question,
       filter,
       setQuestionAnswer,
+      questionSelectors.getSelected(answers, question.id),
     );
   return (
     <Question

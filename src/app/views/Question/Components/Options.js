@@ -3,21 +3,31 @@ import { RadioGroup, ReversedRadioButton } from 'react-radio-buttons';
 import PropTypes from 'prop-types';
 import { Option, OptionContainer } from '../Question.styled';
 
-const Options = ({ question, renderResults, session, path, filter, setQuestionAnswer }) => {
+const Options = ({
+  question,
+  renderResults,
+  session,
+  path,
+  filter,
+  setQuestionAnswer,
+  selected,
+}) => {
   Options.propTypes = {
     question: PropTypes.object.isRequired,
-    renderResults: PropTypes.bool.isRequired,
+    renderResults: PropTypes.bool,
     filter: PropTypes.bool.isRequired,
     path: PropTypes.string.isRequired,
     session: PropTypes.string.isRequired,
     setQuestionAnswer: PropTypes.func.isRequired,
+    selected: PropTypes.string,
+  };
+  Options.defaultProps = {
+    selected: undefined,
+    renderResults: false,
   };
   return (
     <OptionContainer>
-      <RadioGroup
-        value={renderResults ? null : undefined}
-        onChange={(value) => setQuestionAnswer(question.id, value)}
-      >
+      <RadioGroup value={selected} onChange={(value) => setQuestionAnswer(question.id, value)}>
         <ReversedRadioButton
           pointColor="#8e0045"
           rootColor="#001427"

@@ -130,11 +130,12 @@ export const generateContent = (
             question={question}
             optionOne={question.optionOne.text}
             optionTwo={question.optionTwo.text}
-            renderResults={false}
+            // renderResults={false}
             session={session}
             path={path}
             filter={filter}
             setQuestionAnswer={setQuestionAnswer}
+            selected={selected}
           />
           <SubmitButton title={title} onClick={session ? handleSubmit : null}>
             {text}
@@ -157,6 +158,7 @@ export const generateContent = (
             path={path}
             filter={filter}
             setQuestionAnswer={setQuestionAnswer}
+            selected={selected}
           />
           <ProgressBar result={getResult(question, selected)} />
         </Container>
