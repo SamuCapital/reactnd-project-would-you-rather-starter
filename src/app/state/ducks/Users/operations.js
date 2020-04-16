@@ -1,3 +1,1 @@
-import { setInitialUsers, userAddAnswer } from './actions';
-
-export { setInitialUsers, userAddAnswer };
+export { setInitialUsers, userAddAnswer, userAddQuestion } from './actions';

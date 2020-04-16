@@ -26,7 +26,7 @@ const ConnectedComponent = ({
   ) : (
     <CreateQuestion
       createQuestionInput={createQuestionInput}
-      handleCreateQuestion={() => handleCreateQuestion(optionOne, optionTwo, 'tylermcginnis')}
+      handleCreateQuestion={() => handleCreateQuestion(optionOne, optionTwo, session)}
     />
   );
 };

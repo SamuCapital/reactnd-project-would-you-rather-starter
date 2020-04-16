@@ -6,21 +6,21 @@ let users = {
     name: 'Sarah Edo',
     avatarURL: 'https://i.pinimg.com/564x/72/8e/f3/728ef397e27b20edc6952ad93b8031a2.jpg',
     answers: {
-      "8xf0y6ziyjabvozdd253nd": 'optionOne',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
-      "am8ehyc8byjqgar0jgpub9": 'optionTwo',
-      "loxhs1bqm25b708cmbf3g": 'optionTwo',
+      '8xf0y6ziyjabvozdd253nd': 'optionOne',
+      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
+      am8ehyc8byjqgar0jgpub9: 'optionTwo',
+      loxhs1bqm25b708cmbf3g: 'optionTwo',
     },
-    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
+    questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9'],
   },
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
     avatarURL: 'https://i.pinimg.com/564x/54/4d/d1/544dd1f5999b8df9f1d7664c891d82b3.jpg',
     answers: {
-      "vthrdm985a262al8qx3do": 'optionOne',
-      "xj352vofupe1dqz9emx13r": 'optionTwo',
-      "3re2z9oyingr2fug4i7e2" : 'optionTwo',
+      vthrdm985a262al8qx3do: 'optionOne',
+      xj352vofupe1dqz9emx13r: 'optionTwo',
+      '3re2z9oyingr2fug4i7e2': 'optionTwo',
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
@@ -29,13 +29,24 @@ let users = {
     name: 'John Doe',
     avatarURL: 'https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg',
     answers: {
-      "xj352vofupe1dqz9emx13r": 'optionOne',
-      "vthrdm985a262al8qx3do": 'optionTwo',
-      "6ni6ok3ym7mf1p33lnez": 'optionTwo',
+      xj352vofupe1dqz9emx13r: 'optionOne',
+      vthrdm985a262al8qx3do: 'optionTwo',
+      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
     },
     questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
-  }
-}
+  },
+  maxmustermann: {
+    id: 'maxmustermann',
+    name: 'Max Mustermann',
+    avatarURL: 'https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg',
+    answers: {
+      xj352vofupe1dqz9emx13r: 'optionOne',
+      vthrdm985a262al8qx3do: 'optionTwo',
+      '6ni6ok3ym7mf1p33lnez': 'optionTwo',
+    },
+    questions: ['6ni6ok3ym7mf1p33lnez', 'xj352vofupe1dqz9emx13r'],
+  },
+};
 
 // prettier-ignore
 let questions = {

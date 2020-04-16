@@ -1,7 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { questionOperations } from 'app/state/ducks/Questions';
 import { usersOperations } from 'app/state/ducks/Users';
-import { sessionOperations } from 'app/state/ducks/Session';
 import { uiOperations } from 'app/state/ducks/UI';
 import { _getUsers, _getQuestions, _saveQuestion } from 'backend/_DATA';
 
@@ -20,14 +19,16 @@ export const fetchInitialData = () => {
     return getInitialData().then(({ users, questions }) => {
       dispatch(usersOperations.setInitialUsers(users));
       dispatch(questionOperations.setInitialQuestions(questions));
-      // dispatch(sessionOperations.setUser('tylermcginnis'));
     });
   };
 };
 
 export const handleCreateQuestion = (questionInput) => (dispatch) => {
   return _saveQuestion(questionInput)
-    .then((question) => dispatch(questionOperations.addQuestion(question)))
+    .then((question) => {
+      dispatch(questionOperations.addQuestion(question));
+      dispatch(usersOperations.userAddQuestion(question));
+    })
     .then(() => dispatch(uiOperations.toggleRedirect(true)));
 };
 

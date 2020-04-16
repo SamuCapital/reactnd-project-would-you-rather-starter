@@ -13,3 +13,8 @@ export const userAddAnswer = (userId, questionId, answer) => ({
     answer,
   },
 });
+
+export const userAddQuestion = (question) => ({
+  type: types.USER_ADD_QUESTION,
+  payload: question,
+});

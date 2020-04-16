@@ -17,6 +17,13 @@ const users = (state = initialState, action) => {
       });
       return newState;
     }
+    case types.USER_ADD_QUESTION: {
+      const { id, author: user } = action.payload;
+      const newState = update(state, {
+        [user]: { questions: { $push: [id] } },
+      });
+      return newState;
+    }
 
     default:
       return state;
