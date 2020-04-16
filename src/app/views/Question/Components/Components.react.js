@@ -1,68 +1,18 @@
 /* eslint-disable import/prefer-default-export */
 import React, { useEffect } from 'react';
-import { RadioGroup, ReversedRadioButton } from 'react-radio-buttons';
 import PropTypes from 'prop-types';
-
 import { Progress } from 'react-sweet-progress';
+import Options from './Options';
 import 'react-sweet-progress/lib/style.css';
-
-import { useLocation } from 'react-router-dom';
 import {
-  Option,
   QuestionBy,
   Name,
-  OptionContainer,
   Headline,
   AnimatedDiv,
   ResultBarContainer,
   Container,
   SubmitButton,
 } from '../Question.styled';
-
-export const Options = ({ question, user, renderResults, session, path, filter }) => {
-  Options.propTypes = {
-    question: PropTypes.object.isRequired,
-    renderResults: PropTypes.bool.isRequired,
-  };
-  // Options.defaultProps = { renderResults: true };
-  return (
-    <OptionContainer>
-      <RadioGroup
-        value={renderResults ? null : undefined}
-        onChange={(value) => console.log('SHOULD IMPLEMENT DISPATCH RIGHT HERE ', value)}
-      >
-        <ReversedRadioButton
-          pointColor="#8e0045"
-          rootColor="#001427"
-          padding={10}
-          value="apple"
-          disabledColor
-          disabled={
-            (renderResults && question.optionOne.votes.includes(session)) ||
-            !session ||
-            (path === '/' && !filter)
-          }
-        >
-          <Option>{question.optionOne.text}</Option>
-        </ReversedRadioButton>
-        <ReversedRadioButton
-          pointColor="#8e0045"
-          rootColor="#001427"
-          padding={10}
-          value="orange"
-          disabledColor
-          disabled={
-            (renderResults && question.optionTwo.votes.includes(session)) ||
-            !session ||
-            (path === '/' && !filter)
-          }
-        >
-          <Option>{question.optionTwo.text}</Option>
-        </ReversedRadioButton>
-      </RadioGroup>
-    </OptionContainer>
-  );
-};
 
 export const AuthorName = ({ name }) => {
   AuthorName.propTypes = { name: PropTypes.string.isRequired };
@@ -156,58 +106,17 @@ export const ProgressBar = ({ result }) => {
  * @param {Boolean} renderResults If True disable Radio Buttons and select color theme
  * @returns {JSX} Content for Question Card
  */
-export const questionContent = (
-  createQuestionContent,
-  question,
-  handleSubmit,
-  renderResults = null,
-  session,
-  path,
-  filter,
-) => {
-  console.log('QUESTION: ', question);
-  let title = session ? 'Submit Answer' : 'Please Login first!';
-  let text = session ? 'Submit!' : 'LOGIN';
-  if (path === '/' && session) {
-    title = 'View Question';
-    text = 'View Question';
-  }
-  return (
-    <Container creatingQuestion={!!createQuestionContent} renderResults={renderResults}>
-      <Headline>Would you rather...</Headline>
-      {!createQuestionContent ? (
-        <Options
-          question={question}
-          optionOne={question.optionOne.text}
-          optionTwo={question.optionTwo.text}
-          renderResults={renderResults}
-          session={session}
-          path={path}
-          filter={filter}
-        />
-      ) : (
-        createQuestionContent
-      )}
-      {renderResults && <ProgressBar />}
-      {!renderResults && (
-        <SubmitButton
-          title={title}
-          onClick={
-            session
-              ? () => {
-                  handleSubmit();
-                }
-              : null
-          }
-        >
-          {text}
-        </SubmitButton>
-      )}
-    </Container>
-  );
-};
 
-export const generateContent = (type, input, handleSubmit, path, session, question, filter) => {
+export const generateContent = (
+  type,
+  input,
+  handleSubmit,
+  path,
+  session,
+  question,
+  filter,
+  setQuestionAnswer,
+) => {
   let title = session ? 'Submit Answer' : 'Please Login first!';
   let text = session ? 'Submit!' : 'LOGIN';
   if (path === '/' && session) {
@@ -240,6 +149,7 @@ export const generateContent = (type, input, handleSubmit, path, session, questi
             session={session}
             path={path}
             filter={filter}
+            setQuestionAnswer={setQuestionAnswer}
           />
           <SubmitButton title={title} onClick={session ? handleSubmit : null}>
             {text}
@@ -261,6 +171,7 @@ export const generateContent = (type, input, handleSubmit, path, session, questi
             session={session}
             path={path}
             filter={filter}
+            setQuestionAnswer={setQuestionAnswer}
           />
           <ProgressBar result={getResult(question)} />
         </Container>

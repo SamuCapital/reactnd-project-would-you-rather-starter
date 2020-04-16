@@ -5,7 +5,7 @@ export const setInitialQuestions = (questions) => ({
   payload: { ...questions },
 });
 
-export const questionAddAnswer = (questionId, userId, answer) => ({
+export const questionAddAnswer = (userId, questionId, answer) => ({
   type: types.QUESTION_ADD_ANSWER,
   payload: {
     questionId,

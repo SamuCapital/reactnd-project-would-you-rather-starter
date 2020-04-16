@@ -44,3 +44,20 @@ export const createBackGroundStyle = (flexDirection) => ({
   padding: flexDirection ? 10 : 20,
   width: flexDirection ? '60%' : '80%',
 });
+
+/* -------------------------------------------------------------------------- */
+/*                                    Logic                                   */
+/* -------------------------------------------------------------------------- */
+
+export const handleDisplaySubmit = (
+  setRenderQuestion,
+  setAnswer,
+  session,
+  questionId,
+  selected,
+) => {
+  setRenderQuestion(false);
+  if (selected) {
+    setAnswer(session, questionId, selected);
+  }
+};

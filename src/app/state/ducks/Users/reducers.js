@@ -9,10 +9,10 @@ const users = (state = initialState, action) => {
       return action.payload;
     }
     case types.ADD_ANSWER: {
-      const { user, answer } = action.payload;
+      const { user, answer, questionId } = action.payload;
       const newState = update(state, {
         [user]: {
-          answers: { $merge: answer },
+          answers: { $merge: { [questionId]: answer } },
         },
       });
       return newState;

@@ -37,3 +37,9 @@ export const handleCreateQuestion = (questionInput) => (dispatch) => {
 };
 
 // !FIXME: ADD ADQUESTION ACTION TO QUESTION REDUCER
+
+export const setAnswer = (session, questionId, selected) => (dispatch) => {
+  console.log('Gotta dispatch some stuff...', session, questionId, selected);
+  dispatch(usersOperations.userAddAnswer(session, questionId, selected));
+  dispatch(questionOperations.questionAddAnswer(session, questionId, selected));
+};

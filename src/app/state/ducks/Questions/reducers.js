@@ -9,10 +9,11 @@ export const Questions = (state = initialState, action) => {
       return action.payload;
     }
     case types.QUESTION_ADD_ANSWER: {
-      const { quesionId, userId, answer } = action.payload;
+      const { questionId, userId, answer } = action.payload;
+      console.log('Question in State: ', state[questionId]);
       const newState = update(state, {
-        [quesionId]: {
-          [answer]: { votes: { $push: userId } },
+        [questionId]: {
+          [answer]: { votes: { $push: [userId] } },
         },
       });
       return newState;

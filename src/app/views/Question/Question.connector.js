@@ -3,10 +3,11 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { questionOperations, questionSelectors } from 'app/state/ducks/Questions';
+import { setAnswer } from 'app/state/Shared';
 import Question from './Question.react';
-import { useWindowDimensions, createBackGroundStyle } from './Question.helper';
+import { useWindowDimensions, createBackGroundStyle, handleDisplaySubmit } from './Question.helper';
 import { questionContent, generateContent } from './Components';
-
 import { uiOperations } from '../../state/ducks/UI';
 
 const ConnectedComponent = ({
@@ -22,6 +23,9 @@ const ConnectedComponent = ({
   filter,
   session,
   path,
+  setQuestionAnswer,
+  answers,
+  setAnswer,
 }) => {
   const params = useParams();
   console.log('Params: ', params);
@@ -53,21 +57,32 @@ const ConnectedComponent = ({
     content = generateContent(
       'display',
       null,
-      () => setRenderQuestion(false),
+      // () => setRenderQuestion(false),
+      () =>
+        handleDisplaySubmit(
+          setRenderQuestion,
+          setAnswer,
+          session,
+          question.id,
+          questionSelectors.getSelected(answers, question.id),
+        ),
       path,
       session,
       question,
       filter,
+      setQuestionAnswer,
     );
   else if (filter)
     content = generateContent(
       'result',
       null,
-      () => setRenderQuestion(false),
+      // () => setRenderQuestion(false),
+      null,
       path,
       session,
       question,
       filter,
+      setQuestionAnswer,
     );
   return (
     <Question
@@ -86,6 +101,7 @@ const ConnectedComponent = ({
 };
 
 ConnectedComponent.propTypes = {
+  questionState: PropTypes.object.isRequired,
   question: PropTypes.object,
   url: PropTypes.string,
   createQuestion: PropTypes.object,
@@ -96,6 +112,8 @@ ConnectedComponent.propTypes = {
   renderResults: PropTypes.func,
   filter: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
+  session: PropTypes.string.isRequired,
+  setQuestionAnswer: PropTypes.func.isRequired,
 };
 ConnectedComponent.defaultProps = {
   url: '',
@@ -121,10 +139,16 @@ const mapStateToProps = (state, ownProps) => {
     session: state.session,
     path: state.ui.navigationPath,
     questionState: state.questions,
+    answers: state.answers,
   };
 };
 const mapDispatchToProps = (dispatch) => {
-  return { setScreenIsWide: (boolean) => dispatch(uiOperations.setScreenIsWide(boolean)) };
+  return {
+    setScreenIsWide: (boolean) => dispatch(uiOperations.setScreenIsWide(boolean)),
+    setQuestionAnswer: (id, opt) => dispatch(questionOperations.setAnswer(id, opt)),
+    setAnswer: (session, questionId, selected) =>
+      dispatch(setAnswer(session, questionId, selected)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ConnectedComponent);
