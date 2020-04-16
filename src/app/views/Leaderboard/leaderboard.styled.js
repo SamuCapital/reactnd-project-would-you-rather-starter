@@ -30,19 +30,20 @@ export const Index = styled.p`
 `;
 
 export const PictureBorder = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   margin: auto;
   border-radius: 100px;
   background-color: #21d4fd;
   background-image: linear-gradient(130deg, #21d4fd 0%, #b721ff 100%);
   padding: 3px;
-  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 10px;
 `;
 
 export const ProfilePicture = styled.div`
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   border-radius: 100px;
   background-image: url('${(props) => props.url}');
   background-size: 100% 100%;
@@ -60,6 +61,12 @@ export const Score = styled.p`
   margin: 0px;
 `;
 
+export const Count = styled.p`
+  color: #e7f0ff;
+  margin: 0px;
+  text-align: left;
+`;
+
 export const Text = styled.p`
   font-size: 140%;
   margin: 0px;
@@ -68,7 +75,6 @@ export const Text = styled.p`
   align-items: flex-start;
   display: flex;
   margin: 20px 0px 20px;
-  /* color: rgba(142, 0, 69, 1); */
   color: white;
   text-align: left;
 `;
