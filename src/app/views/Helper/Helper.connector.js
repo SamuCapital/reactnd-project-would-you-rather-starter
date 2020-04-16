@@ -6,7 +6,6 @@ const Helper = ({ toggleIsHome, setIsFourOhFour, currErrorState, currHomeState, 
   const paths = ['/', '/add', '/leaderboard', '/questions/:question_id', '/login'];
   const location = useLocation();
   const { pathname: path } = location;
-  console.log('HELPER LOCATION: ', path);
   setPath(path);
 
   const isFourOhFour = !paths.includes(path);

@@ -68,23 +68,7 @@ export const ProgressBar = ({ result }) => {
         strokeWidth={10}
         status="success"
         theme={{
-          error: {
-            // symbol: `${percentage}%`,
-            trailColor: 'pink',
-            color: 'red',
-          },
-          default: {
-            // symbol: `${percentage}%`,
-            trailColor: 'lightblue',
-            color: 'blue',
-          },
-          active: {
-            // symbol: `${percentage}%`,
-            trailColor: 'yellow',
-            color: 'orange',
-          },
           success: {
-            // symbol: `${percentage}%`,
             trailColor: 'lime',
             color: 'green',
           },
@@ -161,7 +145,6 @@ export const generateContent = (
     /* --------------------------------- RESULT --------------------------------- */
 
     case 'result':
-      console.log('Question Obj to display: ', question);
       return (
         <Container creatingQuestion={false} renderResults>
           <Headline>Would you rather...</Headline>

@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import { showLoading, hideLoading } from 'react-redux-loading';
 import { questionOperations } from 'app/state/ducks/Questions';
 import { usersOperations } from 'app/state/ducks/Users';
 import { sessionOperations } from 'app/state/ducks/Session';
@@ -18,28 +17,23 @@ const getInitialData = () => {
  */
 export const fetchInitialData = () => {
   return (dispatch) => {
-    dispatch(showLoading);
     return getInitialData().then(({ users, questions }) => {
       dispatch(usersOperations.setInitialUsers(users));
       dispatch(questionOperations.setInitialQuestions(questions));
       dispatch(sessionOperations.setUser('tylermcginnis'));
-      dispatch(hideLoading);
     });
   };
 };
 
 export const handleCreateQuestion = (questionInput) => (dispatch) => {
-  dispatch(showLoading);
   return _saveQuestion(questionInput)
     .then((question) => dispatch(questionOperations.addQuestion(question)))
-    .then(() => dispatch(hideLoading()))
     .then(() => dispatch(uiOperations.toggleRedirect(true)));
 };
 
 // !FIXME: ADD ADQUESTION ACTION TO QUESTION REDUCER
 
 export const setAnswer = (session, questionId, selected) => (dispatch) => {
-  console.log('Gotta dispatch some stuff...', session, questionId, selected);
   dispatch(usersOperations.userAddAnswer(session, questionId, selected));
   dispatch(questionOperations.questionAddAnswer(session, questionId, selected));
 };

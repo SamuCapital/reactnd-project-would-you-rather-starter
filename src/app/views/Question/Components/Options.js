@@ -10,6 +10,7 @@ const Options = ({ question, renderResults, session, path, filter, setQuestionAn
     filter: PropTypes.bool.isRequired,
     path: PropTypes.string.isRequired,
     session: PropTypes.string.isRequired,
+    setQuestionAnswer: PropTypes.func.isRequired,
   };
   return (
     <OptionContainer>

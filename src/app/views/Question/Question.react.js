@@ -46,7 +46,9 @@ Question.propTypes = {
   setRender: PropTypes.func.isRequired,
   style: PropTypes.object.isRequired,
   content: PropTypes.element.isRequired,
+  path: PropTypes.string.isRequired,
+  results: PropTypes.element,
 };
-Question.defaultProps = {};
+Question.defaultProps = { results: null };
 
 export default Question;

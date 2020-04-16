@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import './App.css';
 import PropTypes from 'prop-types';
 
-import { LoadingBar } from 'react-redux-loading';
 import { fetchInitialData } from 'app/state/Shared';
 import { AppContainer } from 'app/views/app/App.styled';
 import Home from '../Home';
@@ -15,16 +14,14 @@ import Login from '../Login';
 import Helper, { FourOhFour } from '../Helper';
 
 const App = (props) => {
-  const { loading, isFourOhFour, dispatch, navBarHeight } = props;
+  const { isFourOhFour, dispatch, navBarHeight } = props;
   useEffect(() => {
     dispatch(fetchInitialData());
   }, [dispatch]);
   return (
     <div className="App">
       <Router>
-        {/* <LoadingBar /> */}
         <NavBar />
-        {/* {!loading && ( */}
         <AppContainer height={navBarHeight}>
           <Route path="/" exact component={Home} />
           <Route path="/add" exact component={CreateQuestion} />
@@ -34,7 +31,6 @@ const App = (props) => {
           {isFourOhFour && <Route component={FourOhFour} />}
           <Helper />
         </AppContainer>
-        {/* )} */}
       </Router>
     </div>
   );
@@ -42,13 +38,11 @@ const App = (props) => {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  loading: PropTypes.bool.isRequired,
   isFourOhFour: PropTypes.bool.isRequired,
   navBarHeight: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = ({ session, ui }) => ({
-  loading: session === null,
   isFourOhFour: ui.isFourOhFour,
   navBarHeight: ui.navBarHeight,
 });

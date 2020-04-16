@@ -7,7 +7,7 @@ import { questionOperations, questionSelectors } from 'app/state/ducks/Questions
 import { setAnswer } from 'app/state/Shared';
 import Question from './Question.react';
 import { useWindowDimensions, createBackGroundStyle, handleDisplaySubmit } from './Question.helper';
-import { questionContent, generateContent } from './Components';
+import { generateContent } from './Components';
 import { uiOperations } from '../../state/ducks/UI';
 
 const ConnectedComponent = ({
@@ -19,16 +19,16 @@ const ConnectedComponent = ({
   setScreenIsWide,
   createQuestion,
   handleSubmit,
-  renderResults,
   filter,
   session,
   path,
   setQuestionAnswer,
   answers,
+  // eslint-disable-next-line no-shadow
   setAnswer,
 }) => {
   const params = useParams();
-  console.log('Params: ', params);
+  // eslint-disable-next-line no-param-reassign
   if (params && params.question_id) question = questionState[params.question_id];
 
   const { width: windowWidth } = useWindowDimensions();
@@ -59,6 +59,7 @@ const ConnectedComponent = ({
       null,
       () =>
         handleDisplaySubmit(
+          path === '/',
           setRenderQuestion,
           setAnswer,
           session,
@@ -105,7 +106,6 @@ const ConnectedComponent = ({
       shouldRender={shouldRender}
       setRender={setRender}
       style={style}
-      // TODO: Replace filter bool (rn representing renderResults) with actual Data to be displayed(e.g. user, votes on question, etc)
       content={content}
       path={path}
       results={results}
@@ -122,11 +122,12 @@ ConnectedComponent.propTypes = {
   isWide: PropTypes.bool.isRequired,
   setScreenIsWide: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func,
-  renderResults: PropTypes.func,
   filter: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
   session: PropTypes.string.isRequired,
   setQuestionAnswer: PropTypes.func.isRequired,
+  answers: PropTypes.object.isRequired,
+  setAnswer: PropTypes.func.isRequired,
 };
 ConnectedComponent.defaultProps = {
   url: '',
@@ -134,7 +135,6 @@ ConnectedComponent.defaultProps = {
   createQuestion: null,
   question: {},
   handleSubmit: () => null,
-  renderResults: false,
 };
 
 const mapStateToProps = (state, ownProps) => {

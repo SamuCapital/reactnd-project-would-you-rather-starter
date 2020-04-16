@@ -50,14 +50,16 @@ export const createBackGroundStyle = (flexDirection) => ({
 /* -------------------------------------------------------------------------- */
 
 export const handleDisplaySubmit = (
+  shouldNavigate,
   setRenderQuestion,
   setAnswer,
   session,
   questionId,
   selected,
 ) => {
-  setRenderQuestion(false);
+  shouldNavigate && setRenderQuestion(false);
   if (selected) {
+    setRenderQuestion(false);
     setAnswer(session, questionId, selected);
   }
 };
