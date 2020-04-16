@@ -1,0 +1,74 @@
+import styled from 'styled-components';
+
+export const Background = styled.div`
+  background-color: rgba(0, 20, 39, 1);
+  border-radius: 5px;
+  flex: 1;
+  margin: auto;
+  max-width: 800px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  box-shadow: 6px 10px 28px 1px rgba(131, 144, 184, 1);
+  /* padding: ${(props) => props.height * 40}px; */
+  /* padding: ${(props) => props.i * 20}px ${(props) => props.i * 20}px; */
+  padding: 20px;
+`;
+
+export const Container = styled.div`
+  width: ${(props) => props.w}%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Index = styled.p`
+  font-size: ${(props) => (props.i > 1 ? props.i * 0.75 * 180 : 180)}%;
+  margin: 0px;
+  color: #0ff4c6;
+`;
+
+export const PictureBorder = styled.div`
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  border-radius: 100px;
+  background-color: #21d4fd;
+  background-image: linear-gradient(130deg, #21d4fd 0%, #b721ff 100%);
+  padding: 3px;
+  margin-top: 20px;
+`;
+
+export const ProfilePicture = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  background-image: url('${(props) => props.url}');
+  background-size: 100% 100%;
+`;
+
+export const Sum = styled.p`
+  font-size: 400%;
+  margin: 0px;
+  color: #e3ebff;
+  font-weight: bold;
+`;
+
+export const Score = styled.p`
+  color: #e7f0ff;
+  margin: 0px;
+`;
+
+export const Text = styled.p`
+  font-size: 140%;
+  margin: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  align-items: flex-start;
+  display: flex;
+  margin: 20px 0px 20px;
+  /* color: rgba(142, 0, 69, 1); */
+  color: white;
+  text-align: left;
+`;

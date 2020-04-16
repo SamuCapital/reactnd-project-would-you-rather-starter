@@ -6,12 +6,13 @@ import PropTypes from 'prop-types';
 
 import { fetchInitialData } from 'app/state/Shared';
 import { AppContainer } from 'app/views/app/App.styled';
-import Home from '../Home';
-import NavBar from '../NavBar';
-import Question from '../Question';
-import CreateQuestion from '../CreateQuestion';
-import Login from '../Login';
-import Helper, { FourOhFour } from '../Helper';
+import Home from 'app/views//Home';
+import Leaderboard from 'app/views/Leaderboard';
+import NavBar from 'app/views//NavBar';
+import Question from 'app/views//Question';
+import CreateQuestion from 'app/views//CreateQuestion';
+import Login from 'app/views//Login';
+import Helper, { FourOhFour } from 'app/views//Helper';
 
 const App = (props) => {
   const { isFourOhFour, dispatch, navBarHeight } = props;
@@ -25,7 +26,7 @@ const App = (props) => {
         <AppContainer height={navBarHeight}>
           <Route path="/" exact component={Home} />
           <Route path="/add" exact component={CreateQuestion} />
-          <Route path="/leaderboard" exact component={null} />
+          <Route path="/leaderboard" exact component={Leaderboard} />
           <Route path="/questions/:question_id" exact component={Question} />
           <Route path="/login" exact component={Login} />
           {isFourOhFour && <Route component={FourOhFour} />}
