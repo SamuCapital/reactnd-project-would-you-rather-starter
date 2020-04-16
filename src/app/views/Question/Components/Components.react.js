@@ -116,6 +116,7 @@ export const generateContent = (
   question,
   filter,
   setQuestionAnswer,
+  selected,
 ) => {
   let title = session ? 'Submit Answer' : 'Please Login first!';
   let text = session ? 'Submit!' : 'LOGIN';
@@ -160,6 +161,7 @@ export const generateContent = (
     /* --------------------------------- RESULT --------------------------------- */
 
     case 'result':
+      console.log('Question Obj to display: ', question);
       return (
         <Container creatingQuestion={false} renderResults>
           <Headline>Would you rather...</Headline>
@@ -173,18 +175,19 @@ export const generateContent = (
             filter={filter}
             setQuestionAnswer={setQuestionAnswer}
           />
-          <ProgressBar result={getResult(question)} />
+          <ProgressBar result={getResult(question, selected)} />
         </Container>
       );
     default:
       return null;
   }
 };
-const getResult = (q) =>
+const getResult = (q, selected) =>
   (Math.round(
-    (q.optionOne.votes.length / (q.optionOne.votes.length + q.optionTwo.votes.length) +
-      Number.EPSILON) *
-      100,
+    (selected === 'optionOne'
+      ? q.optionOne.votes.length
+      : q.optionTwo.votes.length / (q.optionOne.votes.length + q.optionTwo.votes.length) +
+        Number.EPSILON) * 100,
   ) /
     100) *
   100;

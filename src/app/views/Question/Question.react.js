@@ -15,6 +15,8 @@ const Question = ({
   setRender,
   style,
   content,
+  path,
+  results,
 }) => {
   return (
     <Background style={style}>
@@ -29,7 +31,7 @@ const Question = ({
         {content}
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
-        <Redirect to={`/questions/${id}`} />
+        {path === '/' && <Redirect to={`/questions/${id}`} />} {results}
       </Fade>
     </Background>
   );

@@ -24,7 +24,7 @@ const Options = ({ question, renderResults, session, path, filter, setQuestionAn
           value="optionOne"
           disabledColor
           disabled={
-            (renderResults && question.optionOne.votes.includes(session)) ||
+            (renderResults && !question.optionOne.votes.includes(session)) ||
             !session ||
             (path === '/' && !filter)
           }
@@ -38,7 +38,7 @@ const Options = ({ question, renderResults, session, path, filter, setQuestionAn
           value="optionTwo"
           disabledColor
           disabled={
-            (renderResults && question.optionTwo.votes.includes(session)) ||
+            (renderResults && !question.optionTwo.votes.includes(session)) ||
             !session ||
             (path === '/' && !filter)
           }

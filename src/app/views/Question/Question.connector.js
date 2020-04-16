@@ -57,7 +57,6 @@ const ConnectedComponent = ({
     content = generateContent(
       'display',
       null,
-      // () => setRenderQuestion(false),
       () =>
         handleDisplaySubmit(
           setRenderQuestion,
@@ -76,7 +75,19 @@ const ConnectedComponent = ({
     content = generateContent(
       'result',
       null,
-      // () => setRenderQuestion(false),
+      null,
+      path,
+      session,
+      question,
+      filter,
+      setQuestionAnswer,
+      questionSelectors.getSelected(answers, question.id),
+    );
+  let results = null;
+  if (!createQuestion)
+    results = generateContent(
+      'result',
+      null,
       null,
       path,
       session,
@@ -96,6 +107,8 @@ const ConnectedComponent = ({
       style={style}
       // TODO: Replace filter bool (rn representing renderResults) with actual Data to be displayed(e.g. user, votes on question, etc)
       content={content}
+      path={path}
+      results={results}
     />
   );
 };
