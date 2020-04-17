@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-/* <Input type="text" onChange={(event) => console.log(event.target.value)} />; */
-
 export const Input = styled.input`
   flex-grow: 1;
   background: transparent;
@@ -16,7 +14,6 @@ export const Input = styled.input`
   border: 2px solid rgba(0, 0, 0, 0.9);
   padding: 0.25em 0.5em 0.3125em;
   color: rgba(0, 0, 0, 0.9);
-  /* border-radius: 0.25em; */
 `;
 
 export const InputContainer = styled.div`

@@ -20,20 +20,20 @@ const App = (props) => {
     dispatch(fetchInitialData());
   }, [dispatch]);
   return (
-    <div className="App">
-      <Router>
-        <NavBar />
-        <AppContainer height={navBarHeight}>
-          <Route path="/" exact component={Home} />
-          <Route path="/add" exact component={CreateQuestion} />
-          <Route path="/leaderboard" exact component={Leaderboard} />
-          <Route path="/questions/:question_id" exact component={Question} />
-          <Route path="/login" exact component={Login} />
-          {isFourOhFour && <Route component={FourOhFour} />}
-          <Helper />
-        </AppContainer>
-      </Router>
-    </div>
+    // <div className="App">
+    <Router>
+      <NavBar />
+      <AppContainer height={navBarHeight}>
+        <Route path="/" exact component={Home} />
+        <Route path="/add" exact component={CreateQuestion} />
+        <Route path="/leaderboard" exact component={Leaderboard} />
+        <Route path="/questions/:question_id" exact component={Question} />
+        <Route path="/login" exact component={Login} />
+        {isFourOhFour && <Route component={FourOhFour} />}
+        <Helper />
+      </AppContainer>
+    </Router>
+    // {/* </div> */}
   );
 };
 
