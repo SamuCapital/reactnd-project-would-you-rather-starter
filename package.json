@@ -1,4 +1,5 @@
 {
+  "homepage": "http://willsamu.github.io/reactnd-project-would-you-rather-starter",
   "name": "reactnd-project-would-you-rather-starter",
   "version": "0.1.0",
   "private": true,
@@ -24,7 +25,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .js --ext .jsx ."
+    "lint": "eslint --ext .js --ext .jsx .",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -56,6 +59,7 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.19.0",
+    "gh-pages": "^2.2.0",
     "prettier": "^2.0.2",
     "typescript": "^3.8.3"
   }
