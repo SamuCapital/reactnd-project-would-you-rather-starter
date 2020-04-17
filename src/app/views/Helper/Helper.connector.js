@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react';
+
 import { connect } from 'react-redux';
 import { uiOperations } from 'app/state/ducks/UI';
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 
 const Helper = ({
   toggleIsHome,
@@ -25,7 +26,15 @@ const Helper = ({
     let temp = !paths.includes(path);
     if (temp) {
       const pathArray = path.split('/');
-      temp = !(pathArray[1] === 'questions' && questions.includes(pathArray[2]));
+      temp = !(
+        pathArray.length > 2 &&
+        pathArray.length <= 4 &&
+        pathArray[1] === 'questions' &&
+        questions.includes(pathArray[2])
+      );
+      if (!temp && pathArray.length === 4) {
+        if (pathArray[3].split('').length > 0) temp = true;
+      }
     }
     setIsFourOhFour(temp);
   }, [path, paths, questions, setIsFourOhFour]);
