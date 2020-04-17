@@ -16,8 +16,6 @@ export const Background = styled.div`
   box-shadow: 6px 10px 28px 1px rgba(131, 144, 184, 1);
 `;
 
-/* --------------------------------- Picture -------------------------------- */
-
 export const UserData = styled.div`
   margin: 0px 20px 0px 30px;
 `;
@@ -46,7 +44,7 @@ export const QuestionBy = styled.p`
   margin: 0px;
   margin-block-start: 0px;
   margin-block-end: 0px;
-  color: #e3ebff;
+  color: rgba(142, 0, 69, 1);
   align-items: center;
   display: flex;
   flex-direction: column;

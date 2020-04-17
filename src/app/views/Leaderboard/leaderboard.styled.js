@@ -30,7 +30,7 @@ export const IndexContainer = styled.div`
 `;
 
 export const Index = styled.p`
-  font-size: ${(props) => (props.i > 1 ? props.i * 0.75 * 180 : 180)}%;
+  font-size: ${(props) => (props.i > 1 ? props.i * 135 : 180)}%;
   margin: 0px;
   color: #0ff4c6;
 `;

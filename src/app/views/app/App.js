@@ -43,7 +43,7 @@ App.propTypes = {
   navBarHeight: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = ({ session, ui }) => ({
+const mapStateToProps = ({ ui }) => ({
   isFourOhFour: ui.isFourOhFour,
   navBarHeight: ui.navBarHeight,
 });

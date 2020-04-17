@@ -29,7 +29,7 @@ const NavBar = ({
             toggleIsHome={toggleIsHome}
             toggleIsFourOhFour={toggleIsFourOhFour}
           >
-            Leader Bord
+            Leaderboard
           </Link>
           <Link to="/login" toggleIsHome={toggleIsHome} toggleIsFourOhFour={toggleIsFourOhFour}>
             {greeting}

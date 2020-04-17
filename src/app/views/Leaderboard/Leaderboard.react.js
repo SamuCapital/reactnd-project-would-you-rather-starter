@@ -22,7 +22,7 @@ const Leaderboard = ({ users }) => {
   return (
     <div>
       {names.map((user, index) => (
-        <Background key={user} i={mult(index)}>
+        <Background key={user}>
           <Container width={12}>
             <IndexContainer>
               <Index i={mult(index)}>
