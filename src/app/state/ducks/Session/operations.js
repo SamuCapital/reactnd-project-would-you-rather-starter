@@ -8,5 +8,6 @@ export const setUser = (input, userState) => (dispatch) => {
   dispatch(uiOperations.setInputText('optionTwoText', ''));
   dispatch(setAuthenticatedUser(input));
   dispatch(questionOperations.setInitialAnswers(input && userState[input].answers));
+  dispatch(uiOperations.setFilter(false));
   input !== null && dispatch(uiOperations.toggleRedirect(true));
 };

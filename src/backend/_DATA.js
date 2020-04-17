@@ -20,7 +20,6 @@ let users = {
     answers: {
       vthrdm985a262al8qx3do: 'optionOne',
       xj352vofupe1dqz9emx13r: 'optionTwo',
-      '3re2z9oyingr2fug4i7e2': 'optionTwo',
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
@@ -38,7 +37,7 @@ let users = {
   maxmustermann: {
     id: 'maxmustermann',
     name: 'Max Mustermann',
-    avatarURL: 'https://i.pinimg.com/564x/51/f6/fb/51f6fb256629fc755b8870c801092942.jpg',
+    avatarURL: 'https://i.pinimg.com/564x/45/d9/8a/45d98aa922bef6b5213b488dc36a8764.jpg',
     answers: {
       xj352vofupe1dqz9emx13r: 'optionOne',
       vthrdm985a262al8qx3do: 'optionTwo',
@@ -125,19 +124,6 @@ let questions = {
     optionTwo: {
       votes: ['tylermcginnis'],
       text: 'write Swift',
-    },
-  },
-  '3re2z9oyingr2fug4i7e2': {
-    id: '3re2z9oyingr2fug4i7e2',
-    author: 'johndoe',
-    timestamp: 1586630229589,
-    optionOne: {
-      votes: ['johndoe'],
-      text: 'write JavaScript WITH A SUPER LONG ANSWER STRING',
-    },
-    optionTwo: {
-      votes: ['tylermcginnis'],
-      text: 'write JavaScript WITHOUT A SUPER LONG ANSWER STRING',
     },
   },
 };
