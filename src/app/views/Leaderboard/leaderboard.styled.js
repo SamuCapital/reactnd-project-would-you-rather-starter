@@ -10,17 +10,23 @@ export const Background = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  justify-content: space-between;
   margin-bottom: 20px;
   box-shadow: 6px 10px 28px 1px rgba(131, 144, 184, 1);
-  /* padding: ${(props) => props.height * 40}px; */
-  /* padding: ${(props) => props.i * 20}px ${(props) => props.i * 20}px; */
   padding: 20px;
 `;
 
 export const Container = styled.div`
-  width: ${(props) => props.w}%;
+  min-width: ${(props) => props.width}%;
   display: flex;
   flex-direction: column;
+  justify-content: baseline;
+`;
+
+export const IndexContainer = styled.div`
+  align-self: flex-start;
+  flex-grow: 1;
+  height: 100%;
 `;
 
 export const Index = styled.p`
@@ -62,8 +68,8 @@ export const Score = styled.p`
 `;
 
 export const Count = styled.p`
-  color: #e7f0ff;
-  margin: 0px;
+  color: #e3ebff;
+  margin: 5px 0px;
   text-align: left;
 `;
 
@@ -77,4 +83,5 @@ export const Text = styled.p`
   margin: 20px 0px 20px;
   color: white;
   text-align: left;
+  color: #e3ebff;
 `;

@@ -1,18 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import styled, { keyframes } from 'styled-components';
-/* Coolors Exported Palette - coolors.co/9e0031-8e0045-001427-708d81-f4d58d */
 import { zoomInDown, bounceOut } from 'react-animations';
 
-// /* RGB */
-const colors = {
-  color1: 'rgba(158, 0, 49, 1)',
-  color2: 'rgba(142, 0, 69, 1)',
-  color3: 'rgba(0, 20, 39, 1)',
-  color4: 'rgba(112, 141, 129, 1)',
-  color5: 'rgba(244, 213, 141, 1)',
-};
 export const Background = styled.div`
-  background-color: ${colors.color3};
+  background-color: rgba(0, 20, 39, 1);
   border-radius: 5px;
   flex: 1;
   margin: auto;
@@ -55,7 +46,7 @@ export const QuestionBy = styled.p`
   margin: 0px;
   margin-block-start: 0px;
   margin-block-end: 0px;
-  color: ${colors.color2};
+  color: #e3ebff;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -63,7 +54,7 @@ export const QuestionBy = styled.p`
 `;
 export const Name = styled.span`
   margin-top: -20px;
-  color: ${colors.color4};
+  color: #e3ebff;
 `;
 
 export const AnimatedDiv = styled.div`
@@ -132,11 +123,9 @@ export const ResultBarContainer = styled.div`
   display: flex;
   margin-right: 20px;
   background-color: #bf005c;
-  /* background-color: #e2e2e2; */
   border-radius: 5px;
   flex-direction: column;
   padding: 20px 40px;
   margin: 20px 40px 30px;
-  /* box-shadow: 0px 0px 40px 25px rgba(191, 0, 92, 1); */
   z-index: 0;
 `;
