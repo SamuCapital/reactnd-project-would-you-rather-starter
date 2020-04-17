@@ -36,7 +36,13 @@ export const AuthorName = ({ name }) => {
 export const Fade = ({ show, children, shouldRender, setRender }) => {
   Fade.propTypes = {
     show: PropTypes.bool.isRequired,
-    children: PropTypes.element.isRequired,
+    // children: PropTypes.oneOfType([
+    //   PropTypes.arrayOf(
+    //     PropTypes.oneOfType([PropTypes.element, PropTypes.string, PropTypes.object]),
+    //   ),
+    //   PropTypes.object,
+    // ]).isRequired,
+    children: PropTypes.any.isRequired,
     shouldRender: PropTypes.bool.isRequired,
     setRender: PropTypes.func.isRequired,
   };
@@ -84,11 +90,6 @@ export const ProgressBar = ({ result }) => {
 
 /**
  * @description Takes in dynamic arguments on whether to create or display a Question
- * @param  {JSX} createQuestionContent Document Node representing Input fields for Question to create (from CreateQuestion.react)
- * @param  {Object} question Data of Question which is to be displayed
- * @param {Function} handleSubmit Submit Function for Create / Vote Card
- * @param {Boolean} renderResults If True disable Radio Buttons and select color theme
- * @returns {JSX} Content for Question Card
  */
 
 export const generateContent = (
@@ -130,14 +131,13 @@ export const generateContent = (
             question={question}
             optionOne={question.optionOne.text}
             optionTwo={question.optionTwo.text}
-            // renderResults={false}
             session={session}
             path={path}
             filter={filter}
             setQuestionAnswer={setQuestionAnswer}
             selected={selected}
           />
-          <SubmitButton title={title} onClick={session ? handleSubmit : null}>
+          <SubmitButton title={title} onClick={handleSubmit}>
             {text}
           </SubmitButton>
         </Container>

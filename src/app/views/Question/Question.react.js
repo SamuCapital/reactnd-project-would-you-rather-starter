@@ -17,6 +17,7 @@ const Question = ({
   content,
   path,
   results,
+  loggedIn,
 }) => {
   return (
     <Background style={style}>
@@ -31,7 +32,8 @@ const Question = ({
         {content}
       </Fade>
       <Fade show={!renderQuestion} shouldRender={!shouldRender} setRender={setRender}>
-        {path === '/' && <Redirect to={`/questions/${id}`} />} {results}
+        {!loggedIn && <Redirect to="/login" />}
+        {loggedIn && path === '/' && <Redirect to={`/questions/${id}`} />} {results}
       </Fade>
     </Background>
   );
@@ -48,6 +50,7 @@ Question.propTypes = {
   content: PropTypes.element.isRequired,
   path: PropTypes.string.isRequired,
   results: PropTypes.element,
+  loggedIn: PropTypes.bool.isRequired,
 };
 Question.defaultProps = { results: null };
 

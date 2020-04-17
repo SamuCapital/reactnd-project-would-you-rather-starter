@@ -17,13 +17,14 @@ const Options = ({
     renderResults: PropTypes.bool,
     filter: PropTypes.bool.isRequired,
     path: PropTypes.string.isRequired,
-    session: PropTypes.string.isRequired,
+    session: PropTypes.string,
     setQuestionAnswer: PropTypes.func.isRequired,
     selected: PropTypes.string,
   };
   Options.defaultProps = {
     selected: undefined,
     renderResults: false,
+    session: null,
   };
   return (
     <OptionContainer>

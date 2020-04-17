@@ -20,7 +20,6 @@ const App = (props) => {
     dispatch(fetchInitialData());
   }, [dispatch]);
   return (
-    // <div className="App">
     <Router>
       <NavBar />
       <AppContainer height={navBarHeight}>
@@ -33,14 +32,17 @@ const App = (props) => {
         <Helper />
       </AppContainer>
     </Router>
-    // {/* </div> */}
   );
 };
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
   isFourOhFour: PropTypes.bool.isRequired,
-  navBarHeight: PropTypes.number.isRequired,
+  navBarHeight: PropTypes.number,
+};
+
+App.defaultProps = {
+  navBarHeight: 0,
 };
 
 const mapStateToProps = ({ ui }) => ({

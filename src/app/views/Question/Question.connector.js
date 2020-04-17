@@ -1,9 +1,11 @@
+/* eslint-disable no-param-reassign */
 import React, { useState, useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { questionOperations, questionSelectors } from 'app/state/ducks/Questions';
+import { usersSelectors } from 'app/state/ducks/Users';
 import { setAnswer } from 'app/state/Shared';
 import Question from './Question.react';
 import { useWindowDimensions, createBackGroundStyle, handleDisplaySubmit } from './Question.helper';
@@ -14,6 +16,7 @@ const ConnectedComponent = ({
   questionState,
   question,
   url,
+  userState,
   authorName,
   isWide,
   setScreenIsWide,
@@ -28,8 +31,11 @@ const ConnectedComponent = ({
   setAnswer,
 }) => {
   const params = useParams();
-  // eslint-disable-next-line no-param-reassign
   if (params && params.question_id) question = questionState[params.question_id];
+  if (question && !createQuestion) {
+    url = usersSelectors.getUrl(userState, question.author);
+    authorName = usersSelectors.getFullName(userState, question.author);
+  }
 
   const { width: windowWidth } = useWindowDimensions();
   const [renderQuestion, setRenderQuestion] = useState(true);
@@ -45,7 +51,7 @@ const ConnectedComponent = ({
   if (questionState.loadInitialState || !question) return null;
 
   let content = null;
-  if (createQuestion)
+  if (createQuestion) {
     content = generateContent(
       'create',
       createQuestion,
@@ -53,7 +59,8 @@ const ConnectedComponent = ({
       path,
       session,
     );
-  else if (!filter)
+    url = usersSelectors.getUrl(userState, session);
+  } else if (!filter)
     content = generateContent(
       'display',
       null,
@@ -111,6 +118,7 @@ const ConnectedComponent = ({
       content={content}
       path={path}
       results={results}
+      loggedIn={!!session}
     />
   );
 };
@@ -126,10 +134,11 @@ ConnectedComponent.propTypes = {
   handleSubmit: PropTypes.func,
   filter: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
-  session: PropTypes.string.isRequired,
+  session: PropTypes.string,
   setQuestionAnswer: PropTypes.func.isRequired,
   answers: PropTypes.object.isRequired,
   setAnswer: PropTypes.func.isRequired,
+  userState: PropTypes.object.isRequired,
 };
 ConnectedComponent.defaultProps = {
   url: '',
@@ -137,6 +146,7 @@ ConnectedComponent.defaultProps = {
   createQuestion: null,
   question: {},
   handleSubmit: () => null,
+  session: null,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -144,11 +154,14 @@ const mapStateToProps = (state, ownProps) => {
     url:
       ownProps.question &&
       (ownProps.createQuestion
-        ? state.session && state.users[state.session].avatarURL
-        : state.users[ownProps.question.author].avatarURL),
+        ? state.session && usersSelectors.getUrl(state.users, state.session)
+        : usersSelectors.getUrl(state.users, ownProps.question.author)),
     authorName:
       ownProps.question &&
-      (ownProps.createQuestion ? 'You' : state.users[ownProps.question.author].name),
+      (ownProps.createQuestion
+        ? 'You'
+        : usersSelectors.getFullName(state.users, ownProps.question.author)), // state.users[ownProps.question.author].name),
+    userState: state.users,
     isWide: state.ui.isWide,
     filter: state.ui.filter,
     session: state.session,
