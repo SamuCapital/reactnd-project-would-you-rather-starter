@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/reactnd-project-would-you-rather-starter/static/css/main.31bfced9.chunk.css",
+    "main.js": "/reactnd-project-would-you-rather-starter/static/js/main.228f121e.chunk.js",
+    "main.js.map": "/reactnd-project-would-you-rather-starter/static/js/main.228f121e.chunk.js.map",
+    "runtime-main.js": "/reactnd-project-would-you-rather-starter/static/js/runtime-main.bcf3dfff.js",
+    "runtime-main.js.map": "/reactnd-project-would-you-rather-starter/static/js/runtime-main.bcf3dfff.js.map",
+    "static/css/2.b269c6b2.chunk.css": "/reactnd-project-would-you-rather-starter/static/css/2.b269c6b2.chunk.css",
+    "static/js/2.c9bb383b.chunk.js": "/reactnd-project-would-you-rather-starter/static/js/2.c9bb383b.chunk.js",
+    "static/js/2.c9bb383b.chunk.js.map": "/reactnd-project-would-you-rather-starter/static/js/2.c9bb383b.chunk.js.map",
+    "index.html": "/reactnd-project-would-you-rather-starter/index.html",
+    "precache-manifest.d96581da932f38dbbe7b77473c950a9d.js": "/reactnd-project-would-you-rather-starter/precache-manifest.d96581da932f38dbbe7b77473c950a9d.js",
+    "service-worker.js": "/reactnd-project-would-you-rather-starter/service-worker.js",
+    "static/css/2.b269c6b2.chunk.css.map": "/reactnd-project-would-you-rather-starter/static/css/2.b269c6b2.chunk.css.map",
+    "static/css/main.31bfced9.chunk.css.map": "/reactnd-project-would-you-rather-starter/static/css/main.31bfced9.chunk.css.map",
+    "static/js/2.c9bb383b.chunk.js.LICENSE.txt": "/reactnd-project-would-you-rather-starter/static/js/2.c9bb383b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bcf3dfff.js",
+    "static/css/2.b269c6b2.chunk.css",
+    "static/js/2.c9bb383b.chunk.js",
+    "static/css/main.31bfced9.chunk.css",
+    "static/js/main.228f121e.chunk.js"
+  ]
+}
