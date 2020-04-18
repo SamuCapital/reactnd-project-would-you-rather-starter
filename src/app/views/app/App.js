@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
 import PropTypes from 'prop-types';
@@ -20,7 +20,7 @@ const App = (props) => {
     dispatch(fetchInitialData());
   }, [dispatch]);
   return (
-    <Router>
+    <Router basename="/">
       <NavBar />
       <AppContainer height={navBarHeight}>
         <Route path="/" exact component={Home} />
