@@ -9,3 +9,7 @@ Note: Due to Udacity requirements there are some specific implementations:
 
 - the Redux connect HOC has been used instead of Redux Hooks
 - there is no direct poll interaction on the home page
+
+## Demo
+
+A working Demo can be found here [https://willsamu.github.io/reactnd-project-would-you-rather-starter/](https://willsamu.github.io/reactnd-project-would-you-rather-starter/#/questions/am8ehyc8byjqgar0jgpub9)
